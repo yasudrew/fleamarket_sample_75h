@@ -1,0 +1,30 @@
+.wrapper
+  .sign_up
+    .sign_up_header
+      = image_tag "logo.png", size: "175x45", class: "sign_up_header_icon"
+      %hr{:size => "3", :width => "500"}/
+
+
+    .sign_up_body
+      .sign_up_body_form
+        .sign_up_body_form_inside
+          %h2.sign_up_body_form_inside_title
+            新規登録
+
+          %h2.sign_up_body_form_inside_nickname
+            ユーザーネーム
+            %form.name-area{:onsubmit => "return goSearch()"}
+            %input.name-text{:type => "text", :placeholder => ""}/
+
+          %h2.sign_up_body_form_inside_email
+            メールアドレス
+            %form.mail-area{:onsubmit => "return goSearch()"}
+            %input.mail-text{:type => "text", :placeholder => ""}/
+
+          %h2.sign_up_body_form_inside_password
+            パスワード
+            %form.pass-area{:onsubmit => "return goSearch()"}
+            %input.pass-text{:type => "text", :placeholder => ""}/
+
+          //%h2.
+  .footer
