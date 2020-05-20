@@ -1,3 +1,134 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing                    : border-box;
+}
+
+.wrapper {
+  display                       : flex;
+  height                        : 100vh;
+  background-image              : url("bg-mainVisual-pict_pc.jpg");
+}
+
+.sign_up {
+  width                         : auto;
+  max-width                     : 1148px;
+  margin-right                  : auto;
+  margin-left                   : auto;
+  padding-left                  : 4px;
+  padding-right                 : 4px;
+
+  &_header {
+    padding                     : 24px 0;
+    text-align                  : center;
+
+    &_icon {
+
+    }
+  }
+
+  &_body {
+    height                      : 471px;
+    width                       :1148px;
+    margin-left                 : -4px;
+    margin-right                : -4px;
+    text-align                  : center;
+
+    &_form {
+      height                    : 376px;
+      width                     : 566px;
+      padding-left              : 4px;
+      padding-right             : 4px;
+      margin                    : 0 auto;
+
+      &_inside{
+        background-color        : #ffffff;
+        height                  : 500px;
+        width                   : 406px;
+        margin                  : 0 auto;
+        padding                 : 32px 64px;
+
+        &_title {
+          margin                : 0 0 16px;
+          line-height           : 160%;
+          font-size             : 18px;
+          padding               : 16px;
+          font-weight           : bold;
+        }
+
+        &_nickname {
+          margin                : 0 0 16px;
+          line-height           : 160%;
+          font-size             : 18px;
+          padding               : 16px;
+
+          .name-text{
+            height              : 30px;
+            width               : 200px;
+            background-repeat   : no-repeat;
+            background-position : 8px center;
+            background-size     : auto 60%;
+            background-color    : #fff;
+            margin              : 0 auto;
+            padding-left        : 30px;
+            border              : 2px solid #666;
+            border-radius       : 6px;
+            color               : #555;
+            font-size           : 15px;
+            letter-spacing      : 0.1em;
+            font-weight         : bold;
+            outline             : 0;
+          }
+        }
+
+        &_email {
+          margin                : 0 0 16px;
+          line-height           : 160%;
+          font-size             : 18px;
+          padding               : 16px;
+
+          .mail-text{
+            height              : 30px;
+            width               : 200px;
+            background-repeat   : no-repeat;
+            background-position : 8px center;
+            background-size     : auto 60%;
+            background-color    : #fff;
+            margin              : 0 auto;
+            padding-left        : 30px;
+            border              : 2px solid #666;
+            border-radius       : 6px;
+            color               : #555;
+            font-size           : 15px;
+            letter-spacing      : 0.1em;
+            font-weight         : bold;
+            outline             : 0;
+          }
+        }
+
+        &_password {
+          margin                : 0 0 16px;
+          line-height           : 160%;
+          font-size             : 18px;
+          padding               : 16px;
+
+          .pass-text{
+            height              : 30px;
+            width               : 200px;
+            background-repeat   : no-repeat;
+            background-position : 8px center;
+            background-size     : auto 60%;
+            background-color    : #fff;
+            margin              : 0 auto;
+            padding-left        : 30px;
+            border              : 2px solid #666;
+            border-radius       : 6px;
+            color               : #555;
+            font-size           : 15px;
+            letter-spacing      : 0.1em;
+            font-weight         : bold;
+            outline             : 0;
+          }
+        }
+      }
+    }
+  }
+}
