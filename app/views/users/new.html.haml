@@ -2,29 +2,33 @@
   .sign_up
     .sign_up_header
       = image_tag "logo.png", size: "175x45", class: "sign_up_header_icon"
-      %hr{:size => "3", :width => "500"}/
-
-
     .sign_up_body
       .sign_up_body_form
         .sign_up_body_form_inside
           %h2.sign_up_body_form_inside_title
-            新規登録
+            %label{:for => "new_registration"} 新規登録
 
           %h2.sign_up_body_form_inside_nickname
-            ユーザーネーム
+            %label{:for => "name"} ユーザーネーム
+            %span.require 必須
             %form.name-area{:onsubmit => "return goSearch()"}
-            %input.name-text{:type => "text", :placeholder => ""}/
+            %input.name-text{:type => "text", :placeholder => "例）FURIMAくん"}/
 
           %h2.sign_up_body_form_inside_email
-            メールアドレス
+            %label{:for => "mail"} メールアドレス
+            %span.require 必須
             %form.mail-area{:onsubmit => "return goSearch()"}
-            %input.mail-text{:type => "text", :placeholder => ""}/
+            %input.mail-text{:type => "text", :placeholder => "携帯・PCどちらでも可"}/
 
           %h2.sign_up_body_form_inside_password
-            パスワード
+            %label{:for => "pass"} パスワード
+            %span.require 必須
             %form.pass-area{:onsubmit => "return goSearch()"}
-            %input.pass-text{:type => "text", :placeholder => ""}/
+            %input.pass-text{:type => "password", :placeholder => "7文字以上の半角英数字"}/
 
-          //%h2.
+          %h2.sign_up_body_form_inside_bottun
+            = link_to "登録する", "#", class: '.sign_up_body_form_inside_bottun_registration'
   .footer
+    .footer_inside
+      = image_tag "logo-white.png", size: "175x45", class: "footer_inside_icon"
+      %p©️FURIMA
