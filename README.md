@@ -61,7 +61,7 @@
 |------|----|-------|
 |name|string|null:false|
 |description|text|null:false|
-|status|string|null:false|
+|status|integer|null:false|
 |price|integer|null:false|
 |fee|integer|null:false|
 |profit|integer|null:false|
@@ -75,7 +75,7 @@
 - belongs_to: user
 - belongs_to: category
 - belongs_to: brand
-- belongs_to: shippings
+- belongs_to: shipping
 - has_many: images dependent: : destroy
 - has_many: comments dependent: :destroy
 
@@ -83,10 +83,10 @@
 ## shippingsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|shipping_burden|string|null:false|
-|shipping_type|string|null:false|
-|shipping_area|string|null:false|
-|shipping_day|string|null:false|
+|burden|integer|null:false|
+|type|integer|null:false|
+|area|integer|null:false|
+|day|integer|null:false|
 
 ## アソシエーション
 - has_many: items
@@ -115,7 +115,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null:false|
 
 ## アソシエーション
 - has_many: items
