@@ -1,2 +1,24 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+.wrapper
+  .sign_up
+    .sign_up_header
+      = link_to image_tag "logo.png", size: "175x45", class: "sign_up_header_icon"
+    .sign_up_body
+      .sign_up_body_form
+        .sign_up_body_form_inside
+          %h2.sign_up_body_form_inside_title
+            = link_to "新規会員登録", "#", class: "sign_up_body_form_inside_title_new"
+            %p ↑アカウントをお持ちでない方はこちら↑
+          %h2.sign_up_body_form_inside_email
+            %label{:for => "mail"} メールアドレス
+            %form.mail-area{:onsubmit => "return goSearch()"}
+            %input.mail-text{:type => "text", :placeholder => "メールアドレス"}/
+          %h2.sign_up_body_form_inside_password
+            %label{:for => "pass"} パスワード
+            %form.pass-area{:onsubmit => "return goSearch()"}
+            %input.pass-text{:type => "password", :placeholder => "パスワード"}/
+          %h2.sign_up_body_form_inside_bottun
+            = link_to "ログイン", "#", class: "sign_up_body_form_inside_bottun_registration"
+  .footer
+    .footer_inside
+      = link_to image_tag "logo-white.png", size: "175x45", class: "footer_inside_icon"
+      %p©️FURIMA
