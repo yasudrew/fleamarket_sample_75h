@@ -1,7 +1,10 @@
 .wrapper
   .header
-    .header_upstairs
-    .header_downstairs
+    .header_inside
+      .header_inside_upstairs
+        %h1.header_inside_upstairs_contents
+          = link_to image_tag "logo.png", class: "header_inside_upstairs_contents_icon"
+      .header_inside_downstairs
   .footer
     .footer_inside
       = link_to image_tag "logo-white.png", size: "175x45", class: "footer_inside_icon"
