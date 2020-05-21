@@ -62,9 +62,6 @@
 |name|string|null:false|
 |description|text|null:false|
 |status|string|null:false|
-|shipping_burden|string|null:false|
-|shipping_area|string|null:false|
-|shipping_day|string|null:false|
 |price|integer|null:false|
 |fee|integer|null:false|
 |profit|integer|null:false|
@@ -72,13 +69,27 @@
 |category_id|integer|null:false  foreign_key: true|
 |brand_id|integer|foreign_key: true|
 |user_id|integer|null:false  foreign_key: true|
+|shipping_id|integer|null:false  foreign_key: true|
 
 ## アソシエーション
 - belongs_to: user
 - belongs_to: category
 - belongs_to: brand
+- belongs_to: shippings
 - has_many: images dependent: : destroy
 - has_many: comments dependent: :destroy
+
+
+## shippingsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|shipping_burden|string|null:false|
+|shipping_type|string|null:false|
+|shipping_area|string|null:false|
+|shipping_day|string|null:false|
+
+## アソシエーション
+- has_many: items
 
 
 ## imagesテーブル
