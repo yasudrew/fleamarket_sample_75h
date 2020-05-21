@@ -1,7 +1,7 @@
 .wrapper
   .sign_up
     .sign_up_header
-      = image_tag "logo.png", size: "175x45", class: "sign_up_header_icon"
+      = link_to image_tag "logo.png", size: "175x45", class: "sign_up_header_icon"
     .sign_up_body
       .sign_up_body_form
         .sign_up_body_form_inside
@@ -30,5 +30,5 @@
             = link_to "登録する", "#", class: '.sign_up_body_form_inside_bottun_registration'
   .footer
     .footer_inside
-      = image_tag "logo-white.png", size: "175x45", class: "footer_inside_icon"
+      = link_to image_tag "logo-white.png", size: "175x45", class: "footer_inside_icon"
       %p©️FURIMA
