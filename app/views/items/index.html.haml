@@ -1,0 +1,130 @@
+%body
+  .main
+    %section.main-visual
+      .contents-box
+        .contents-box__title
+          人生を変えるフリマアプリ
+        .contents-box__subtitle
+          FURIMAはだれでもかんたんに出品・購入できる
+          %br
+          フリマアプリです
+        .contents-box__btn
+          = link_to '#' ,class:'Appbtn' do
+            = image_tag 'app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', width:  '170'
+          = link_to '#' ,class: 'Googlebtn' do
+            = image_tag 'google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg', width:  '170'
+    %section.introduction
+      .title
+        FURIMAが選ばれる3つの理由
+      %ul.reasons
+        %li.reason
+          .card
+            .card__number
+              1
+            .card__picture
+              = image_tag 'pict-reason-01.jpg', width: '250'
+          .text
+            %span
+              3分
+            ですぐに出品
+          .desciption
+            スマホで入力するだけで簡単に出品できる！
+        %li.reason
+          .card
+            .card__number
+              2
+            .card__picture
+              = image_tag 'pict-reason-02.jpg', width: '250'
+          .text
+            %span
+              シンプル 
+            で使いやすい
+          .desciption
+            めんどくさい入力は必要なく、検索も購入もスムーズ！
+        %li.reason--last
+          .card
+            .card__number
+              3
+            .card__picture
+              = image_tag 'pict-reason-03.jpg', width: '250'
+          .text
+            手数料
+            %span
+              業界最安
+          .desciption
+            最大3%でお得に出品&購入！
+    %section.middle-ads
+      .ads-box
+        .ads-box__title
+          会員数日本一位
+        .ads-box__subtitle
+          FURIMAは、フリマアプリで最も人気。
+          %br
+          出品・購入回数も業界最多です！
+          %br
+          ほしかったあの商品にも出会えるかもしれません。
+        .ads-box__btn
+          = link_to '#' ,class:'Appbtn' do
+            = image_tag 'app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', width: '170'
+          = link_to '#' ,class:'Googlebtn' do
+            = image_tag 'google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg', width: '170'
+    %section.characters
+      .head
+        FURIMAの特徴
+      %ul.items
+        %li.item
+          .item__card
+            = image_tag 'icon-01.png', width: '130'
+          .item__title
+            簡単に売り買いできる
+          .item__text
+            スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+        %li.item
+          .item__card
+            = image_tag 'icon-03.png', width: '130'
+          .item__title
+            売上金は即日振込みに対応
+          .item__text
+            午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+        %li.item
+          .item__card
+            = image_tag 'icon-04.png', width: '130'
+          .item__title
+            様々な支払いに対応
+          .item__text
+            お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    %section.pickup-container
+      .product-box
+        .product-head
+          = link_to '#' do
+            .title
+              商品一覧
+        .product-lists
+          .product-list
+            = link_to '#' do
+              .product-list__img
+                = image_tag'a007.png'
+              .product-list__content
+                .name
+                  product1
+                .price
+                  1000円
+          .product-list
+            = link_to '#' do
+              .product-list__img
+                = image_tag'a007.png'
+              .product-list__content
+                .name
+                  product2
+                .price
+                  1000円
+          .product-list
+            = link_to '#' do
+              .product-list__img
+                = image_tag'a007.png'
+              .product-list__content
+                .name
+                  product3
+                .price
+                  1000円
+
