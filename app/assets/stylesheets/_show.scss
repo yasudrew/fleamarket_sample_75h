@@ -1,220 +1,223 @@
 .show-wrapper {
-  box-sizing: border-box;
+  background-color: #f8f8f8;
+  padding: 40px;
+  * {
+    box-sizing: border-box;
   
-  .show-main {
-    background: #f8f8f8;
-    padding: 40px;
-    
-    &__contents {
-      width: 700px;
-      margin: 0 auto;
+    .show-main {
+      background: #f8f8f8;
+      
+      &__contents {
+        width: 700px;
+        margin: 0 auto;
 
-      &__item-box {
-        background-color: #fff;
-        padding: 24px 40px 40px;
+        &__item-box {
+          background-color: #fff;
+          padding: 24px 40px 40px;
 
-        &__name {
-          text-align: center;
-          font-weight: bold;
-          font-size: 24px;
-        }
-        
-        &__images {
-          margin: 16px 0px auto;
-          width: 620px;
-          height: 443px;
-
-          &__top {
-            height: 346px;
-            margin: 0 30px;
+          &__name {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
           }
+          
+          &__images {
+            margin: 16px 0px auto;
+            width: 620px;
+            height: 443px;
 
-          &__others {
-            display: flex;
-            height: 87px;
-            margin-top: 10px;
-            justify-content: center;
+            &__top {
+              height: 346px;
+              margin: 0 30px;
+            }
 
-            li {
-              width: 140px;
+            &__others {
+              display: flex;
               height: 87px;
-              margin-right: 10px;
+              margin-top: 10px;
+              justify-content: center;
+
+              li {
+                width: 140px;
+                height: 87px;
+                margin-right: 10px;
+              }
             }
           }
-        }
 
-        &__price {
-          margin: 24px 0;
-          text-align: center;
-
-          span {
-            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-            font-size: 46px;
-            font-weight: bold;
-            margin-right: 10px;
-          }
-
-          &__detail {
+          &__price {
+            margin: 24px 0;
+            text-align: center;
 
             span {
               font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-              font-size: 16px;
-              font-weight: normal;
-              margin: 0;
+              font-size: 46px;
+              font-weight: bold;
+              margin-right: 10px;
+            }
+
+            &__detail {
+
+              span {
+                font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                margin: 0;
+              }
             }
           }
-        }
-        
-        &__description {
-          font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-          line-height: 1,5;
-          font-size: 18px;
-          margin-bottom: 30px;
-        }
+          
+          &__description {
+            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+            line-height: 1,5;
+            font-size: 18px;
+            margin-bottom: 30px;
+          }
 
-        &__table {
-          font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-          margin-bottom: 20px;
+          &__table {
+            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+            margin-bottom: 20px;
 
-          table {
-            width: 100%;
-            height: 375px;
-            border: 1px solid #f8f8f8;
+            table {
+              width: 100%;
+              height: 375px;
+              border: 1px solid #f8f8f8;
 
-            tbody {
+              tbody {
 
-              tr {
+                tr {
 
-                th {
-                  width: 20%;
-                  background-color: #eee;
-                  font-weight: 400;
-                  padding: 8px;
-                  border: 1px solid #dedede;
-                  font-size: 14px;
-                  text-align: center;
-                }
+                  th {
+                    width: 20%;
+                    background-color: #eee;
+                    font-weight: 400;
+                    padding: 8px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    text-align: center;
+                  }
 
-                td {
-                  width: 61%;
-                  padding: 15px;
-                  border: 1px solid #dedede;
-                  font-size: 14px;
-                  
-                  a {
-                    text-decoration: none;
-                    color: #3ccace;
+                  td {
+                    width: 61%;
+                    padding: 15px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    
+                    a {
+                      text-decoration: none;
+                      color: #3ccace;
+                    }
                   }
                 }
               }
             }
           }
-        }
 
-        &__optional-area {
-          display: flex;
-          justify-content: space-between;
-          height: 48px;
-          
-          &__like-btn {
-            &:hover {
-              opacity: 0.5;
-            }
-            margin-top: 10px;
-            margin-right: auto;
-            padding: 6px 10px;
-            border-radius: 40px;
-            color: #3ccace;
-            border: 1px solid #ffb340;
-            cursor: pointer;
-          }
-
-          &__report-btn {
-            margin-top: 10px;
-            font-size: 14px;
-
-            a {
+          &__optional-area {
+            display: flex;
+            justify-content: space-between;
+            height: 48px;
+            
+            &__like-btn {
               &:hover {
                 opacity: 0.5;
               }
+              margin-top: 10px;
+              margin-right: auto;
               padding: 6px 10px;
-              display: inline-block;
-              border-radius: 4px;
-              color: #333;
-              border: 1px solid #333;
-              text-decoration: none;
+              border-radius: 40px;
+              color: #3ccace;
+              border: 1px solid #ffb340;
+              cursor: pointer;
+            }
+
+            &__report-btn {
+              margin-top: 10px;
+              font-size: 14px;
+
+              a {
+                &:hover {
+                  opacity: 0.5;
+                }
+                padding: 6px 10px;
+                display: inline-block;
+                border-radius: 4px;
+                color: #333;
+                border: 1px solid #333;
+                text-decoration: none;
+              }
             }
           }
         }
-      }
 
-      &__comment-box {
-        height: 305px;
-        margin: 10px 0;
-        padding: 24px;
-        text-align: center;
-        background-color: #fff;
+        &__comment-box {
+          height: 305px;
+          margin: 10px 0;
+          padding: 24px;
+          text-align: center;
+          background-color: #fff;
 
-        &__new-comment {
-          width: 652;
-          height: 257;
+          &__new-comment {
+            width: 652;
+            height: 257;
 
-          textarea {
-            width: 100%;
-            min-height: 104px;
-            padding: 10px;
+            textarea {
+              width: 100%;
+              min-height: 104px;
+              padding: 10px;
+            }
+
+            &__caution {
+              font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+              padding: 8px;
+              font-size: 14px;
+              background-color: #f8f8f8;
+              margin: 10px 0;
+              text-align: left;
+            }
+
+            button {
+              &:hover {
+                opacity: 0.5;
+              }
+              font-size: 18px;
+              color: #fff;
+              line-height: 48px;
+              width: 60%;
+              margin-top: 30px;
+              background-color: #3ccace;
+              border: 1px solid #3ccace;
+              border-radius: 100px;
+              cursor: pointer;
+            }
           }
+        }
 
-          &__caution {
-            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-            padding: 8px;
-            font-size: 14px;
-            background-color: #f8f8f8;
-            margin: 10px 0;
-            text-align: left;
-          }
+        &__links {
+          display: flex;
+          justify-content: space-between;
 
-          button {
+          a {
             &:hover {
               opacity: 0.5;
             }
-            font-size: 18px;
-            color: #fff;
-            line-height: 48px;
-            width: 60%;
-            margin-top: 30px;
-            background-color: #3ccace;
-            border: 1px solid #3ccace;
-            border-radius: 100px;
-            cursor: pointer;
+            text-decoration: none;
+            color: #3ccace;
           }
         }
-      }
 
-      &__links {
-        display: flex;
-        justify-content: space-between;
+        &__related-items {
+          margin: 24px 0 8px;
 
-        a {
-          &:hover {
-            opacity: 0.5;
+          a {
+            &:hover {
+              opacity: 0.5;
+            }
+            text-decoration: none;
+            color: #3ccace;
+            font-weight: bold;
+            font-size: 22px;
           }
-          text-decoration: none;
-          color: #3ccace;
-        }
-      }
-
-      &__related-items {
-        margin: 24px 0 8px;
-
-        a {
-          &:hover {
-            opacity: 0.5;
-          }
-          text-decoration: none;
-          color: #3ccace;
-          font-weight: bold;
-          font-size: 22px;
         }
       }
     }
