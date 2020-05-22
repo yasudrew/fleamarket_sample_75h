@@ -2,14 +2,14 @@
   .headerInner
     .mainHeader
       %h1.icon
-        %a{:href => '/'}
-          = image_tag(src='logo.png', :width => "140")
+        = link_to '#' do
+          = image_tag'logo.png', :width => "140"
       .searchBox
         = form_for('#', method: :get, class: 'search-form') do
           %input.search-form__input{name: "keyword", placeholder: "キーワードから探す", type: "text", value: ""}
           %button.btn-search{ type: "submit"}
             .search-form__icon
-              = image_tag src='icon-search 1.png',:width =>'20'
+              = image_tag 'icon-search 1.png',:width =>'20'
     .nav
       %ul.listsLeft
         %li.listsLeft__item--first
