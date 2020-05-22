@@ -37,7 +37,7 @@ header{
             padding: 0 0 0 5px;
           }
           button{
-            width: 40px;
+            width: 36px;
             border: 0;
             cursor: pointer;
             background-color: #3CCACE;
@@ -223,7 +223,8 @@ header{
         .description{
           font-size: 18px;
           line-height: 1.5;
-          margin: 16px 0 0
+          margin: 16px 0 0;
+          width: 85%;
         }
         &--last{margin: 16px 0 0;
           .card{
@@ -258,7 +259,8 @@ header{
           .description{
             font-size: 18px;
             line-height: 1.5;
-            margin: 16px 0 0
+            margin: 16px 0 0;
+            width: 85%;
           }
         } 
       }
@@ -480,14 +482,14 @@ header{
 }
 a{
   .exhibition-btn{
-    width: 80px;
+    width: 105px;
     background: #3CCACE;
     text-align: center;
     border-radius: 4%;
     bottom: 32px;
     right: 32px;
     position: fixed;
-    padding: 15px;
+    padding: 10px;
     .text{
       color: #fff;
       display: block;
