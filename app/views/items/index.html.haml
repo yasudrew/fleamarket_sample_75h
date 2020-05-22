@@ -9,9 +9,9 @@
           %br
           フリマアプリです
         .contents-box__btn
-          %a{:href => '#' ,class:'Appbtn'} 
+          = link_to '#' ,class:'Appbtn' do
             = image_tag src='app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg',:width => '170'
-          %a{:href => '#',class: 'Googlebtn'}
+          = link_to '#' ,class: 'Googlebtn' do
             = image_tag src='google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg',:width => '170'
     %section.introduction
       .title
@@ -64,9 +64,9 @@
           %br
           ほしかったあの商品にも出会えるかもしれません。
         .ads-box__btn
-          %a{:href => '#' ,class:'Appbtn'} 
+          = link_to '#' ,class:'Appbtn' do
             = image_tag src='app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg',:width => '170'
-          %a{:href => '#',class: 'Googlebtn'}
+          = link_to '#' ,class:'Googlebtn' do
             = image_tag src='google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg',:width => '170'
     %section.characters
       .head
@@ -96,12 +96,12 @@
     %section.pickup-container
       .product-box
         .product-head
-          %a{:href => "#"}
+          = link_to '#' do
             .title
               商品一覧
         .product-lists
           .product-list
-            %a{:href => "#"}
+            = link_to '#' do
               .product-list__img
                 = image_tag src='a007.png'
               .product-list__content
@@ -110,7 +110,7 @@
                 .price
                   1000円
           .product-list
-            %a{:href => "#"}
+            = link_to '#' do
               .product-list__img
                 = image_tag src='a007.png'
               .product-list__content
@@ -119,7 +119,7 @@
                 .price
                   1000円
           .product-list
-            %a{:href => "#"}
+            = link_to '#' do
               .product-list__img
                 = image_tag src='a007.png'
               .product-list__content

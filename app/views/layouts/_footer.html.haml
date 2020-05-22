@@ -1,0 +1,62 @@
+.banner
+  .banner-contents
+    .subtitle
+      だれでもかんたん、人生を変えるフリマアプリ
+    .title
+      今すぐ無料ダウンロード！
+    .banner-btn
+      = link_to '#' ,class:'Appbtn' do
+        = image_tag src='app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg',:width => '170'
+      = link_to '#' ,class:'Googlebtn' do
+        = image_tag src='google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg',:width => '170'
+.footer
+  .footer__overviews
+    .overview
+      .head
+        FURIMAについて
+      %ul.contents
+        %li.content
+          = link_to '#' do
+            会社概要（運営会社）
+        %li.content
+          = link_to '#' do
+            プライバシーポリシー
+        %li.content
+          = link_to '#' do
+            FURIMA利用規約
+        %li.content
+          = link_to '#' do
+            ポイントに関する特約
+    .overview
+      .head
+        FURIMAを見る
+      %ul.contents
+        %li.content
+          = link_to '#' do
+            カテゴリー一覧
+        %li.content
+          = link_to '#' do
+            ブランド一覧
+    .overview
+      .head
+        ヘルプ＆ガイド
+      %ul.contents
+        %li.content
+          = link_to '#' do
+            FURIMAガイド
+        %li.content
+          = link_to '#' do
+            FURIMAロゴ利用ガイドライン
+        %li.content
+          = link_to '#' do
+            お知らせ
+  .footer__logo
+    = link_to '#' do
+      = image_tag src='logo-white.png', :width => "140"
+  .footer__company
+    ©️FURIMA
+= link_to '#' do
+  .exhibition-btn
+    .text
+      出品する
+    = image_tag src ="icon_camera.png",:class=>"icon"
