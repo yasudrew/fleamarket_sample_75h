@@ -1,0 +1,100 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample75h
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.header
+      .headerInner
+        .mainHeader
+          %h1.icon
+            %a{:href => '/'}
+              = image_tag(src='logo.png', :width => "140")
+          .searchBox
+            = form_for('#', method: :get, class: 'search-form') do
+              %input.search-form__input{name: "keyword", placeholder: "キーワードから探す", type: "text", value: ""}
+              %button.btn-search{ type: "submit"}
+                .search-form__icon
+                  = image_tag src='icon-search 1.png',:width =>'20'
+        .nav
+          %ul.listsLeft
+            %li.listsLeft__item--first
+              = link_to 'カテゴリー', '#' 
+              .tree.displayNone
+                %ul.categoryTree
+                  %li.categoryTree--item{id: '1'}
+                  = link_to 'レディース','#'
+            %li.listsLeft__item
+              = link_to 'ブランド', '#', id: 'brandBtn'
+          %ul.listsRight
+            %li.listsRight__item--login
+              = link_to 'ログイン','#'
+            %li.listsRight__item--new
+              = link_to '新規会員登録',''
+    = yield
+    .banner
+      .banner-contents
+        .subtitle
+          だれでもかんたん、人生を変えるフリマアプリ
+        .title
+          今すぐ無料ダウンロード！
+        .banner-btn
+          %a{:href => '#' ,class:'Appbtn'} 
+            = image_tag src='app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg',:width => '170'
+          %a{:href => '#',class: 'Googlebtn'}
+            = image_tag src='google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg',:width => '170'
+    .footer
+      .footer__overviews
+        .overview
+          .head
+            FURIMAについて
+          %ul.contents
+            %li.content
+              %a{:href => "#"}
+                会社概要（運営会社）
+            %li.content
+              %a{:href => "#"}
+                プライバシーポリシー
+            %li.content
+              %a{:href => "#"}
+                FURIMA利用規約
+            %li.content
+              %a{:href => "#"}
+                ポイントに関する特約
+        .overview
+          .head
+            FURIMAを見る
+          %ul.contents
+            %li.content
+              %a{:href => "#"}
+                カテゴリー一覧
+            %li.content
+              %a{:href => "#"}
+                ブランド一覧
+        .overview
+          .head
+            ヘルプ＆ガイド
+          %ul.contents
+            %li.content
+              %a{:href => "#"}
+                FURIMAガイド
+            %li.content
+              %a{:href => "#"}
+                FURIMAロゴ利用ガイドライン
+            %li.content
+              %a{:href => "#"}
+                お知らせ
+      .footer__logo
+        %a{:href => "#"}
+          = image_tag src='logo-white.png', :width => "140"
+      .footer__company
+        ©️FURIMA
+    %a{:href => "#"}
+      .exhibition-btn
+        .text
+          出品する
+        = image_tag src ="icon_camera.png",:class=>"icon"
