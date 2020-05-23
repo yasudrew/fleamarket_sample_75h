@@ -1,0 +1,78 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample75h
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .confirmation-container
+      .confirmation-container__header
+        %h1
+          = link_to image_tag('logo.png', width: '185', height: '49'), root_path
+      .confirmation-container__main
+        .confirmation-container__main__contents
+          %h2.confirmation-container__main__contents__head
+            購入内容の確認
+          %section.confirmation-container__main__contents__item
+            .confirmation-container__main__contents__item__inner
+              .confirmation-container__main__contents__item__inner__item-box
+                %h3.confirmation-container__main__contents__item__inner__item-box__image
+                  = image_tag 'tapioca.jpeg', width: '80', height: '80'
+                .confirmation-container__main__contents__item__inner__item-box__detail
+                  %p.confirmation-container__main__contents__item__inner__item-box__detail__name
+                    タピオカ
+                  %p.confirmation-container__main__contents__item__inner__item-box__detail__price
+                    %span
+                      ¥4,680
+                    %spna.tax-and-shipping-fee
+                      （税込）送料込み
+          %section.confirmation-container__main__contents__item
+            .confirmation-container__main__contents__item__inner
+              %ul.confirmation-container__main__contents__item__inner__price-table
+                %li.confirmation-container__main__contents__item__inner__price-table__left
+                  支払い金額
+                %li.confirmation-container__main__contents__item__inner__price-table__right
+                  ¥4,680
+              .confirmation-container__main__contents__item__inner__user-info
+                .confirmation-container__main__contents__item__inner__user-info__top
+                  %h3
+                    支払い方法
+                  = link_to '変更する', "#"
+                %p.confirmation-container__main__contents__item__inner__user-info__text
+                  クレジットカード
+                  %br
+                  ************1234
+                  %br
+                  有効期限 01 / 23
+                %figure.card-logo
+                  = image_tag 'card.logo.png', width: '34', height: '20'
+              .confirmation-container__main__contents__item__inner__user-info
+                .confirmation-container__main__contents__item__inner__user-info__top
+                  %h3
+                    配送先
+                  = link_to '変更する', "#"
+                %address.confirmation-container__main__contents__item__inner__user-info__text
+                  %p
+                    〒123-4567
+                    %br
+                    東京都○○○×××
+                    %br
+                    鈴木一郎
+              %button.buy-button{type: "submit"}
+                購入する
+      .confirmation-container__footer
+        %nav.confirmation-container__footer__nav
+          %ul
+            %li
+              = link_to 'プライバシーポリシー', "#"
+            %li
+              = link_to 'FURIMA利用規約', "#"
+            %li
+              = link_to '特定商取引に関する表記', "#"
+        = link_to image_tag('logo-white.png', class: 'parchase-fotter-logo'), root_path
+        %p
+          %small
+            © FURIMA
