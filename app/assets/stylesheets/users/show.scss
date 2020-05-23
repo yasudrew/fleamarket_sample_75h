@@ -1,0 +1,30 @@
+* {
+  box-sizing                          : border-box;
+  
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.container {
+  background-color                    : #f5f5f5;
+
+  &_contents {
+    width                             : 100%;
+    max-width                         : 1040px;
+    height                            : 1301px;
+    margin                            : 40px auto 0;
+    padding                           : 0 0 40px;
+    position                          : relative;
+    font-family                       : 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+
+    &_main {
+    }
+
+    &_side {
+    }
+  }
+}
