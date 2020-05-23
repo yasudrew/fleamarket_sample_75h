@@ -3,5 +3,6 @@
 @import "show";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'sessions_new';
-@import 'users_new';
+@import 'sessions/new';
+@import 'users/new';
+@import 'users/show';
