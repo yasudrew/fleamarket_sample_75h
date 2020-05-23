@@ -2,8 +2,7 @@
   .headerInner
     .mainHeader
       %h1.icon
-        = link_to '#' do
-          = image_tag'logo.png', width: "140"
+        = link_to image_tag('logo.png', width: "140"), root_path
       .searchBox
         = form_for('#', method: :get, class: 'search-form') do
           %input.search-form__input{name: "keyword", placeholder: "キーワードから探す", type: "text", value: ""}
@@ -22,6 +21,6 @@
           = link_to 'ブランド', '#', id: 'brandBtn'
       %ul.listsRight
         %li.listsRight__item--login
-          = link_to 'ログイン','#'
+          = link_to 'ログイン','login'
         %li.listsRight__item--new
-          = link_to '新規会員登録','#'
+          = link_to '新規会員登録','registration'

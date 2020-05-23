@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  root 'items#show'
+  get '/login', to: 'sessions#new'
+  get '/registration', to: 'users#new'
+
+  devise_for :users
+
+  root 'items#index'
   
 end
