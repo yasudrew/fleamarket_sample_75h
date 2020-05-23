@@ -1,0 +1,81 @@
+.show-wrapper
+  .show-main
+    .show-main__contents
+      .show-main__contents__item-box
+        %h2.show-main__contents__item-box__name
+          product
+        .show-main__contents__item-box__images
+          .show-main__contents__item-box__images__top
+            = image_tag 'tapioca.jpeg', width: '560', height: '346'
+          %ul.show-main__contents__item-box__images__others
+            %li
+              = image_tag 'tapioca.jpeg', width: '140', height: '87'
+            %li
+              = image_tag 'tapioca2.jpeg', width: '140', height: '87'
+            %li
+              = image_tag 'tapioca3.jpeg', width: '140', height: '87'
+        .show-main__contents__item-box__price
+          %span ¥20000
+          .show-main__contents__item-box__price__detail
+            %span (税込)
+            %span 送料込み
+        .show-main__contents__item-box__description
+          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        .show-main__contents__item-box__table
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td 田中
+              %tr
+                %th カテゴリ
+                %td
+                  = link_to 'メンズ', "#"
+                  %br
+                  = link_to 'ジャケット/アウター', "#"
+                  %br
+                  = link_to 'ノーカラージャケット', "#"
+              %tr
+                %th ブランド
+                %td
+              %tr
+                %th サイズ
+                %td
+              %tr
+                %th 商品の状態
+                %td 新品/未使用
+              %tr
+                %th 配送料の負担
+                %td 着払い（購入者負担)
+              %tr
+                %th 発送元の地域
+                %td
+                  = link_to '青森県', "#"
+              %tr
+                %th 発送日の目安
+                %td 1-2日で発送
+        .show-main__contents__item-box__optional-area
+          .show-main__contents__item-box__optional-area__like-btn
+            %i.fa.fa-star
+            お気に入り 0
+          .show-main__contents__item-box__optional-area__report-btn
+            = link_to  "#" do
+              %i.fa.fa-flag
+                不適切な商品の通報
+      .show-main__contents__comment-box
+        = form_with url: '#', class: 'show-main__contents__comment-box__new-comment' do |f|
+          = f.text_area :text
+          %p.show-main__contents__comment-box__new-comment__caution
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %button{type: "submit"}
+            %i.fa.fa-comment
+              コメントする
+      %ul.show-main__contents__links
+        %li
+          = link_to '< 前の商品', "#", class: "left"
+        %li
+          = link_to '後ろの商品 >', "#", class: "right"
+      .show-main__contents__related-items
+        = link_to 'メンズをもっと見る', "#"
