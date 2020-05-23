@@ -48,7 +48,7 @@
                   %br
                   有効期限 01 / 23
                 %figure.card-logo
-                  = image_tag 'card.logo.png', width: '34', height: '20'
+                  = image_tag 'VISA-logo.png', width: '34', height: '20'
               .confirmation-container__main__contents__item__inner__user-info
                 .confirmation-container__main__contents__item__inner__user-info__top
                   %h3
@@ -61,8 +61,9 @@
                     東京都○○○×××
                     %br
                     鈴木一郎
-              %button.buy-button{type: "submit"}
-                購入する
+              %section
+                %button.buy-button{type: "submit"}
+                  購入する
       .confirmation-container__footer
         %nav.confirmation-container__footer__nav
           %ul
@@ -72,7 +73,7 @@
               = link_to 'FURIMA利用規約', "#"
             %li
               = link_to '特定商取引に関する表記', "#"
-        = link_to image_tag('logo-white.png', class: 'parchase-fotter-logo'), root_path
+        = link_to image_tag('logo.png',width: '120', height: '35', class: 'parchase-footer-logo'), root_path
         %p
           %small
             © FURIMA

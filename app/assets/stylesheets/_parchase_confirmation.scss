@@ -11,9 +11,13 @@
     
     h1 {
       padding-top: 40px;
+      margin-right: 8px;
       display: inline-block;
 
       a {
+        &:hover {
+          opacity: 0.7;
+        }
         display: inline-block;
       }
     }
@@ -32,6 +36,7 @@
         padding: 32px;
         line-height: 1.5;
         text-align: center;
+        font-weight: 600;
       }
 
       &__item {
@@ -109,9 +114,79 @@
 
               }
             }
+
+            &__text {
+              margin-top: 8px;
+              font-size: 14px;
+              line-height: 1.5;
+            }
+
+            .card-logo {
+              margin: 8px 0 0 0;
+            }
+          }
+
+          section {
+            padding-top: 32px;
+            border-top: 1px solid #f5f5f5;
+
+            .buy-button {
+              &:hover {
+                opacity: 0.9;
+              }
+              background-color: #3ccace;
+              border: 1px solid #3ccace;
+              color: #fff;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+            }
           }
         }
       }
+    }
+  }
+
+  &__footer {
+    padding: 40px 0;
+    margin: 0 auto;
+    width: 456px;
+    height: 220px;
+    text-align: center;
+
+    &__nav {
+      
+      ul {
+        display: flex;
+        justify-content: space-around;
+
+        li {
+          font-size: 12px;
+
+          a {
+            &:hover {
+              text-decoration: underline;
+              opacity: 0.7;
+            }
+            display: block;
+            text-decoration: none;
+            color: #333;
+          }
+        }
+      }
+    }
+
+    .parchase-footer-logo {
+      &:hover {
+        opacity: 0.7;
+      }
+      margin: 40px auto 0;
+      
+    }
+    p {
+      font-size: 13px;
     }
   }
 }
