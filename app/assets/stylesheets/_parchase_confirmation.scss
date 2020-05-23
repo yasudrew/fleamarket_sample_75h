@@ -3,6 +3,7 @@
 }
 
 .confirmation-container {
+  background-color: #f8f8f8;
 
   &__header {
     width: 100%;
@@ -127,7 +128,7 @@
           }
 
           section {
-            padding-top: 32px;
+            padding-top: 32px 48px;
             border-top: 1px solid #f5f5f5;
 
             .buy-button {
