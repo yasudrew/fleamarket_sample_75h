@@ -74,6 +74,11 @@
           &_title {
             font-weight                 : bold;
             font-size                   : 19px;
+
+            hr {
+              border                      : 0;
+              border-top                  : 1px solid gray;
+            }
           }
 
           &_inside{
@@ -91,6 +96,11 @@
           &_title {
             font-weight                 : bold;
             font-size                   : 19px;
+
+            hr {
+              border                      : 0;
+              border-top                  : 1px solid gray;
+            }
           }
           &_inside {
             font-size                   : 17px;

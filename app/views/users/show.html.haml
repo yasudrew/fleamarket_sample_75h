@@ -9,12 +9,12 @@
       .container_contents_main_profile
         .container_contents_main_profile_title
           プロフィール
-          %hr{:style => "border:0;border-top:1px solid gray;"}/
+          %hr
         .container_contents_main_profile_inside
       .container_contents_main_history
         .container_contents_main_history_title
           購入履歴
-          %hr{:style => "border:0;border-top:1px solid gray;"}/
+          %hr
         .container_contents_main_history_inside
     .container_contents_side
       .container_contents_side_title
@@ -27,11 +27,11 @@
           = link_to "住所変更"
           .container_contents_side_contents_address_right
         %li.container_contents_side_contents_card
-          = link_to "支払い方法"
+          = link_to "支払い方法", "/card_page"
           .container_contents_side_contents_card_right
         %li.container_contents_side_contents_mailpass
           = link_to "メール / パスワード"
           .container_contents_side_contents_mailpass_right
         %li.container_contents_side_contents_logout
-          = link_to "ログアウト"
+          = link_to "ログアウト", "/logout"
           .container_contents_side_contents_logout_right
