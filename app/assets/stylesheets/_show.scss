@@ -1,11 +1,10 @@
 .show-wrapper {
-  background-color: #f8f8f8;
+  background-color: #f5f5f5;
   padding: 40px;
   * {
     box-sizing: border-box;
   
     .show-main {
-      background: #f8f8f8;
       
       &__contents {
         width: 700px;
@@ -64,10 +63,26 @@
               }
             }
           }
+
+          &__buy-btn {
+            &:hover {
+              opacity: 0.9;
+            }
+            display: block;
+            margin-top: 16px;
+            background-color: #3ccace;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 60px;
+            text-decoration: none;
+          }
           
           &__description {
             line-height: 1,5;
             font-size: 18px;
+            padding-top: 32px;
             margin-bottom: 30px;
           }
 
@@ -137,7 +152,7 @@
 
               a {
                 &:hover {
-                  opacity: 0.5;
+                  opacity: 0.8;
                 }
                 padding: 6px 10px;
                 display: inline-block;
@@ -177,7 +192,7 @@
 
             button {
               &:hover {
-                opacity: 0.7;
+                opacity: 0.9;
               }
               font-size: 18px;
               color: #fff;
