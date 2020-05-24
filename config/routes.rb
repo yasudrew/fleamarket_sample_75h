@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/registration', to: 'users#new'
   get '/mypage', to: 'users#show'
+  get 'card/new'
 
   devise_for :users
 
