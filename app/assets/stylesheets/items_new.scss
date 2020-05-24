@@ -1,22 +1,8 @@
 
 .exhibition{
-  height                          : 100vh;
+  height                          : 3000px;
   background-color                : rgb(245, 245, 245);
-  overflow: scroll;
 
-  &__header {
-    height                        : 80px;
-    width                         : 100vw;
-
-    &__icon {
-      height                      : 40.719px;
-      width                       : 140px;
-      display                     : block;
-      margin-left                 : auto;
-      margin-right                : auto;
-      margin-top                  : 20px;
-    }
-  }
   &__first{
     width                         :700px;
     height                        :335px;
@@ -123,6 +109,7 @@
         box-sizing                : border-box;
         color                     : #999999;
         text-align                : center;
+        padding-top: 30px;
       }
       &__count{
         margin-top                : 16px;
@@ -337,7 +324,7 @@
   }
   &__fifth{
     width                         :700px;
-    height                        :100vw;
+    height                        :700px;
     margin                        :0 auto;
     background-color              : white;
     margin-top                    : 2px;
@@ -346,6 +333,86 @@
       height                      :220px;
       margin                      :0 auto;
       padding-top                 : 20px;
+      &__pricerange{
+        font-size                 :14px;
+        font-weight               :600;
+        color                     : #888;
+        margin-bottom             : 20px;
+      }
+      &__price{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+        margin-top                : 12px;
+      }
+      &__must{
+        font-size                 :12px;
+        font-weight               :600;
+        width                     :32px;
+        height                    :16px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :white;
+        background-color          : red;
+        display                   : inline-block;
+        text-align                : center;
+      }
+      &__form{
+        width                     : 177px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        font-size                 : 16px;
+        height                    : 48px;
+        line-height               : 1;
+        outline                   : none;
+        display                   : inline-block;
+        margin-left               : 330px;
+        padding                   : 15px;
+    text-align                    : right;
+    vertical-align                : middle;
+      }
+      &__fee{
+        margin-top                :50px;
+        font-size                 : 14px;
+        display                   : inline-block;
+      }
+      &__fee2{
+        float                     : right;
+        margin-top                : 53px;
+      }
+      &__profit{
+        margin-top                :50px;
+        font-size                 : 14px;
+      }
+      &__profit2{
+        float                     : right;
+      }
+      &__btn{
+        margin                    : 0 auto;
+        margin-top                : 70px;
+        width                     : 360px;
+        height                    : 48px;
+        background-color          : #ea352d;
+        color                     : #fff;
+        font-size                 : 17px;
+        min-height                : 48px;
+        text-align                : center;
+        padding-top               :10px;
+        border-radius             : 4px;
+        border                    : 1px solid transparent;
+      }
+      &__back{
+        text-align                : center;
+        margin-top                : 30px;
+        color                     : #0095ee;
+        font-size                 : 14px;
+      }
+      &__text{
+        font-size                 : 12px;
+        text-align: center;
+        margin-top: 30px;
+      }
     }
   }
 }
