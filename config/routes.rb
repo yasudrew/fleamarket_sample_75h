@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  get '/login', to: 'sessions#new'
-  get '/logout', to: 'sessions#destroy'
-  get '/registration', to: 'users#new'
-  get '/mypage', to: 'users#show'
-  get 'card/new'
-
   devise_for :users
 
+  get '/logout', to: 'sessions#logout_page'
+  get '/card_page', to: 'card#card_page'
   root 'items#index'
-  
+  resources :sessions, only: [:new, :destroy]
+  resources :users, only: [:new, :show]
+  resources :card, only: [:new]
 end
