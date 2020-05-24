@@ -6,6 +6,6 @@ class ItemsController < ApplicationController
   end
 
   def parchase_confirmation
-    render layout: false
+    render layout: 'sub_application'
   end
 end

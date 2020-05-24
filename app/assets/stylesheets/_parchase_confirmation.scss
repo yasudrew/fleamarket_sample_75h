@@ -1,194 +1,196 @@
 * {
   box-sizing: border-box;
 }
-
-.confirmation-container {
+.sub-application-container {
   background-color: #f8f8f8;
   color: #333;
 
-  &__header {
-    width: 100%;
-    height: 128px;
-    text-align: center;
-    
-    h1 {
-      padding-top: 40px;
-      margin-right: 8px;
-      display: inline-block;
+  .confirmation-container {
 
-      a {
+    &__header {
+      width: 100%;
+      height: 128px;
+      text-align: center;
+      
+      h1 {
+        padding-top: 40px;
+        margin-right: 8px;
+        display: inline-block;
+
+        a {
+          &:hover {
+            opacity: 0.7;
+          }
+          display: inline-block;
+        }
+      }
+    }
+
+    &__main {
+      display: block;
+
+      &__contents {
+        width: 700px;
+        margin: 0 auto;
+        background-color: #fff;
+
+        &__head {
+          font-size: 22px;
+          padding: 32px;
+          line-height: 1.5;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        &__item {
+          padding: 32px 16px;
+          text-align: center;
+          border-top: 1px solid #f5f5f5;
+
+          &__inner {
+            max-width: 343px;
+            margin: 0 auto;
+
+            &__item-box {
+              display: flex;
+
+              &__detail {
+                margin-left: 16px;
+
+                &__name {
+                  font-size: 14px;
+                  padding: 0 0 8px;
+                  line-height: 1.5;
+                  text-align: left;
+                }
+
+                &__price {
+                  text-align: left;
+                  font-size: 14px;
+                  font-weight: 600;
+
+                  .tax-and-shipping-fee {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+
+            &__price-table {
+              font-weight: 600;
+              display: flex;
+              justify-content: space-between;
+              padding-bottom: 40px;
+
+              &__left {
+                font-size: 18px;
+                padding-top: 7px;
+              }
+
+              &__right {
+                font-size: 30px;
+              }
+            }
+
+            &__user-info {
+              border-top: 1px solid #f5f5f5;
+              padding: 32px 0;
+              text-align: left;
+              max-width: 343px;
+
+              &__top {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+
+                h3 {
+                  font-weight: 600;
+                }
+                
+                a {
+                  &:hover {
+                    opacity: 0.7;
+                    text-decoration: underline;
+                  }
+                  text-decoration: none;
+                  color: #3ccace;
+
+                }
+              }
+
+              &__text {
+                margin-top: 8px;
+                font-size: 14px;
+                line-height: 1.5;
+              }
+
+              .card-logo {
+                margin: 8px 0 0 0;
+              }
+            }
+
+            section {
+              padding: 32px 0 16px;
+              border-top: 1px solid #f5f5f5;
+
+              .buy-button {
+                &:hover {
+                  opacity: 0.9;
+                }
+                background-color: #3ccace;
+                border: 1px solid #3ccace;
+                color: #fff;
+                width: 100%;
+                line-height: 48px;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__footer {
+      padding: 40px 0;
+      margin: 0 auto;
+      width: 456px;
+      height: 220px;
+      text-align: center;
+
+      &__nav {
+        
+        ul {
+          display: flex;
+          justify-content: space-around;
+
+          li {
+            font-size: 12px;
+
+            a {
+              &:hover {
+                text-decoration: underline;
+                opacity: 0.7;
+              }
+              display: block;
+              text-decoration: none;
+              color: #333;
+            }
+          }
+        }
+      }
+
+      .parchase-footer-logo {
         &:hover {
           opacity: 0.7;
         }
-        display: inline-block;
+        margin: 40px auto 0;
+        
       }
-    }
-  }
-
-  &__main {
-    display: block;
-
-    &__contents {
-      width: 700px;
-      margin: 0 auto;
-      background-color: #fff;
-
-      &__head {
-        font-size: 22px;
-        padding: 32px;
-        line-height: 1.5;
-        text-align: center;
-        font-weight: 600;
+      p {
+        font-size: 13px;
       }
-
-      &__item {
-        padding: 32px 16px;
-        text-align: center;
-        border-top: 1px solid #f5f5f5;
-
-        &__inner {
-          max-width: 343px;
-          margin: 0 auto;
-
-          &__item-box {
-            display: flex;
-
-            &__detail {
-              margin-left: 16px;
-
-              &__name {
-                font-size: 14px;
-                padding: 0 0 8px;
-                line-height: 1.5;
-                text-align: left;
-              }
-
-              &__price {
-                text-align: left;
-                font-size: 14px;
-                font-weight: 600;
-
-                .tax-and-shipping-fee {
-                  font-size: 12px;
-                }
-              }
-            }
-          }
-
-          &__price-table {
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 40px;
-
-            &__left {
-              font-size: 18px;
-              padding-top: 7px;
-            }
-
-            &__right {
-              font-size: 30px;
-            }
-          }
-
-          &__user-info {
-            border-top: 1px solid #f5f5f5;
-            padding: 32px 0;
-            text-align: left;
-            max-width: 343px;
-
-            &__top {
-              display: flex;
-              justify-content: space-between;
-              font-size: 14px;
-
-              h3 {
-                font-weight: 600;
-              }
-              
-              a {
-                &:hover {
-                  opacity: 0.7;
-                  text-decoration: underline;
-                }
-                text-decoration: none;
-                color: #3ccace;
-
-              }
-            }
-
-            &__text {
-              margin-top: 8px;
-              font-size: 14px;
-              line-height: 1.5;
-            }
-
-            .card-logo {
-              margin: 8px 0 0 0;
-            }
-          }
-
-          section {
-            padding: 32px 0 16px;
-            border-top: 1px solid #f5f5f5;
-
-            .buy-button {
-              &:hover {
-                opacity: 0.9;
-              }
-              background-color: #3ccace;
-              border: 1px solid #3ccace;
-              color: #fff;
-              width: 100%;
-              line-height: 48px;
-              font-size: 14px;
-              font-weight: 600;
-              cursor: pointer;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &__footer {
-    padding: 40px 0;
-    margin: 0 auto;
-    width: 456px;
-    height: 220px;
-    text-align: center;
-
-    &__nav {
-      
-      ul {
-        display: flex;
-        justify-content: space-around;
-
-        li {
-          font-size: 12px;
-
-          a {
-            &:hover {
-              text-decoration: underline;
-              opacity: 0.7;
-            }
-            display: block;
-            text-decoration: none;
-            color: #333;
-          }
-        }
-      }
-    }
-
-    .parchase-footer-logo {
-      &:hover {
-        opacity: 0.7;
-      }
-      margin: 40px auto 0;
-      
-    }
-    p {
-      font-size: 13px;
     }
   }
 }
