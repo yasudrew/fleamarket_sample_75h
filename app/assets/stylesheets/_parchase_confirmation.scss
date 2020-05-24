@@ -4,6 +4,9 @@
 .sub-application-container {
   background-color: #f8f8f8;
   color: #333;
+  min-height: 100%;
+  position: relative;
+ 
 
   .confirmation-container {
 
@@ -28,6 +31,7 @@
 
     &__main {
       display: block;
+      padding-bottom: 220px;
 
       &__contents {
         width: 700px;
@@ -158,6 +162,10 @@
       width: 456px;
       height: 220px;
       text-align: center;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
 
       &__nav {
         
