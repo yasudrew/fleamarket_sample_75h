@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     
   end
-  def destroy
+  def logout_page
 
   end
 end
