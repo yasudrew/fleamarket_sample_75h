@@ -1,8 +1,9 @@
-@import 'reset';
-@import 'top';
+@import "reset";
+@import "top";
 @import "show";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'sessions/new';
-@import 'users/new';
-@import 'users/show';
+@import "sessions/new";
+@import "sessions/destroy";
+@import "users/new";
+@import "users/show";
