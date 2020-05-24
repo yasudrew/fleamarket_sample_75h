@@ -271,7 +271,7 @@
   }
   &__forth{
     width                         :700px;
-    height                        :750px;
+    height                        :100vw;
     margin                        :0 auto;
     background-color              : white;
     margin-top                    : 2px;
@@ -333,19 +333,6 @@
         font-weight               :600;
         margin-top                : 12px;
       }
-    }
-  }
-  &__fifth{
-    width                         :700px;
-    height                        :100vw;
-    margin                        :0 auto;
-    background-color              : white;
-    margin-top                    : 2px;
-    &__main{
-      width                       :620px;
-      height                      :220px;
-      margin                      :0 auto;
-      padding-top                 : 20px;
     }
   }
 }

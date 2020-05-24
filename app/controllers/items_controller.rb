@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    render layout: 'sub_application'
   end
 
   def show
