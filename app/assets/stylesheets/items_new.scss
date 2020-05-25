@@ -1,0 +1,418 @@
+
+.exhibition{
+  height                          : 3000px;
+  background-color                : rgb(245, 245, 245);
+
+  &__first{
+    width                         :700px;
+    height                        :335px;
+    background-color              : white;
+    margin                        :0 auto;
+    &__syuppin{
+      font-size                   :14px;
+      font-weight                 :600;
+      display                     : inline-block;
+      padding                     : 40px 0px 0px 40px;
+    }
+    &__must{
+      font-size                   :12px;
+      font-weight                 :600;
+      width                       :32px;
+      height                      :16px;
+      border-radius               : 2px;
+      line-height                 : 1.4em;
+      color                       :white;
+      background-color            : red;
+      display                     : inline-block;
+      text-align                  : center;
+    }
+    &__sheet{
+      font-size                   :14px;
+      padding                     : 16px 0px 10px 40px;
+    }
+    &__image{
+      width                       :620px;
+      height                      :150px;
+      background-color            : rgb(245, 245, 245);
+      margin                      :0 auto;
+      text-align                  : center;
+      border-style                : dashed;
+      border-width                : 1px;
+      border-color                : rgb(204, 204, 204);
+      font-size                   : 12px;
+      &__picture{
+        padding                   : 40px 0px 10px 0px;
+      }
+      &__not-picture{
+        font-size                 : 14px;
+        color                     : red;
+        margin-top                : 6px;
+        padding                   : 10px 0px 0px 40px;
+        border-bottom             : 20px;
+      }
+    }
+
+  }
+  &__second{
+    width                         :700px;
+    height                        :450px;
+    margin                        :0 auto;
+    margin-top                    : 2px;
+    background-color              : white;
+    &__main{
+      width                       :620px;
+      height                      :220px;
+      margin                      :0 auto;
+      padding-top                 : 20px;
+
+      &__name{
+      font-size                   :14px;
+      font-weight                 :600;
+      display                     : inline-block;
+      }
+      &__alert2{
+        font-size                 : 14px;
+        color                     : red;
+        margin                    : 0px 0px 20px;
+      }
+      &__must{
+        font-size                 :12px;
+        font-weight               :600;
+        width                     :32px;
+        height                    :16px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :white;
+        background-color          : red;
+        display                   : inline-block;
+        text-align                : center;
+      }
+      &__form{
+        height                    :48px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        color                     : #999999;
+        margin                    : 10px 0px 20px;
+        padding                   :10px 20px;
+      }
+      &__exhibition{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+      }
+      &__input{
+        height                    :154px;
+        margin-top                : 16px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        color                     : #999999;
+        text-align                : center;
+        padding-top: 30px;
+      }
+      &__count{
+        margin-top                : 16px;
+        text-align                : right;
+        color                     : #888;
+        font-size                 : 12px;
+        line-height               : 1.4em;
+      }
+      &__alert{
+        font-size                 : 14px;
+        color                     : red;
+        margin                    : 6px 0px 10px;
+      }
+    }
+  }
+  &__third{
+    width                         :700px;
+    height                        :700px;
+    margin                        :0 auto;
+    background-color              : white;
+    margin-top                    : 2px;
+    &__main{
+      width                       :620px;
+      height                      :220px;
+      margin                      :0 auto;
+      padding-top                 : 20px;
+      &__details{
+        font-size                 :14px;
+        font-weight               :600;
+        color                     : #888;
+        margin-bottom             : 20px;
+      }
+      &__category{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+      }
+      &__must{
+        font-size                 :12px;
+        font-weight               :600;
+        width                     :32px;
+        height                    :16px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :white;
+        background-color          : red;
+        display                   : inline-block;
+        text-align                : center;
+      }
+      &__choice{
+        width                     : 620px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        font-size                 : 16px;
+        height                    : 48px;
+        line-height               : 1;
+        outline                   : none;
+        padding                   : 13px 0px 0 16px;
+        margin-top                : 25px;
+        display: flex;
+        
+        &__message{
+          width                   :550px;
+        }
+        &__icon{
+          text-align              : right;
+        }
+      }
+      &__must-choice{
+        font-size                 : 14px;
+        color                     : red;
+        margin                    : 20px 0px 10px;
+      }
+      &__size{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+      }
+      &__size-form{
+        width                     :620px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        font-size                 : 16px;
+        height                    : 48px;
+        line-height               : 1;
+        outline                   : none;
+        padding                   : 13px 0px 0 16px;
+        margin-top                : 20px;
+        display                   : flex;
+        &__main{
+          width                   :550px;
+          border-bottom           : 20px;
+        }
+      }
+      &__brand{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+        margin-top: 20px;
+      }
+      &__any{
+        font-size                 :12px;
+        font-weight               :600;
+        width                     :32px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :#fff;
+        background-color          : #bfbfbf;
+        text-align                : center; 
+        display                   : inline-block;
+      }
+      &__any-form{
+        height                    :48px;
+        width                     :620px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        color                     : #999999;
+        margin                    : 10px 0px 20px;
+        padding                   :10px 20px;
+      }
+      &__type{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+        margin-top: 15px;
+      }
+      &__type-choice{
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        height                    : 48px;
+        line-height               : 1;
+        outline                   : none;
+        padding                   : 13px 0px 0 16px;
+        margin-top                : 20px;
+        display                   : flex;
+        &__form{
+          width                   :550px;
+          border-bottom           : 20px;
+        }
+      }
+    }
+  }
+  &__forth{
+    width                         :700px;
+    height                        :750px;
+    margin                        :0 auto;
+    background-color              : white;
+    margin-top                    : 2px;
+    &__main{
+      width                       :620px;
+      height                      :220px;
+      margin                      :0 auto;
+      padding-top                 : 20px;
+      &__info{
+        color                     : rgb(136, 136, 136);
+        font-size                 : 14px;
+        font-weight               : 600;
+        line-height               : 1.4em;
+        margin-bottom             : 24px;
+      }
+      &__burden{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+        margin-top: 15px;
+      }
+      &__must{
+        font-size                 :12px;
+        font-weight               :600;
+        width                     :32px;
+        height                    :16px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :white;
+        background-color          : red;
+        display                   : inline-block;
+        text-align                : center;
+      }
+      &__burden-form{
+        width                     : 620px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        font-size                 : 16px;
+        height                    : 48px;
+        line-height               : 1;
+        outline                   : none;
+        padding                   : 13px 0px 0 16px;
+        margin-top                : 25px;
+        display: flex;
+        &__main{
+          width                   :550px;
+          border-bottom           : 20px;
+        }
+      }
+      &__choice{
+        font-size                 : 14px;
+        color                     : red;
+        margin                    : 20px 0px 10px;
+      }
+      &__type{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+        margin-top                : 12px;
+      }
+    }
+  }
+  &__fifth{
+    width                         :700px;
+    height                        :700px;
+    margin                        :0 auto;
+    background-color              : white;
+    margin-top                    : 2px;
+    &__main{
+      width                       :620px;
+      height                      :220px;
+      margin                      :0 auto;
+      padding-top                 : 20px;
+      &__pricerange{
+        font-size                 :14px;
+        font-weight               :600;
+        color                     : #888;
+        margin-bottom             : 20px;
+      }
+      &__price{
+        display                   : inline-block;
+        font-size                 :14px;
+        font-weight               :600;
+        margin-top                : 12px;
+      }
+      &__must{
+        font-size                 :12px;
+        font-weight               :600;
+        width                     :32px;
+        height                    :16px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :white;
+        background-color          : red;
+        display                   : inline-block;
+        text-align                : center;
+      }
+      &__form{
+        width                     : 177px;
+        border                    : 1px solid #ccc;
+        border-radius             : 4px;
+        box-sizing                : border-box;
+        font-size                 : 16px;
+        height                    : 48px;
+        line-height               : 1;
+        outline                   : none;
+        display                   : inline-block;
+        margin-left               : 330px;
+        padding                   : 15px;
+    text-align                    : right;
+    vertical-align                : middle;
+      }
+      &__fee{
+        margin-top                :50px;
+        font-size                 : 14px;
+        display                   : inline-block;
+      }
+      &__fee2{
+        float                     : right;
+        margin-top                : 53px;
+      }
+      &__profit{
+        margin-top                :50px;
+        font-size                 : 14px;
+      }
+      &__profit2{
+        float                     : right;
+      }
+      &__btn{
+        margin                    : 0 auto;
+        margin-top                : 70px;
+        width                     : 360px;
+        height                    : 48px;
+        background-color          : #ea352d;
+        color                     : #fff;
+        font-size                 : 17px;
+        min-height                : 48px;
+        text-align                : center;
+        padding-top               :10px;
+        border-radius             : 4px;
+        border                    : 1px solid transparent;
+      }
+      &__back{
+        text-align                : center;
+        margin-top                : 30px;
+        color                     : #0095ee;
+        font-size                 : 14px;
+      }
+      &__text{
+        font-size                 : 12px;
+        text-align: center;
+        margin-top: 30px;
+      }
+    }
+  }
+}

@@ -65,7 +65,7 @@
 |price|integer|null:false|
 |fee|integer|null:false|
 |profit|integer|null:false|
-|buyer|integer|null:false|
+|buyer_id|integer||
 |category_id|integer|null:false  foreign_key: true|
 |brand_id|integer|foreign_key: true|
 |user_id|integer|null:false  foreign_key: true|
