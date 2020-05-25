@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def parchase_confirmation
+  def purchase_confirmation
     render layout: 'sub_application'
   end
 end
