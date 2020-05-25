@@ -1,11 +1,10 @@
 .show-wrapper {
-  background-color: #f8f8f8;
+  background-color: #f5f5f5;
   padding: 40px;
   * {
     box-sizing: border-box;
   
     .show-main {
-      background: #f8f8f8;
       
       &__contents {
         width: 700px;
@@ -64,10 +63,28 @@
               }
             }
           }
+
+          &__buy-btn {
+            &:hover {
+              opacity: 0.9;
+            }
+            display: block;
+            margin-top: 16px;
+            background-color: #3ccace;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 60px;
+            text-decoration: none;
+            border: 1px solid #3ccace;
+            border-radius: 100px;
+          }
           
           &__description {
             line-height: 1,5;
             font-size: 18px;
+            padding-top: 32px;
             margin-bottom: 30px;
           }
 
@@ -100,6 +117,10 @@
                     font-size: 14px;
                     
                     a {
+                      &:hover {
+                        opacity: 0.7;
+                        text-decoration: underline;
+                      }
                       text-decoration: none;
                       color: #3ccace;
                     }
@@ -116,7 +137,7 @@
             
             &__like-btn {
               &:hover {
-                opacity: 0.5;
+                opacity: 0.8;
               }
               margin-top: 10px;
               margin-right: auto;
@@ -133,7 +154,7 @@
 
               a {
                 &:hover {
-                  opacity: 0.5;
+                  opacity: 0.8;
                 }
                 padding: 6px 10px;
                 display: inline-block;
@@ -173,7 +194,7 @@
 
             button {
               &:hover {
-                opacity: 0.5;
+                opacity: 0.9;
               }
               font-size: 18px;
               color: #fff;
@@ -194,7 +215,8 @@
 
           a {
             &:hover {
-              opacity: 0.5;
+              opacity: 0.7;
+              text-decoration: underline;
             }
             text-decoration: none;
             color: #3ccace;
@@ -206,7 +228,8 @@
 
           a {
             &:hover {
-              opacity: 0.5;
+              opacity: 0.7;
+              text-decoration: underline;
             }
             text-decoration: none;
             color: #3ccace;

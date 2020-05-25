@@ -3,7 +3,7 @@
     .show-main__contents
       .show-main__contents__item-box
         %h2.show-main__contents__item-box__name
-          product
+          タピオカ
         .show-main__contents__item-box__images
           .show-main__contents__item-box__images__top
             = image_tag 'tapioca.jpeg', width: '560', height: '346'
@@ -15,10 +15,11 @@
             %li
               = image_tag 'tapioca3.jpeg', width: '140', height: '87'
         .show-main__contents__item-box__price
-          %span ¥20000
+          %span ¥2,980
           .show-main__contents__item-box__price__detail
             %span (税込)
             %span 送料込み
+        =link_to '購入画面に進む', "#", class: 'show-main__contents__item-box__buy-btn'
         .show-main__contents__item-box__description
           親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
         .show-main__contents__item-box__table
@@ -46,7 +47,7 @@
                 %td 新品/未使用
               %tr
                 %th 配送料の負担
-                %td 着払い（購入者負担)
+                %td 送料込み（出品者負担)
               %tr
                 %th 発送元の地域
                 %td
