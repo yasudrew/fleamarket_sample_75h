@@ -1,7 +1,8 @@
 
 .exhibition{
-  height                          : 3000px;
+  height                          : 100%;
   background-color                : rgb(245, 245, 245);
+  padding-bottom: 220px;
 
   &__first{
     width                         :700px;
@@ -324,7 +325,7 @@
   }
   &__fifth{
     width                         :700px;
-    height                        :700px;
+    height                        :550px;
     margin                        :0 auto;
     background-color              : white;
     margin-top                    : 2px;
@@ -384,16 +385,15 @@
       &__profit{
         margin-top                :50px;
         font-size                 : 14px;
-      }
-      &__profit2{
-        float                     : right;
+        display                   : flex;
+        justify-content           : space-between;
       }
       &__btn{
         margin                    : 0 auto;
         margin-top                : 70px;
         width                     : 360px;
         height                    : 48px;
-        background-color          : #ea352d;
+        background-color          : #2bccd1;
         color                     : #fff;
         font-size                 : 17px;
         min-height                : 48px;
