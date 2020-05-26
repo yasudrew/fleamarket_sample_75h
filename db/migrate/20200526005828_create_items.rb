@@ -8,10 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :fee, null: false
       t.integer :profit, null: false
       t.integer :buyer_id
-      t.references :user, type: :integer, foreign_key: true
-      t.references :category, type: :integer, foreign_key: true
-      t.references :brand, type: :integer, foreign_key: true
-      t.references :shipping, type: :integer, foreign_key: true
+      t.references :user, type: :bigint, foreign_key: true
 
       t.timestamps
     end
