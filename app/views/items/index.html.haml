@@ -101,7 +101,7 @@
               商品一覧
         .product-lists
           .product-list
-            = link_to 'items/1'  do
+            -# = link_to item_path(item.id)  do
               .product-list__img
                 = image_tag'a007.png'
               .product-list__content
@@ -110,7 +110,7 @@
                 .price
                   1000円
           .product-list
-            = link_to '#' do
+            = link_to 'items/1' do
               .product-list__img
                 = image_tag'a007.png'
               .product-list__content
@@ -119,7 +119,7 @@
                 .price
                   1000円
           .product-list
-            = link_to '#' do
+            = link_to 'items/1' do
               .product-list__img
                 = image_tag'a007.png'
               .product-list__content
