@@ -6,7 +6,7 @@
           -# = @item.name
         .show-main__contents__item-box__images
           .show-main__contents__item-box__images__top
-            = image_tag 'tapioca.jpeg', width: '560', height: '346'
+            -# = image_tag @item.images.first.image, width: '560', height: '346'
           %ul.show-main__contents__item-box__images__others
             -# - @item.images.image.each do |image|
             -#   %li
