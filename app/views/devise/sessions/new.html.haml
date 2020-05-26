@@ -8,5 +8,10 @@
             = f.label :メールアドレス
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          .field-label
+            = f.label :パスワード
+            %br/
+            = f.password_field :password, autocomplete: "current-password"
         .actions
           = f.submit "ログイン"
