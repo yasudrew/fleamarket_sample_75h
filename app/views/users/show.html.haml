@@ -5,7 +5,7 @@
         .container_contents_main_icon_inside
           = link_to image_tag("member_photo_noimage_thumb.png", class: "container_contents_main_icon_inside_noimage"), "#"
           .container_contents_main_icon_inside_name
-            name
+            = current_user.name
       .container_contents_main_profile
         .container_contents_main_profile_title
           プロフィール

@@ -1,30 +1,41 @@
-.wrapper
-  .sign_up
-    .sign_up_header
-      = link_to image_tag( "logo.png", size: "175x45", class: "sign_up_header_icon"),root_path
-    .sign_up_body
-      .sign_up_body_form
-        .sign_up_body_form_inside
-          %h2.sign_up_body_form_inside_title
-            %label{:for => "new_registration"} 新規登録
-
-          %h2.sign_up_body_form_inside_nickname
-            %label{:for => "name"} ユーザーネーム
-            %span.require 必須
-            %form.name-area{:onsubmit => "return goSearch()"}
-            %input.name-text{:type => "text", :placeholder => "例）FURIMAくん"}/
-
-          %h2.sign_up_body_form_inside_email
-            %label{:for => "mail"} メールアドレス
-            %span.require 必須
-            %form.mail-area{:onsubmit => "return goSearch()"}
-            %input.mail-text{:type => "text", :placeholder => "携帯・PCどちらでも可"}/
-
-          %h2.sign_up_body_form_inside_password
-            %label{:for => "pass"} パスワード
-            %span.require 必須
-            %form.pass-area{:onsubmit => "return goSearch()"}
-            %input.pass-text{:type => "password", :placeholder => "7文字以上の半角英数字"}/
-
-          %h2.sign_up_body_form_inside_bottun
-            = link_to "登録する", "#", class: '.sign_up_body_form_inside_bottun_registration'
+#account-page.account-page
+  .account-page__inner
+    .account-page__inner--right.user-form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          .field-label
+            = f.label :ニックネーム
+            .must
+              必須
+          .field-input
+            = f.text_field :name, autofocus: true, autocomplete: "name"
+        .field
+          .field-label
+            = f.label :メールアドレス
+            .must
+              必須
+            %br/
+          .field-input
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          .field-label
+            = f.label :パスワード
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} 文字以上)
+            %br/
+            .must
+              必須
+          .field-input
+            = f.password_field :password, autocomplete: "password"
+        .field
+          .field-label
+            = f.label :パスワード（確認用）
+            .must
+              必須
+            %br/
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "password_confirmation"
+          .actions
+            = f.submit "登録する"
