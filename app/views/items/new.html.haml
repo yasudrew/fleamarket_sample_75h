@@ -7,20 +7,12 @@
         必須
       .exhibition__first__sheet
         最大10枚までアップロードできます
-        %label{class: "exhibition__first__image__icon"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
-        %input{type: "file"}
       .exhibition__first__image
-        .exhibition__first__image__picture
-          = icon('fas fa-2x', 'camera')
+        %label{class: "exhibition__first__image__picture"} 
+          = f.fields_for :images do |i|
+            = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file" 
+          .exhibition__first__image__picture
+            = icon('fas fa-2x', 'camera')
         .exhibition__first__image__designation
           ドラッグアンドドロップ
         .exhibition__first__image__upload
@@ -34,7 +26,7 @@
         .exhibition__second__main__must
           必須
         .exhibition__second__main__form
-          40文字まで
+          = f.text_field :name, class: 'exhibition__second__main__form__comment', placeholder: 'type a message'
         .exhibition__second__main__alert2
           入力してください
         .exhibition__second__main__exhibition
@@ -42,13 +34,7 @@
         .exhibition__second__main__must
           必須
         .exhibition__second__main__input
-          商品の説明（必須1,000文字以内）
-          %br
-          （色、素材、重さ、定価、注意点など）
-          %br
-          例）2010年頃に1万円で購入したジャケットです。
-          ライトグレーで傷はありません。あわせやすいので
-          おすすめです。
+          = f.text_area :description, class: 'exhibition__second__main__input__form', placeholder: 'type a message'
         .exhibition__second__main__count
           0/1000
         .exhibition__second__main__alert
@@ -160,7 +146,11 @@
         .exhibition__fifth__main__fee
           販売手数料(10%)
         .exhibition__fifth__main__fee2
-          ー
+          = f.number_field :fee
+        .exhibition__fifth__main__fee
+          販売手数料(10%)
+        .exhibition__fifth__main__fee2
+          = f.number_field :profit
         .exhibition__fifth__main__btn
           = f.submit '出品する'
         .exhibition__fifth__main__back

@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.build_shipping
     @item.build_brand
+    @item.images.build
     render layout: 'sub_application'
   end
 
@@ -16,9 +17,6 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save!
-      shipping_id = Shipping.find(@item.id).id 
-      item = Item.find(@item.id)            
-      item.update(shipping_id: shipping_id)
       redirect_to root_path
    else
       redirect_to new_item_path
@@ -31,6 +29,8 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name,:description,:status,:price,:fee,:profit,:buyer_id,
-    category_ids: [],brand_attributes: [:id ,:name], user_id: [:nickname, :email, :password],shipping_attributes:[:id,:burden, :method, :area, :day])
+    category_attributes: [:id,:name], brand_attributes: [:id ,:name], user_id: [:nickname, :email, :password],shipping_attributes:[:id,:burden, :method, :area, :day],
+    images_attributes:[:id,:image])
+    .merge(user_id: current_user.id)
   end
 end

@@ -41,6 +41,11 @@
       border-width                : 1px;
       border-color                : rgb(204, 204, 204);
       font-size                   : 12px;
+
+
+      // .hidden {
+      //   display: none;
+      // }
       
       &__picture{
         padding                   : 40px 0px 10px 0px;
@@ -90,13 +95,16 @@
         text-align                : center;
       }
       &__form{
-        height                    :48px;
-        border                    : 1px solid #ccc;
-        border-radius             : 4px;
-        box-sizing                : border-box;
-        color                     : #999999;
-        margin                    : 10px 0px 20px;
-        padding                   :10px 20px;
+        &__comment{
+          height                    :48px;
+          border                    : 1px solid #ccc;
+          border-radius             : 4px;
+          box-sizing                : border-box;
+          margin                    : 10px 0px 20px;
+          padding                   :10px 20px;
+          width: 620px;
+          display: block;
+        }
       }
       &__exhibition{
         display                   : inline-block;
@@ -104,14 +112,16 @@
         font-weight               :600;
       }
       &__input{
+        &__form{
+        width                     : 620px;
         height                    :154px;
         margin-top                : 16px;
         border                    : 1px solid #ccc;
         border-radius             : 4px;
         box-sizing                : border-box;
-        color                     : #999999;
         text-align                : center;
-        padding-top: 30px;
+        text-align                : left;
+        }
       }
       &__count{
         margin-top                : 16px;
