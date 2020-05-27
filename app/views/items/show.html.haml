@@ -74,11 +74,11 @@
             = link_to  "#" do
               %i.fa.fa-flag
                 不適切な商品の通報
-      -# - if user_signed_in? && current_user == @item.users
-      -#   .show-main__contents__edit-destroy
-      -#     = link_to '商品の編集', edit_item_path(@item.id), class: 'show-main__contents__edit-destroy__edit-btn'
-      -#     %p or
-      -#     %button.show-main__contents__edit-destroy__destroy-btn この商品を削除する
+      - if user_signed_in? && current_user.id == 1
+        .show-main__contents__edit-destroy
+          = link_to '商品の編集', '#', class: 'show-main__contents__edit-destroy__edit-btn'
+          %p or
+          %button.show-main__contents__edit-destroy__destroy-btn この商品を削除する
       .show-main__contents__comment-box
         = form_with url: '#', class: 'show-main__contents__comment-box__new-comment' do |f|
           = f.text_area :text
@@ -96,3 +96,17 @@
           -# = link_to '後ろの商品 >', item_path(@item.id + 1), class: "right"
       .show-main__contents__related-items
         = link_to 'メンズをもっと見る', "#"
+
+  .show-modal
+    .show-modal__body
+      .show-modal__body__messages
+        .show-modal__body__messages__bold
+          確認
+        削除すると二度と復活できません
+        %br
+        %br
+        本当に削除しますか？
+      .show-modal__body__confirmation
+        .show-modal__body__confirmation__cancel-btn
+          キャンセル
+        = link_to '削除する', '#', class: 'show-modal__body__confirmation__delete-btn'
