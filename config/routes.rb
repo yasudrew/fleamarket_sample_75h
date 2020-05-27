@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #resources :sessions, only: [:new, :destroy]
   resources :users, only: [:new, :show]
   resources :card, only: [:new]
-  resources :items, only: [:new, :show, :edit] do
+  resources :items, only: [:new, :show, :edit, :destroy] do
     collection do
       get 'purchase_confirmation'
     end

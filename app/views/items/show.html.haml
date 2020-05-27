@@ -109,4 +109,4 @@
       .show-modal__body__confirmation
         .show-modal__body__confirmation__cancel-btn
           キャンセル
-        = link_to '削除する', '#', class: 'show-modal__body__confirmation__delete-btn'
+        = link_to '削除する', item_path(@item.id), method: :delete, class: 'show-modal__body__confirmation__delete-btn'

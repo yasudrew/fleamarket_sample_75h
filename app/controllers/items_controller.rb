@@ -10,6 +10,11 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:id])
   end
 
+  def destroy
+    Item.find(params[:id]).destroy
+    redirect_to user_path(current_user.id)
+  end
+
   def purchase_confirmation
     render layout: 'sub_application'
   end
