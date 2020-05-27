@@ -23,7 +23,7 @@
             %span
               -# = @item.shippings.burdenに応じて出力
         - if user_signed_in?
-          -# - unless current_user == @item.users
+          -# - unless current_user.id == @item.user_id
             -# = link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
         - else
           = link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
@@ -74,7 +74,7 @@
             = link_to  "#" do
               %i.fa.fa-flag
                 不適切な商品の通報
-      - if user_signed_in? && current_user.id == 1
+      -# - if user_signed_in? && current_user.id == @item.user_id
         .show-main__contents__edit-destroy
           = link_to '商品の編集', '#', class: 'show-main__contents__edit-destroy__edit-btn'
           %p or
@@ -109,4 +109,4 @@
       .show-modal__body__confirmation
         .show-modal__body__confirmation__cancel-btn
           キャンセル
-        = link_to '削除する', item_path(@item.id), method: :delete, class: 'show-modal__body__confirmation__delete-btn'
+        -# = link_to '削除する', item_path(@item.id), method: :delete, class: 'show-modal__body__confirmation__delete-btn'
