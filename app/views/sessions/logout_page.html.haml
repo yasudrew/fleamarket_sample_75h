@@ -3,7 +3,7 @@
     .container_contents_main
       .container_contents_main_logout
         .container_contents_main_logout_inside
-          = link_to "ログアウト", "#", class: "container_contents_main_logout_inside_bottun"
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "container_contents_main_logout_inside_bottun"
       
     .container_contents_side
       .container_contents_side_title
