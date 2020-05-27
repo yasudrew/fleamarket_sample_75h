@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.build_shipping
+    @item.build_brand
     render layout: 'sub_application'
   end
 
@@ -11,7 +13,15 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.create(item_params)
+    if @item.save!
+      shipping_id = Shipping.find(@item.id).id 
+      item = Item.find(@item.id)            
+      item.update(shipping_id: shipping_id)
+      redirect_to root_path
+   else
+      redirect_to new_item_path
+   end
   end
 
   def purchase_confirmation
@@ -20,6 +30,6 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name,:description,:status,:price,:fee,:profit,:buyer_id,
-    category_id: [:name,:ancestry],brand_id: [:name], user_id: [:nickname, :email, :password],shipping_id:[:burden, :type, :area, :day])
+    category_ids: [],brand_attributes: [:id ,:name], user_id: [:nickname, :email, :password],shipping_attributes:[:id,:burden, :method, :area, :day])
   end
 end

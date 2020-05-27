@@ -1,167 +1,160 @@
 .exhibition
-  .exhibition__first
-    .exhibition__first__syuppin
-      出品画像
-    .exhibition__first__must
-      必須
-    .exhibition__first__sheet
-      最大10枚までアップロードできます
-    .exhibition__first__image
-      .exhibition__first__image__picture
-        = icon('fas fa-2x', 'camera')
-      .exhibition__first__image__designation
-        ドラッグアンドドロップ
-      .exhibition__first__image__upload
-        またはクリックしてファイルをアップロード
-    .exhibition__first__image__not-picture
-      画像がありません
-  .exhibition__second
-    .exhibition__second__main
-      .exhibition__second__main__name
-        商品名
-      .exhibition__second__main__must
+  = form_for @item,url: {action: 'create'} do |f|
+    .exhibition__first
+      .exhibition__first__syuppin
+        出品画像
+      .exhibition__first__must
         必須
-      .exhibition__second__main__form
-        40文字まで
-      .exhibition__second__main__alert2
-        入力してください
-      .exhibition__second__main__exhibition
-        商品の説明
-      .exhibition__second__main__must
-        必須
-      .exhibition__second__main__input
-        商品の説明（必須1,000文字以内）
-        %br
-        （色、素材、重さ、定価、注意点など）
-        %br
-        例）2010年頃に1万円で購入したジャケットです。
-        ライトグレーで傷はありません。あわせやすいので
-        おすすめです。
-      .exhibition__second__main__count
-        0/1000
-      .exhibition__second__main__alert
-        入力してください
-  .exhibition__third
-    .exhibition__third__main
-      .exhibition__third__main__details
-        商品の詳細
-      .exhibition__third__main__category
-        カテゴリー
-      .exhibition__third__main__must
-        必須
-      .exhibition__third__main__choice
-        .exhibition__third__main__choice__message
-          カテゴリー１
-        .exhibition__third__main__choice__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__third__main__choice
-        .exhibition__third__main__choice__message
-          カテゴリー２
-        .exhibition__third__main__choice__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__third__main__choice
-        .exhibition__third__main__choice__message
-          カテゴリー３
-        .exhibition__third__main__choice__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__third__main__must-choice
-        カテゴリー選択してください
-      .exhibition__third__main__size
-        サイズ
-      .exhibition__third__main__must
-        必須
-      .exhibition__third__main__size-form
-        .exhibition__third__main__size-form__main
-          サイズ選択
-        .exhibition__third__main__size-form__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__third__main__brand
-        ブランド
-      .exhibition__third__main__any
-        任意
-      .exhibition__third__main__any-form
-        例)シャネル
-      .exhibition__third__main__type
-        商品の状態
-      .exhibition__third__main__must
-        必須
-      .exhibition__third__main__type-choice
-        .exhibition__third__main__type-choice__form
-          状態の選択
-        .exhibition__third__main__type__icon
-          = icon('fas', 'chevron-down')
-  .exhibition__forth
-    .exhibition__forth__main
-      .exhibition__forth__main__info
-        配送について
-      .exhibition__forth__main__burden
-        配送料の負担
-      .exhibition__forth__main__must
-        必須
-      .exhibition__forth__main__burden-form
-        .exhibition__forth__main__burden-form__main
-          送料込み
-        .exhibition__forth__main__burden-form__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__forth__main__choice
-        選択してください
-      .exhibition__forth__main__type
-        配送の方法
-      .exhibition__forth__main__must
-        必須
-      .exhibition__forth__main__burden-form
-        .exhibition__forth__main__burden-form__main
-          らくらくメール便
-        .exhibition__forth__main__burden-form__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__forth__main__choice
-        選択してください
-      .exhibition__forth__main__type
-        発送元の地域
-      .exhibition__forth__main__must
-        必須
-      .exhibition__forth__main__burden-form
-        .exhibition__forth__main__burden-form__main
-          神奈川
-        .exhibition__forth__main__burden-form__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__forth__main__choice
-        選択してください
-      .exhibition__forth__main__type
-        配送までの日数
-      .exhibition__forth__main__must
-        必須
-      .exhibition__forth__main__burden-form
-        .exhibition__forth__main__burden-form__main
-          １日
-        .exhibition__forth__main__burden-form__icon
-          = icon('fas', 'chevron-down')
-      .exhibition__forth__main__choice
-        選択してください
-  .exhibition__fifth
-    .exhibition__fifth__main
-      .exhibition__fifth__main__pricerange
-        販売価格(¥300〜9,999,999)
-      .exhibition__fifth__main__price
-        販売価格
-      .exhibition__fifth__main__must
-        必須
-      .exhibition__fifth__main__form
-        ¥ 0
-      .exhibition__fifth__main__fee
-        販売手数料(10%)
-      .exhibition__fifth__main__fee2
-        ー
-      .exhibition__fifth__main__profit
-        .exhibition__fifth__main__profit__text
-          販売利益
-        .exhibition__fifth__main__profit__number
+      .exhibition__first__sheet
+        最大10枚までアップロードできます
+      .exhibition__first__image
+        .exhibition__first__image__picture
+          = icon('fas fa-2x', 'camera')
+        .exhibition__first__image__designation
+          ドラッグアンドドロップ
+        .exhibition__first__image__upload
+          またはクリックしてファイルをアップロード
+      .exhibition__first__image__not-picture
+        画像がありません
+    .exhibition__second
+      .exhibition__second__main
+        .exhibition__second__main__name
+          商品名
+        .exhibition__second__main__must
+          必須
+        .exhibition__second__main__form
+          40文字まで
+        .exhibition__second__main__alert2
+          入力してください
+        .exhibition__second__main__exhibition
+          商品の説明
+        .exhibition__second__main__must
+          必須
+        .exhibition__second__main__input
+          商品の説明（必須1,000文字以内）
+          %br
+          （色、素材、重さ、定価、注意点など）
+          %br
+          例）2010年頃に1万円で購入したジャケットです。
+          ライトグレーで傷はありません。あわせやすいので
+          おすすめです。
+        .exhibition__second__main__count
+          0/1000
+        .exhibition__second__main__alert
+          入力してください
+    .exhibition__third
+      .exhibition__third__main
+        .exhibition__third__main__details
+          商品の詳細
+        .exhibition__third__main__category
+          カテゴリー
+        .exhibition__third__main__must
+          必須
+        .exhibition__third__main__choice
+          .exhibition__third__main__choice__message
+            カテゴリー１
+          .exhibition__third__main__choice__icon
+            = icon('fas', 'chevron-down')
+        .exhibition__third__main__choice
+          .exhibition__third__main__choice__message
+            カテゴリー２
+          .exhibition__third__main__choice__icon
+            = icon('fas', 'chevron-down')
+        .exhibition__third__main__choice
+          .exhibition__third__main__choice__message
+            カテゴリー３
+          .exhibition__third__main__choice__icon
+            = icon('fas', 'chevron-down')
+        .exhibition__third__main__must-choice
+          カテゴリー選択してください
+        .exhibition__third__main__size
+          サイズ
+        .exhibition__third__main__must
+          必須
+        .exhibition__third__main__size-form
+          .exhibition__third__main__size-form__main
+            サイズ選択
+          .exhibition__third__main__size-form__icon
+            = icon('fas', 'chevron-down')
+        .exhibition__third__main__any
+          = f.fields_for :brand do |brand|
+            = brand.label "ブランド"
+            %span.form-require-gray （任意）
+            %div
+              = brand.text_field :name, placeholder: "例）シャネル", value: "", class: "exhibition__third__main__any-form"
+        .exhibition__third__main__type
+          .exhibition__third__main__title
+            商品の状態
+          .exhibition__third__main__must
+            必須
+        .exhibition__third__main__type-choice
+          .exhibition__third__main__type-choice__form
+            = f.select :status,出品中:1,出品停止:2,取引中:3,取引完了:4
+    .exhibition__forth
+      .exhibition__forth__main
+        .exhibition__forth__main__info
+          配送について
+        .exhibition__forth__main__burden
+          = f.label '配送料の負担'
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :burden, 送料込み（出品者負担）: 1,着払い（購入者負担）: 2
+        .exhibition__forth__main__choice
+          選択してください
+        .exhibition__forth__main__type
+          配送の方法
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :method, らくらくメール便: 1,ゆうメール: 2,レターパック: 3,普通郵便: 4,クロネコヤマト: 5,ゆうパック: 6,ゆうパケット: 7
+        .exhibition__forth__main__choice
+          選択してください
+        .exhibition__forth__main__type
+          発送元の地域
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :area, 北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,岐阜県:21,静岡県:22,愛知県:23,三重県:24,滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,徳島県:36,香川県:37,愛媛県:38,高知県:39,福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
+        .exhibition__forth__main__choice
+          選択してください
+        .exhibition__forth__main__type
+          配送までの日数
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :day, '１〜２日で発送': 1,'２〜３日で発送': 2, "４〜７日で発送": 3
+        .exhibition__forth__main__choice
+          選択してください
+    .exhibition__fifth
+      .exhibition__fifth__main
+        .exhibition__fifth__main__pricerange
+          販売価格(¥300〜9,999,999)
+        .exhibition__fifth__main__price
+          .exhibition__fifth__main__price-box
+            .exhibition__fifth__main__title
+              販売価格
+            .exhibition__fifth__main__must
+              必須
+          .exhibition__fifth__main__form
+            = f.number_field :price, placeholder: '例）300'
+        .exhibition__fifth__main__fee
+          販売手数料(10%)
+        .exhibition__fifth__main__fee2
           ー
-      .exhibition__fifth__main__btn
-        出品する
-      .exhibition__fifth__main__back
-        もどる
-      .exhibition__fifth__main__text
-        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律に
-        %br
-        より処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+        .exhibition__fifth__main__btn
+          = f.submit '出品する'
+        .exhibition__fifth__main__back
+          = link_to 'もどる',root_path
+        .exhibition__fifth__main__text
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律に
+          %br
+          より処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
