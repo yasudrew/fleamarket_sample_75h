@@ -6,7 +6,17 @@
       必須
     .exhibition__first__sheet
       最大10枚までアップロードできます
-    .exhibition__first__image
+      %label{class: "exhibition__first__image__icon"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
+        %input{type: "file"}
       .exhibition__first__image__picture
         = icon('fas fa-2x', 'camera')
       .exhibition__first__image__designation
@@ -21,8 +31,9 @@
         商品名
       .exhibition__second__main__must
         必須
-      .exhibition__second__main__form
-        40文字まで
+      = form_for [@items], html: { class: "exhibition__second__main__form" } do |f|
+        = f.text_area :text, class: 'exhibition__second__main__form__comment', placeholder: 'type a message' do
+          ああ
       .exhibition__second__main__alert2
         入力してください
       .exhibition__second__main__exhibition
