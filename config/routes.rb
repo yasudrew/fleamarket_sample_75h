@@ -5,14 +5,18 @@ Rails.application.routes.draw do
 
   #resources :sessions, only: [:new, :destroy]
   resources :users, only: [:new, :show]
-  resources :cards, only: [:new, :create, :show]
+  resources :cards, only: [:new, :create, :show] do
+    collection do
+      delete :delete
+    end
+  end
   resources :items, only: [:new, :show, :edit, :destroy] do
     member do
       get :purchase_confirmation
     end
   end
 
-  root 'items#index'
+  root 'cards#check_phenomenon'
 
 
 end

@@ -20,16 +20,20 @@ class CardsController < ApplicationController
     @card.save
   end
 
-  def delete
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new"
-    else
-      Payjp.api_key = 'sk_test_0e2eb234eabf724bfaa4e676'
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
-    end  
-end
+  # def delete
+  #   card = Card.where(user_id: current_user.id).first
+  #   if card.exists?
+  #     Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+  #     customer = Payjp::Customer.retrieve(card.customer_id)
+  #     customer.delete
+  #     card.delete
+  #   end
 
+  #   redirect_to action: "new"
+  # end
+
+
+  def check_phenomenon
+    
+  end
 end
