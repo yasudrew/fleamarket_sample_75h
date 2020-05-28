@@ -19,7 +19,7 @@
 |------|----|-------|
 |card_id|string|null:false|
 |customer_id|string|null:false|
-|user_id|integer|null:false, foregin_key: true|
+|user_id|integer|null:false, foreign_key: true|
 
 ## アソシエーション
 - belongs_to : user
