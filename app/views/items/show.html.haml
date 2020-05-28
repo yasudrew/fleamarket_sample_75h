@@ -3,36 +3,35 @@
     .show-main__contents
       .show-main__contents__item-box
         %h2.show-main__contents__item-box__name
-          -# = @item.name
+          = @item.name
         .show-main__contents__item-box__images
           .show-main__contents__item-box__images__top
             = image_tag @item.images.first.image.url, width: '560', height: '346'
           %ul.show-main__contents__item-box__images__others
-            - @item.images.image.url.each do |image|
+            - @item.images.each do |image|
               %li
-                = image_tag image, width: '140', height: '87'
-
+                = image_tag image.image.url, width: '140', height: '87'
         .show-main__contents__item-box__price
           %span
-            -# = @item.price
+            = "¥#{@item.price}"
           .show-main__contents__item-box__price__detail
             %span (税込)
             %span
-              -# = @item.shippings.burdenに応じて出力
+              = @item.shipping.burden
         - if user_signed_in?
-          -# - unless current_user.id == @item.user_id
-            -# = link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
+          - unless current_user.id == @item.user_id
+            = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
         - else
-          = link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
+          = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
         .show-main__contents__item-box__description
-          -# = simple_format @item.description
+          = simple_format @item.description
         .show-main__contents__item-box__table
           %table
             %tbody
               %tr
                 %th 出品者
                 %td
-                  -# = @item.users.name
+                  = @item.user.name
               %tr
                 %th カテゴリ
                 %td
@@ -50,19 +49,19 @@
               %tr
                 %th 商品の状態
                 %td
-                  -# @item.statusの値に応じて出力する
+                  = @item.status
               %tr
                 %th 配送料の負担
                 %td
-                  -# = @item.shippings.burdenに応じて出力
+                  = @item.shipping.burden
               %tr
                 %th 発送元の地域
                 %td
-                  -# @item.shippings.areaの値に応じて出力する
+                  = @item.shipping.area
               %tr
                 %th 発送日の目安
                 %td
-                  -# @item.shippings.dayの値に応じて出力する
+                  = @item.shipping.day
         .show-main__contents__item-box__optional-area
           .show-main__contents__item-box__optional-area__like-btn
             %i.fa.fa-star
@@ -71,11 +70,11 @@
             = link_to  "#" do
               %i.fa.fa-flag
                 不適切な商品の通報
-      -# - if user_signed_in? && current_user.id == @item.user_id
+      - if user_signed_in? && current_user.id == @item.user_id
         .show-main__contents__edit-destroy
-          = link_to '商品の編集', '#', class: 'show-main__contents__edit-destroy__edit-btn'
+          = link_to '商品の編集', edit_item_path(@item.id), class: 'show-main__contents__edit-destroy__edit-btn'
           %p or
-          %button.show-main__contents__edit-destroy__destroy-btn この商品を削除する
+          .show-main__contents__edit-destroy__destroy-btn この商品を削除する
       .show-main__contents__comment-box
         = form_with url: '#', class: 'show-main__contents__comment-box__new-comment' do |f|
           = f.text_area :text
@@ -88,9 +87,9 @@
               コメントする
       %ul.show-main__contents__links
         %li
-          -# = link_to '< 前の商品', item_path(@item.id - 1), class: "left"
+          = link_to '< 前の商品', item_path(@item.id - 1), class: "left"
         %li
-          -# = link_to '後ろの商品 >', item_path(@item.id + 1), class: "right"
+          = link_to '後ろの商品 >', item_path(@item.id + 1), class: "right"
       .show-main__contents__related-items
         = link_to 'メンズをもっと見る', "#"
 
@@ -106,4 +105,4 @@
       .show-modal__body__confirmation
         .show-modal__body__confirmation__cancel-btn
           キャンセル
-        -# = link_to '削除する', item_path(@item.id), method: :delete, class: 'show-modal__body__confirmation__delete-btn'
+        = link_to '削除する', item_path(@item.id), method: :delete, class: 'show-modal__body__confirmation__delete-btn'

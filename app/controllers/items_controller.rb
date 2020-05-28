@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.find(params[:id])
+    @item = Item.includes(:images).find(params[:id])
   end
 
   def destroy
