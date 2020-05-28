@@ -87,9 +87,15 @@
               コメントする
       %ul.show-main__contents__links
         %li
-          = link_to '< 前の商品', item_path(@item.id - 1), class: "left"
+          - if Item.find_by(id:@item.id - 1).present?
+            = link_to '< 前の商品', item_path(@item.id - 1), class: "left"
+          - else
+            < 前の商品
         %li
-          = link_to '後ろの商品 >', item_path(@item.id + 1), class: "right"
+          - if Item.find_by(id:@item.id + 1).present?
+            = link_to '後ろの商品 >', item_path(@item.id + 1), class: "right"
+          - else
+            後ろの商品 >
       .show-main__contents__related-items
         = link_to 'メンズをもっと見る', "#"
 
