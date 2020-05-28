@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   get '/card_page', to: 'card#card_page'
   get '/purchase_confirmation', to: 'items#purchase_confirmation'
 
-  #resources :sessions, only: [:new, :destroy]
   resources :users, only: [:new, :show]
   resources :card, only: [:new]
-  resources :items, only: [:new, :show, :edit, :destroy] do
-    collection do
+  resources :items, only: [:new, :show, :create, :destroy] do
+    member do
       get 'purchase_confirmation'
     end
   end

@@ -41,6 +41,12 @@
       border-width                : 1px;
       border-color                : rgb(204, 204, 204);
       font-size                   : 12px;
+
+
+      // .hidden {
+      //   display: none;
+      // }
+      
       &__picture{
         padding                   : 40px 0px 10px 0px;
       }
@@ -89,13 +95,16 @@
         text-align                : center;
       }
       &__form{
-        height                    :48px;
-        border                    : 1px solid #ccc;
-        border-radius             : 4px;
-        box-sizing                : border-box;
-        color                     : #999999;
-        margin                    : 10px 0px 20px;
-        padding                   :10px 20px;
+        &__comment{
+          height                    :48px;
+          border                    : 1px solid #ccc;
+          border-radius             : 4px;
+          box-sizing                : border-box;
+          margin                    : 10px 0px 20px;
+          padding                   :10px 20px;
+          width: 620px;
+          display: block;
+        }
       }
       &__exhibition{
         display                   : inline-block;
@@ -103,14 +112,16 @@
         font-weight               :600;
       }
       &__input{
+        &__form{
+        width                     : 620px;
         height                    :154px;
         margin-top                : 16px;
         border                    : 1px solid #ccc;
         border-radius             : 4px;
         box-sizing                : border-box;
-        color                     : #999999;
         text-align                : center;
-        padding-top: 30px;
+        text-align                : left;
+        }
       }
       &__count{
         margin-top                : 16px;
@@ -214,15 +225,14 @@
         margin-top: 20px;
       }
       &__any{
-        font-size                 :12px;
+        font-size                 :14px;
         font-weight               :600;
-        width                     :32px;
+        width                     :150px;
         border-radius             : 2px;
         line-height               : 1.4em;
-        color                     :#fff;
-        background-color          : #bfbfbf;
-        text-align                : center; 
+        color                     :black;
         display                   : inline-block;
+        margin-top                : 15px;
       }
       &__any-form{
         height                    :48px;
@@ -235,24 +245,33 @@
         padding                   :10px 20px;
       }
       &__type{
-        display                   : inline-block;
         font-size                 :14px;
         font-weight               :600;
-        margin-top: 15px;
+        margin-top                : 15px;
+        display                   : flex;
       }
+      &__title{
+        margin-right: 5px;
+        line-height: 15px;
+      }
+  
       &__type-choice{
+        select{
+        width                     : 100%;
         border                    : 1px solid #ccc;
         border-radius             : 4px;
         box-sizing                : border-box;
         height                    : 48px;
+        background-color          : white;
         line-height               : 1;
         outline                   : none;
         padding                   : 13px 0px 0 16px;
         margin-top                : 20px;
         display                   : flex;
-        &__form{
-          width                   :550px;
-          border-bottom           : 20px;
+          &__form{
+            width                   :550px;
+            border-bottom           : 20px;
+          }
         }
       }
     }
@@ -294,20 +313,22 @@
         text-align                : center;
       }
       &__burden-form{
-        width                     : 620px;
-        border                    : 1px solid #ccc;
-        border-radius             : 4px;
-        box-sizing                : border-box;
-        font-size                 : 16px;
-        height                    : 48px;
-        line-height               : 1;
-        outline                   : none;
-        padding                   : 13px 0px 0 16px;
-        margin-top                : 25px;
+
         display: flex;
         &__main{
-          width                   :550px;
-          border-bottom           : 20px;
+          select{
+          width                     : 620px;
+          border                    : 1px solid #ccc;
+          border-radius             : 4px;
+          box-sizing                : border-box;
+          font-size                 : 16px;
+          height                    : 48px;
+          line-height               : 1;
+          outline                   : none;
+          padding                   : 13px 0px 0 16px;
+          margin-top                : 25px;
+          background-color: white;
+          }
         }
       }
       &__choice{
@@ -341,12 +362,17 @@
         margin-bottom             : 20px;
       }
       &__price{
-        display                   : inline-block;
+        display                   :flex;
+        justify-content           :space-between;
         font-size                 :14px;
         font-weight               :600;
         margin-top                : 12px;
       }
+      &__price-box{
+        display: flex;
+      }
       &__must{
+        margin-left               : 5px;
         font-size                 :12px;
         font-weight               :600;
         width                     :32px;
@@ -359,6 +385,7 @@
         text-align                : center;
       }
       &__form{
+        input{
         width                     : 177px;
         border                    : 1px solid #ccc;
         border-radius             : 4px;
@@ -370,8 +397,9 @@
         display                   : inline-block;
         margin-left               : 330px;
         padding                   : 15px;
-    text-align                    : right;
+    text-align                    : left;
     vertical-align                : middle;
+        }
       }
       &__fee{
         margin-top                :50px;
@@ -389,18 +417,20 @@
         justify-content           : space-between;
       }
       &__btn{
-        margin                    : 0 auto;
+        text-align                : center;
         margin-top                : 70px;
-        width                     : 360px;
+        width                     : 100%;
+        input{
+        width                     : 30%;
         height                    : 48px;
         background-color          : #2bccd1;
         color                     : #fff;
         font-size                 : 17px;
         min-height                : 48px;
         text-align                : center;
-        padding-top               :10px;
         border-radius             : 4px;
         border                    : 1px solid transparent;
+        }
       }
       &__back{
         text-align                : center;

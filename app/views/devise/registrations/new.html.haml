@@ -1,31 +1,41 @@
 #account-page.account-page
   .account-page__inner
-    .account-page__inner--left.account-page__header
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         .field
           .field-label
             = f.label :ニックネーム
+            .must
+              必須
           .field-input
             = f.text_field :name, autofocus: true, autocomplete: "name"
         .field
           .field-label
             = f.label :メールアドレス
+            .must
+              必須
             %br/
+          .field-input
             = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
           .field-label
             = f.label :パスワード
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{@minimum_password_length} 文字以上)
             %br/
+            .must
+              必須
+          .field-input
             = f.password_field :password, autocomplete: "password"
         .field
           .field-label
             = f.label :パスワード（確認用）
+            .must
+              必須
             %br/
+          .field-input
             = f.password_field :password_confirmation, autocomplete: "password_confirmation"
           .actions
             = f.submit "登録する"

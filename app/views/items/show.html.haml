@@ -6,15 +6,12 @@
           -# = @item.name
         .show-main__contents__item-box__images
           .show-main__contents__item-box__images__top
-            -# = image_tag @item.images.first.image, width: '560', height: '346'
+            = image_tag @item.images.first.image.url, width: '560', height: '346'
           %ul.show-main__contents__item-box__images__others
-            -# - @item.images.image.each do |image|
-            -#   %li
-            -#     = image_tag image, width: '140', height: '87'
-            %li
-              = image_tag 'tapioca2.jpeg', width: '140', height: '87'
-            %li
-              = image_tag 'tapioca3.jpeg', width: '140', height: '87'
+            - @item.images.image.url.each do |image|
+              %li
+                = image_tag image, width: '140', height: '87'
+
         .show-main__contents__item-box__price
           %span
             -# = @item.price
