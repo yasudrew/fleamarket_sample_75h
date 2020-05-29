@@ -16,8 +16,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    Item.find(params[:id]).destroy
-    redirect_to user_path(current_user.id)
+    item = Item.find(params[:id])
+    
+    if item.destroy
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:alert] = '商品の削除に失敗しました。お手数ですが、もう一度やり直してください。'
+      render :show
+      return
+    end
   end
 
   def create
