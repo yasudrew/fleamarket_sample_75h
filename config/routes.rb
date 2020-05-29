@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :show]
   resources :card, only: [:new]
-  resources :items, only: [:new, :show, :create] do
-    collection do
+  resources :items, except: [:index, :update] do
+    member do
       get 'purchase_confirmation'
     end
   end

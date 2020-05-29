@@ -3,31 +3,35 @@
     .show-main__contents
       .show-main__contents__item-box
         %h2.show-main__contents__item-box__name
-          タピオカ
+          = @item.name
         .show-main__contents__item-box__images
           .show-main__contents__item-box__images__top
-            = image_tag asset_path('tapioca.jpeg'), width: '560', height: '346'
+            = image_tag @item.images.first.image.url, width: '560', height: '346'
           %ul.show-main__contents__item-box__images__others
-            %li
-              = image_tag asset_path('tapioca.jpeg'), width: '140', height: '87'
-            %li
-              = image_tag asset_path('tapioca2.jpeg'), width: '140', height: '87'
-            %li
-              = image_tag asset_path('tapioca3.jpeg'), width: '140', height: '87'
+            - @item.images.each do |image|
+              %li
+                = image_tag image.image.url, width: '140', height: '87'
         .show-main__contents__item-box__price
-          %span ¥2,980
+          %span
+            = "¥#{@item.price}"
           .show-main__contents__item-box__price__detail
             %span (税込)
-            %span 送料込み
-        =link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
+            %span
+              = @item.shipping.burden
+        - if user_signed_in?
+          - unless current_user.id == @item.user_id
+            = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
+        - else
+          = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
         .show-main__contents__item-box__description
-          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          = simple_format @item.description
         .show-main__contents__item-box__table
           %table
             %tbody
               %tr
                 %th 出品者
-                %td 田中
+                %td
+                  = @item.user.name
               %tr
                 %th カテゴリ
                 %td
@@ -44,17 +48,20 @@
                 %td
               %tr
                 %th 商品の状態
-                %td 新品/未使用
+                %td
+                  = @item.status
               %tr
                 %th 配送料の負担
-                %td 送料込み（出品者負担)
+                %td
+                  = @item.shipping.burden
               %tr
                 %th 発送元の地域
                 %td
-                  = link_to '青森県', "#"
+                  = @item.shipping.area
               %tr
                 %th 発送日の目安
-                %td 1-2日で発送
+                %td
+                  = @item.shipping.day
         .show-main__contents__item-box__optional-area
           .show-main__contents__item-box__optional-area__like-btn
             %i.fa.fa-star
@@ -63,6 +70,11 @@
             = link_to  "#" do
               %i.fa.fa-flag
                 不適切な商品の通報
+      - if user_signed_in? && current_user.id == @item.user_id
+        .show-main__contents__edit-destroy
+          = link_to '商品の編集', edit_item_path(@item.id), class: 'show-main__contents__edit-destroy__edit-btn'
+          %p or
+          .show-main__contents__edit-destroy__destroy-btn この商品を削除する
       .show-main__contents__comment-box
         = form_with url: '#', class: 'show-main__contents__comment-box__new-comment' do |f|
           = f.text_area :text
@@ -75,8 +87,22 @@
               コメントする
       %ul.show-main__contents__links
         %li
-          = link_to '< 前の商品', "#", class: "left"
+          = link_to '< 前の商品', item_path(@item.id - 1), class: "left"
         %li
-          = link_to '後ろの商品 >', "#", class: "right"
+          = link_to '後ろの商品 >', item_path(@item.id + 1), class: "right"
       .show-main__contents__related-items
         = link_to 'メンズをもっと見る', "#"
+
+  .show-modal
+    .show-modal__body
+      .show-modal__body__messages
+        .show-modal__body__messages__bold
+          確認
+        削除すると二度と復活できません
+        %br
+        %br
+        本当に削除しますか？
+      .show-modal__body__confirmation
+        .show-modal__body__confirmation__cancel-btn
+          キャンセル
+        = link_to '削除する', item_path(@item.id), method: :delete, class: 'show-modal__body__confirmation__delete-btn'
