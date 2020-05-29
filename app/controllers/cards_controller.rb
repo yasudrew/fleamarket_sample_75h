@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 
   def new
     card = Card.where(user_id: current_user.id)
-    # redirect_to action: "show" if card.exists?
+    redirect_to card_path(current_user.id) if card.exists?
   end
 
   def create
@@ -17,13 +17,19 @@ class CardsController < ApplicationController
       customer_id: customer.id,
       user_id: current_user.id
     )
-    @card.save
+    if @card.save
+      redirect_to action: :new
+    else
+      flash.now[:alert] = '登録に失敗しました。お手数ですが、もう一度やり直してください。'
+      render :show
+      return
+    end
   end
 
   def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to action: "new" 
+      redirect_to action: :new
     else
       Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -45,18 +51,18 @@ class CardsController < ApplicationController
         @card_src = "discover.png"
       end
     end
-end
+  end
 
-  # def delete
-  #   card = Card.where(user_id: current_user.id).first
-  #   if card.exists?
-  #     Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
-  #     customer = Payjp::Customer.retrieve(card.customer_id)
-  #     customer.delete
-  #     card.delete
-  #   end
+  def delete
+    card = Card.where(user_id: current_user.id).first
+    if card.present?
+      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
 
-  #   redirect_to action: "new"
-  # end
+    redirect_to action: :new
+  end
 
 end

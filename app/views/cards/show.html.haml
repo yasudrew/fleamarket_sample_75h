@@ -14,7 +14,7 @@
                   %figure
                     = image_tag "#{@card_src}", width: '49', height: '35'
                 %li.container_contents_main__card-info__body__inner__body__logos__delete-btn
-                  = link_to '削除する', '#'
+                  = link_to '削除する', delete_cards_path, method: :delete
               .container_contents_main__card-info__body__inner__body__number
                 = "**** **** **** " + @customer_card.last4
               .container_contents_main__card-info__body__inner__body__expiration-date
