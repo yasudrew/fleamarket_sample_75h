@@ -1,7 +1,6 @@
 @import "reset";
 @import 'font';
 @import "top";
-@import "phenomenon";
 @import "show";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -10,6 +9,7 @@
 @import "users/new";
 @import "users/show";
 @import "cards/new";
+@import "cards/show";
 @import 'parchase_confirmation';
 @import 'items_new';
 @import 'devise/registrations/new';

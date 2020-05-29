@@ -1,3 +1,0 @@
-.form
-  = form_tag do
-    %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "#{ Rails.application.credentials[:payjp][:public_key]}"}

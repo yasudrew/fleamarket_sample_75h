@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'cards#check_phenomenon'
+  root 'items#index'
 
 
 end

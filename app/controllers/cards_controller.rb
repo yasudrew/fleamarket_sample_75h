@@ -2,13 +2,13 @@ class CardsController < ApplicationController
 
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    # redirect_to action: "show" if card.exists?
   end
 
   def create
     Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
     customer = Payjp::Customer.create(
-      card: params[:card_token],
+      card: params['payjp-token'],
       metadata: {user_id: current_user.id}
     )
     
@@ -19,6 +19,33 @@ class CardsController < ApplicationController
     )
     @card.save
   end
+
+  def show
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @customer_card = customer.cards.retrieve(card.card_id)
+
+      card_brand = @customer_card.brand      
+      case card_brand
+      when "Visa"
+        @card_src = "visa.png"
+      when "JCB"
+        @card_src = "jcb.png"
+      when "MasterCard"
+        @card_src = "master-card.png"
+      when "American Express"
+        @card_src = "american_express.png"
+      when "Diners Club"
+        @card_src = "dinersclub.png"
+      when "Discover"
+        @card_src = "discover.png"
+      end
+    end
+end
 
   # def delete
   #   card = Card.where(user_id: current_user.id).first
@@ -32,8 +59,4 @@ class CardsController < ApplicationController
   #   redirect_to action: "new"
   # end
 
-
-  def check_phenomenon
-    
-  end
 end

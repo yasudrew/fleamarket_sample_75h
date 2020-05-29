@@ -5,7 +5,7 @@
         支払い方法
         %hr
         .container_contents_main_addcard__inside
-          = form_tag do
+          = form_tag cards_path do
             %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "クレジットカードを登録する", "data-submit-text" => "クレジットカードを登録する" ,"data-key" => "#{ Rails.application.credentials[:payjp][:public_key]}"}
 
     .container_contents_side

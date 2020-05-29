@@ -1,0 +1,44 @@
+.container
+  .container_contents
+    .container_contents_main
+      .container_contents_main__card-info
+        .container_contents_main__card-info__top
+          お支払い方法
+        .container_contents_main__card-info__body
+          %section.container_contents_main__card-info__body__inner
+            .container_contents_main__card-info__body__inner__top
+              クレジットカード情報
+            .container_contents_main__card-info__body__inner__body
+              %ul.container_contents_main__card-info__body__inner__body__logos
+                %li.container_contents_main__card-info__body__inner__body__logos__logo
+                  %figure
+                    = image_tag "#{@card_src}", width: '49', height: '35'
+                %li.container_contents_main__card-info__body__inner__body__logos__delete-btn
+                  = link_to '削除する', '#'
+              .container_contents_main__card-info__body__inner__body__number
+                = "**** **** **** " + @customer_card.last4
+              .container_contents_main__card-info__body__inner__body__expiration-date
+                - exp_month = @customer_card.exp_month.to_s
+                - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+          .container_contents_main__card-info__body__space
+
+    .container_contents_side
+      .container_contents_side_title
+        設定
+      %ul.container_contents_side_contents
+        %li.container_contents_side_contents_profile
+          = link_to "プロフィール"
+          .container_contents_side_contents_profile_right
+        %li.container_contents_side_contents_address
+          = link_to "住所変更"
+          .container_contents_side_contents_address_right
+        %li.container_contents_side_contents_card
+          = link_to "支払い方法", new_card_path
+          .container_contents_side_contents_card_right
+        %li.container_contents_side_contents_mailpass
+          = link_to "メール / パスワード"
+          .container_contents_side_contents_mailpass_right
+        %li.container_contents_side_contents_logout
+          = link_to "ログアウト", logout_path
+          .container_contents_side_contents_logout_right
