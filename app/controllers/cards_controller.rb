@@ -21,7 +21,7 @@ class CardsController < ApplicationController
       redirect_to action: :new
     else
       flash.now[:alert] = '登録に失敗しました。お手数ですが、もう一度やり直してください。'
-      render :show
+      render :new
       return
     end
   end
