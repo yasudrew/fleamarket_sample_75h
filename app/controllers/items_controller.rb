@@ -1,21 +1,49 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.includes(:images)
   end
 
   def new
+    @item = Item.new
+    @item.build_shipping
+    @item.build_brand
+    @item.images.build
     render layout: 'sub_application'
   end
 
   def show
-    # @item = Item.find(params[:id])
+    @item = Item.includes(:images).find(params[:id])
   end
 
   def destroy
-    Item.find(params[:id]).destroy
-    redirect_to user_path(current_user.id)
+    item = Item.find(params[:id])
+    
+    if item.destroy
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:alert] = '商品の削除に失敗しました。お手数ですが、もう一度やり直してください。'
+      render :show
+      return
+    end
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save!
+      redirect_to root_path
+   else
+      redirect_to new_item_path
+   end
   end
 
   def purchase_confirmation
     render layout: 'sub_application'
+  end
+  private
+  def item_params
+    params.require(:item).permit(:name,:description,:status,:price,:fee,:profit,:buyer_id,
+    category_attributes: [:id,:name], brand_attributes: [:id ,:name], user_id: [:nickname, :email, :password],shipping_attributes:[:id,:burden, :method, :area, :day],
+    images_attributes:[:id,:image])
+    .merge(user_id: current_user.id)
   end
 end

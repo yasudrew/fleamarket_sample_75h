@@ -83,3 +83,7 @@ gem 'devise'
 gem 'jquery-rails'
 
 gem 'payjp'
+
+gem 'carrierwave'
+
+gem 'mini_magick'

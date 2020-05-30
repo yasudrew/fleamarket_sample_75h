@@ -1,17 +1,23 @@
 #account-page.account-page
   .account-page__inner
-    .account-page__inner--left.account-page__header
-    .account-page__inner--right.user-form
+    .account-page__inner--user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .user_registration
+          = link_to "新規登録", new_user_registration_path, class: 'user_registration__move'
+        .registration_text
+          .registration_text__inside
+            ↑登録していない方はこちら↑
         .field
           .field-label
             = f.label :メールアドレス
             %br/
+          .field-input
             = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
           .field-label
             = f.label :パスワード
             %br/
+          .field-input
             = f.password_field :password, autocomplete: "current-password"
         .actions
           = f.submit "ログイン"
