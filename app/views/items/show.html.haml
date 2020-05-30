@@ -24,9 +24,9 @@
               -# = @item.shippings.burdenに応じて出力
         - if user_signed_in?
           -# - unless current_user.id == @item.user_id
-            -# = link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
+            -# = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
         - else
-          = link_to '購入画面に進む',purchase_confirmation_items_path , class: 'show-main__contents__item-box__buy-btn'
+          -# = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
         .show-main__contents__item-box__description
           -# = simple_format @item.description
         .show-main__contents__item-box__table
@@ -35,7 +35,7 @@
               %tr
                 %th 出品者
                 %td
-                  -# = @item.users.name
+                  -# = @item.user.name
               %tr
                 %th カテゴリ
                 %td

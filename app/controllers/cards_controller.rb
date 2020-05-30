@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
 
   def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to card_path(current_user.id) if card.exists?
+    card = current_user.cards.first
+    redirect_to card_path(current_user.id) if card.present?
   end
 
   def create
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
   end
 
   def show
-    card = Card.where(user_id: current_user.id).first
+    card = current_user.cards.first
     if card.blank?
       redirect_to action: :new
     else
@@ -54,7 +54,7 @@ class CardsController < ApplicationController
   end
 
   def delete
-    card = Card.where(user_id: current_user.id).first
+    card = current_user.cards.first
     if card.present?
       Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -63,6 +63,26 @@ class CardsController < ApplicationController
     end
 
     redirect_to action: :new
+  end
+
+  def purchase
+    card = current_user.cards.first
+    if card.blank?
+      redirect_to action: :new, alert: '購入にはクレジットカード登録が必要です'
+    else
+      @item = Item.find(params[:id])
+      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+      Payjp::Charge.create(
+      amount: @item.price,
+      customer: card.customer_id,
+      currency: 'jpy'
+      )
+      if @product.update(buyer_id: current_user.id)
+        redirect_to controller: :items, action: :show , notice: 'お買い上げいただき誠にありがとうございます。'
+      else
+        redirect_to controller: :items, action: :show, alert: '購入に失敗しました。お手数ですが、もう一度やり直してください。'
+      end
+    end
   end
 
 end
