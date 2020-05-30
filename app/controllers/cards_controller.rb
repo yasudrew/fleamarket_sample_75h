@@ -68,7 +68,8 @@ class CardsController < ApplicationController
   def purchase
     card = current_user.cards.first
     if card.blank?
-      redirect_to action: :new, alert: '購入にはクレジットカード登録が必要です'
+      redirect_to action: :new
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       @item = Item.find(params[:id])
       Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
@@ -77,10 +78,12 @@ class CardsController < ApplicationController
       customer: card.customer_id,
       currency: 'jpy'
       )
-      if @product.update(buyer_id: current_user.id)
-        redirect_to controller: :items, action: :show , notice: 'お買い上げいただき誠にありがとうございます。'
+      if @item.update(buyer_id: current_user.id)
+        redirect_to controller: :items, action: :show
+        flash[:notice] = 'お買い上げいただき誠にありがとうございます。'
       else
-        redirect_to controller: :items, action: :show, alert: '購入に失敗しました。お手数ですが、もう一度やり直してください。'
+        redirect_to controller: :items, action: :show
+        flash[:alert] = '購入に失敗しました。お手数ですが、もう一度やり直してください。'
       end
     end
   end

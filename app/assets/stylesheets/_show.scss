@@ -63,20 +63,35 @@
         }
 
         &__buy-btn {
-          &:hover {
-            opacity: 0.9;
-          }
-          display: block;
           margin-top: 16px;
-          background-color: #3ccace;
-          color: #fff;
           text-align: center;
           font-size: 24px;
           font-weight: 600;
           line-height: 60px;
           text-decoration: none;
-          border: 1px solid #3ccace;
-          border-radius: 100px;
+          
+
+          &__sold {
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            background-color: rgb(167, 165, 165);
+            border: 1px solid #888;
+            border-radius: 100px;
+          }
+
+          &__available {
+            &:hover {
+              opacity: 0.9;
+            }
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            background-color: #3ccace;
+            border: 1px solid #3ccace;
+            display: block;
+            border-radius: 100px;
+          }
         }
         
         &__description {
@@ -232,6 +247,18 @@
             background-color: #f8f8f8;
             margin: 10px 0;
             text-align: left;
+          }
+
+          .comment-when-sold {
+            margin: auto;
+            font-size: 18px;
+            color: #fff;
+            line-height: 48px;
+            width: 60%;
+            margin-top: 24px;
+            background-color: rgb(163, 162, 162);
+            border: 1px solid #888;
+            border-radius: 100px;
           }
 
           button {

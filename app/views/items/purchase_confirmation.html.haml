@@ -6,35 +6,37 @@
       .confirmation-container__main__contents__item__inner
         .confirmation-container__main__contents__item__inner__item-box
           %h3.confirmation-container__main__contents__item__inner__item-box__image
-            = image_tag 'tapioca.jpeg', width: '80', height: '80'
+            = image_tag @item.images.first.image.url, width: '80', height: '80'
           .confirmation-container__main__contents__item__inner__item-box__detail
             %p.confirmation-container__main__contents__item__inner__item-box__detail__name
-              タピオカ
+              = @item.name
             %p.confirmation-container__main__contents__item__inner__item-box__detail__price
               %span
-                ¥2,980
+                = "¥#{@item.price}"
               %spna.tax-and-shipping-fee
-                （税込）送料込み
+                = "（税込）#{@item.shipping.burden}"
     %section.confirmation-container__main__contents__item
       .confirmation-container__main__contents__item__inner
         %ul.confirmation-container__main__contents__item__inner__price-table
           %li.confirmation-container__main__contents__item__inner__price-table__left
             支払い金額
           %li.confirmation-container__main__contents__item__inner__price-table__right
-            ¥2,980
+            = "¥#{@item.price}"
         .confirmation-container__main__contents__item__inner__user-info
           .confirmation-container__main__contents__item__inner__user-info__top
             %h3
               支払い方法
-            = link_to '変更する', "#"
+            = link_to '変更する', card_path(current_user.id)
           %p.confirmation-container__main__contents__item__inner__user-info__text
             クレジットカード
             %br
-            ************1234
+            = "**** **** **** " + @customer_card.last4
             %br
-            有効期限 01 / 23
+            - exp_month = @customer_card.exp_month.to_s
+            - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+            = '有効期限 '+ exp_month + " / " + exp_year
           %figure.card-logo
-            = image_tag 'visa.png', width: '34', height: '20'
+            = image_tag "#{@card_src}", width: '34', height: '20'
         .confirmation-container__main__contents__item__inner__user-info
           .confirmation-container__main__contents__item__inner__user-info__top
             %h3
@@ -48,5 +50,4 @@
               %br
               鈴木一郎
         %section
-          %button.buy-button{type: "submit"}
-            購入する
+          = link_to '購入する', purchase_card_path(@item.id), method: :post, class: 'buy-button'

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     collection do
       delete :delete
     end
+    member do
+      post :purchase
+    end
   end
   resources :items, except: [:index, :update] do
     member do
