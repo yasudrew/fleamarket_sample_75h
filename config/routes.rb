@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout_page'
 
   resources :users, only: [:new, :show]
+  
   resources :cards, only: [:new, :create, :show] do
     collection do
       delete :delete
@@ -14,6 +15,14 @@ Rails.application.routes.draw do
       post :create_for_purchase
     end
   end
+
+  resources :profiles, only: [:new, :create] do
+    collection do
+      get 'step1'
+      get 'step2'
+    end
+  end
+
   resources :items, except: [:index, :update] do
     member do
       get :purchase_confirmation

@@ -1,0 +1,51 @@
+.profile-name-page
+  .profile-name-page__inner
+    .profile-name-page__inner__user-form
+      = form_for @profile, url: step2_profiles_path, method: :get do |f|
+
+        .field
+          .field-label
+            = f.label :苗字
+            .must
+              必須
+            %br/
+          .field-input
+            = f.text_field :family_name, autofocus: true, autocomplete: "family_name"
+
+        .field
+          .field-label
+            = f.label :名前
+            .must
+              必須
+            %br/
+          .field-input
+            = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
+
+        .field
+          .field-label
+            = f.label :苗字（カナ）
+            .must
+              必須
+            %br/
+          .field-input
+            = f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana"
+
+        .field
+          .field-label
+            = f.label :名前（カナ）
+            .must
+              必須
+            %br/
+          .field-input
+            = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana"
+
+        .field
+          .field-label
+            = f.label :誕生日
+            .must
+              必須
+            %br/
+          .field-input
+            = f.text_field :birth_day, autofocus: true, autocomplete: "birth_day"
+          .actions
+            = f.submit "住所登録へ進む"
