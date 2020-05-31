@@ -1,0 +1,51 @@
+.profile-address-page
+  .profile-address-page__inner
+    .profile-address-page__inner__user-form
+      = form_for @profile, url: profiles_path, method: :post do |f|
+
+        .field
+          .field-label
+            = f.label :郵便番号
+            .must
+              必須
+            %bl/
+          .field-input
+            = f.text_field :post_code, autofocus: true, autocomplete: "post_code"
+
+        .field
+          .field-label
+            = f.label :都道府県
+            .must
+              必須
+            %bl/
+          .field-input
+            = f.text_field :prefecture, autofocus: true, autocomplete: "prefecture"
+
+        .field
+          .field-label
+            = f.label :市区町村
+            .must
+              必須
+            %bl/
+          .field-input
+            = f.text_field :city, autofocus: true, autocomplete: "city"
+
+        .field
+          .field-label
+            = f.label :番地
+            .must
+              必須
+            %bl/
+          .field-input
+            = f.text_field :address, autofocus: true, autocomplete: "address"
+
+        .field
+          .field-label
+            = f.label :建物名
+            .up-to-you
+              任意
+            %bl/
+          .field-input
+            = f.text_field :building_name, autofocus: true, autocomplete: "building_name"
+          .actions
+            = f.submit "登録する"

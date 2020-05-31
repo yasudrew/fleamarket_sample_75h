@@ -9,7 +9,7 @@
 
 ## アソシエーション
 - has_one : profile dependent: : destroy
-- has_one : card  dependent: : destroy
+- has_one : card dependent: : destroy
 - has_many : items dependent: : destroy
 - has_many : comments
 
@@ -19,7 +19,7 @@
 |------|----|-------|
 |card_id|string|null:false|
 |customer_id|string|null:false|
-|user_id|integer|null:false, foregin_key: true|
+|user_id|integer|null:false, foreign_key: true|
 
 ## アソシエーション
 - belongs_to : user
@@ -32,7 +32,7 @@
 |first_name|string|null:false|
 |family_name_kana|string|null:false|
 |first_name_kana|string|null:false|
-|birth_day|data|null:false|
+|birth_day|date|null:false|
 |post_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|

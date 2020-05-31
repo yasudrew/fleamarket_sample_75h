@@ -1,12 +1,10 @@
 .container
   .container_contents
     .container_contents_main
-      .container_contents_main_addcard
-        支払い方法
-        %hr
-        .container_contents_main_addcard_inside
-          = link_to "クレジットカードを登録する", "#", class: "container_contents_main_addcard_inside_bottun"
-
+      .container_contents_main_address
+        .container_contents_main_address_inside
+          = link_to "本人確認情報を登録する", step1_profiles_path, method: :get, class: "container_contents_main_address_inside_bottun"
+      
     .container_contents_side
       .container_contents_side_title
         設定
