@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2020_05_28_024709) do
     t.string "building_name"
     t.integer "user_id", null: false
 
-ActiveRecord::Schema.define(version: 2020_05_26_133829) do
-
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
