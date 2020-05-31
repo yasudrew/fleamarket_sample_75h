@@ -141,6 +141,7 @@
                 &:hover {
                   opacity: 0.9;
                 }
+                display: block;
                 background-color: #3ccace;
                 border: 1px solid #3ccace;
                 color: #fff;
@@ -148,7 +149,6 @@
                 line-height: 48px;
                 font-size: 14px;
                 font-weight: 600;
-                cursor: pointer;
               }
             }
           }
