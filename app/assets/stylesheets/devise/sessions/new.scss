@@ -16,23 +16,25 @@
     }
   }
   .user_registration {
-    width                             : 100%;
+    width                             : 200px;
     background-color                  : #3CCACE;
-    margin-top                        : 25px;
+    margin-top                        : 30px;
+    margin-left                       : 20px;
     text-align                        : center;
-    padding                           : 5px;
+    cursor                            : pointer;
 
     &__move {
       color                           : #ffffff;
-      font-weight                     : bold;
+      font-size                       : 20px;
+      font-weight                     : 200;
     }
   }
 
   .registration_text {
-    width                             : 100%;
+    width                             : 300px;
   
     &__inside {
-      margin-left                     : 15px;
+      margin-left                      : 27px;
     }
   }
 
