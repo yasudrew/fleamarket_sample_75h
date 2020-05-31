@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     card = current_user.cards.first
     if card.blank?
-      redirect_to controller: :cards, action: :new
+      redirect_to new_for_purchase_card_path(@item.id)
       flash[:alert] = '購入にはクレジットカード登録が必要です'
       return
     else

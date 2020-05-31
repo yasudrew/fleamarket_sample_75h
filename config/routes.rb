@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
     member do
       post :purchase
+      get :new_for_purchase
+      post :create_for_purchase
     end
   end
   resources :items, except: [:index, :update] do

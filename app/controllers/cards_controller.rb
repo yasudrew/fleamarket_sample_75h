@@ -1,6 +1,14 @@
 class CardsController < ApplicationController
 
   def new
+    @path = Rails.application.routes.recognize_path(request.referer)
+    card = current_user.cards.first
+    redirect_to card_path(current_user.id) if card.present?
+  end
+
+  def new_for_purchase
+    @item_id = params[:id] 
+    @path = Rails.application.routes.recognize_path(request.referer)
     card = current_user.cards.first
     redirect_to card_path(current_user.id) if card.present?
   end
@@ -22,6 +30,27 @@ class CardsController < ApplicationController
     else
       flash.now[:alert] = '登録に失敗しました。お手数ですが、もう一度やり直してください。'
       render :new
+      return
+    end
+  end
+
+  def create_for_purchase
+    Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+    customer = Payjp::Customer.create(
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+    )
+    
+    @card = Card.new(
+      card_id: customer.default_card,
+      customer_id: customer.id,
+      user_id: current_user.id
+    )
+    if @card.save
+      redirect_to purchase_confirmation_item_path(params[:id])
+    else
+      flash.now[:alert] = '登録に失敗しました。お手数ですが、もう一度やり直してください。'
+      render :new_for_purchase
       return
     end
   end
