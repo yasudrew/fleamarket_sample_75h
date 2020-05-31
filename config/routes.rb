@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     end
   end
   resources :card, only: [:new]
-  resources :items, only: [:new, :show] do
-    collection do
+  resources :items, except: [:index, :update] do
+    member do
       get 'purchase_confirmation'
     end
   end

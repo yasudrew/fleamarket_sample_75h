@@ -355,6 +355,7 @@ header{
     background-color: #f8f8f8;
     height: 100%;
     .product-box{
+      text-align: center;
       .product-head{
         text-align: center;
         a{
@@ -367,14 +368,17 @@ header{
         }
       }
       .product-lists{
-        width: 780px;
+        width: 90%;
         margin: 26px auto;
+        padding-left: 55px;
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
         .product-list{
-          width: 220px;
           display: inline-block;
           text-align: center;
+          margin-right: 20px;
+          margin-bottom: 30px;
           a{
             background-color: #fff;
             display: inline-block;
