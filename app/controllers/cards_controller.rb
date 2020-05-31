@@ -3,13 +3,11 @@ class CardsController < ApplicationController
   before_action  :set_card, except:[:create, :create_for_purchase]
 
   def new
-    card = current_user.cards.first
     redirect_to card_path(current_user.id) if card.present?
   end
 
   def new_for_purchase
     @item_id = params[:id] 
-    card = current_user.cards.first
     redirect_to card_path(current_user.id) if card.present?
   end
 
@@ -56,7 +54,6 @@ class CardsController < ApplicationController
   end
 
   def show
-    card = current_user.cards.first
     if card.blank?
       redirect_to action: :new
     else
@@ -83,7 +80,6 @@ class CardsController < ApplicationController
   end
 
   def delete
-    card = current_user.cards.first
     if card.present?
       Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -95,7 +91,6 @@ class CardsController < ApplicationController
   end
 
   def purchase
-    card = current_user.cards.first
     if card.blank?
       redirect_to action: :new
       flash[:alert] = '購入にはクレジットカード登録が必要です'
