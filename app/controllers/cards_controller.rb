@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  
+  before_action  :set_card, except:[:create, :create_for_purchase]
 
   def new
     card = current_user.cards.first
@@ -7,7 +9,6 @@ class CardsController < ApplicationController
 
   def new_for_purchase
     @item_id = params[:id] 
-    @path = Rails.application.routes.recognize_path(request.referer)
     card = current_user.cards.first
     redirect_to card_path(current_user.id) if card.present?
   end
@@ -114,6 +115,11 @@ class CardsController < ApplicationController
         flash[:alert] = '購入に失敗しました。お手数ですが、もう一度やり直してください。'
       end
     end
+  end
+
+  private
+  def set_card
+    card = current_user.cards.first
   end
 
 end
