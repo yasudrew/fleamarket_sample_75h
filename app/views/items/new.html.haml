@@ -52,6 +52,7 @@
           .exhibition__third__main__choice__message
             = f.fields_for :category do |category|
               = category.select :name, 'レディース': 1,'メンズ': 2,'ベビー・キッズ': 3,'インテリア・住まい・小物': 4, '本・音楽・ゲーム':5, 'おもちゃ・ホビー・グッズ':6,'コスメ・香水・美容':7,'家電・スマホ・カメラ':8,'スポーツ・レジャー':9,'ハンドメイド':10,'チケット':11,'自動車・オートバイ':12,'その他':13
+              -#あとでJS組む
         -# .exhibition__third__main__choice
         -#   .exhibition__third__main__choice__message
         -#     カテゴリー２
@@ -143,14 +144,15 @@
               必須
           .exhibition__fifth__main__form
             = f.number_field :price, placeholder: '例）300'
-        .exhibition__fifth__main__fee
-          販売手数料(10%)
-          .exhibition__fifth__main__fee1
-            = f.number_field :fee
-        .exhibition__fifth__main__profit
-          販売利益
-          .exhibition__fifth__main__profit1
-            = f.number_field :profit
+        -#　あとでJS組む
+        -# .exhibition__fifth__main__fee
+        -#   販売手数料(10%)
+        -#   .exhibition__fifth__main__fee1
+        -#     = f.number_field :fee
+        -# .exhibition__fifth__main__profit
+        -#   販売利益
+        -#   .exhibition__fifth__main__profit1
+        -#     = f.number_field :profit
         .exhibition__fifth__main__btn
           = f.submit '出品する'
         .exhibition__fifth__main__back
