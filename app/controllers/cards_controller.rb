@@ -1,7 +1,6 @@
 class CardsController < ApplicationController
 
   def new
-    @path = Rails.application.routes.recognize_path(request.referer)
     card = current_user.cards.first
     redirect_to card_path(current_user.id) if card.present?
   end
