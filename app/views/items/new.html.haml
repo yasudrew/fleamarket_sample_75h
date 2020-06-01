@@ -48,22 +48,7 @@
         .exhibition__third__main__must
           必須
         .exhibition__third__main__choice
-          .exhibition__third__main__choice__message
-            カテゴリー１
-          .exhibition__third__main__choice__icon
-            = icon('fas', 'chevron-down')
-        .exhibition__third__main__choice
-          .exhibition__third__main__choice__message
-            カテゴリー２
-          .exhibition__third__main__choice__icon
-            = icon('fas', 'chevron-down')
-        .exhibition__third__main__choice
-          .exhibition__third__main__choice__message
-            カテゴリー３
-          .exhibition__third__main__choice__icon
-            = icon('fas', 'chevron-down')
-        .exhibition__third__main__must-choice
-          カテゴリー選択してください
+          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
         .exhibition__third__main__size
           サイズ
         .exhibition__third__main__must

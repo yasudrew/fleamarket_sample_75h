@@ -172,6 +172,7 @@
         text-align                : center;
       }
       &__choice{
+        #parent_category{
         width                     : 620px;
         border                    : 1px solid #ccc;
         border-radius             : 4px;
@@ -180,15 +181,43 @@
         height                    : 48px;
         line-height               : 1;
         outline                   : none;
-        padding                   : 13px 0px 0 16px;
         margin-top                : 25px;
+        padding: 0 10px;
         display: flex;
+        }
         
         &__message{
           width                   :550px;
         }
         &__icon{
           text-align              : right;
+        }
+
+        #child_category{
+          width                     : 620px;
+          border                    : 1px solid #ccc;
+          border-radius             : 4px;
+          box-sizing                : border-box;
+          font-size                 : 16px;
+          height                    : 48px;
+          line-height               : 1;
+          outline                   : none;
+          margin-top                : 25px;
+          padding: 0 10px;
+          display: flex;
+        }
+        #grandchild_category{
+          width                     : 620px;
+          border                    : 1px solid #ccc;
+          border-radius             : 4px;
+          box-sizing                : border-box;
+          font-size                 : 16px;
+          height                    : 48px;
+          line-height               : 1;
+          outline                   : none;
+          margin-top                : 25px;
+          padding: 0 10px;
+          display: flex;
         }
       }
       &__must-choice{

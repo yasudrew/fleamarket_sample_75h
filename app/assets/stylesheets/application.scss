@@ -1,5 +1,6 @@
 @import "reset";
 @import 'font';
+@import 'sessions/flash';
 @import "top";
 @import "show";
 @import "font-awesome-sprockets";
@@ -15,4 +16,3 @@
 @import 'items_new';
 @import 'devise/registrations/new';
 @import 'devise/sessions/new';
-@import 'sessions/flash';
