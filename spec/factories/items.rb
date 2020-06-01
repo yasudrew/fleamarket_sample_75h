@@ -12,6 +12,10 @@ FactoryBot.define do
     fee               {"100"}
     profit            {"900"}
     buyer_id          {""}
+    user_id            {"1"}
+
+    after(:create) do |item|
+      create_list(:images, 3, item: item)
   end
 
 end
