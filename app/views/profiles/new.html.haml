@@ -1,0 +1,26 @@
+.container
+  .container_contents
+    .container_contents_main
+      .container_contents_main_address
+        .container_contents_main_address_inside
+          = link_to "本人確認情報を登録する", step1_profiles_path, method: :get, class: "container_contents_main_address_inside_bottun"
+      
+    .container_contents_side
+      .container_contents_side_title
+        設定
+      %ul.container_contents_side_contents
+        %li
+          = link_to "プロフィール","#"
+          .container_contents_side_contents_profile_right
+        %li
+          = link_to "本人確認情報", new_profile_path
+          .container_contents_side_contents_address_right
+        %li
+          = link_to "支払い方法", card_page_path
+          .container_contents_side_contents_card_right
+        %li
+          = link_to "メール / パスワード","#"
+          .container_contents_side_contents_mailpass_right
+        %li
+          = link_to "ログアウト", logout_path, class: "container_contents_side_contents_logout"
+          .container_contents_side_contents_logout_right

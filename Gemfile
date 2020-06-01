@@ -80,9 +80,10 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 
+gem 'jquery-rails'
+
+gem 'payjp'
+
 gem 'carrierwave'
 
 gem 'mini_magick'
-
-gem 'jquery-rails'
-

@@ -1,11 +1,11 @@
 FactoryBot.define do
 
   factory :user do
-    id                {"1"}
-    name              {"abe"}
-    email                 {"kkk@gmail.com"}
-    password              {"00000000"}
-    password_confirmation {"00000000"}
+    id                    {"1"}
+    name                  {"aaaaaa"}
+    email                 {"aaa@aaa"}
+    password              {"0000000"}
+    password_confirmation {"0000000"}
   end
 
 end

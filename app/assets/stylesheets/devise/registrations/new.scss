@@ -71,15 +71,16 @@
     text-align                        : center;
     margin-bottom                     : 10px;
     letter-spacing                    : 3px;
-    font-size                         : 30px;
+    font-size                         : 20px;
     font-weight                       : 200;
 
     input[type='submit'] {
       width                           : 200px;
-      margin-top                      : 25px;
+      margin-top                      : 50px;
       margin-bottom                   : 25px;
       color                           : #fff;
       background-color                : #3CCACE;
+      cursor                          : pointer;
     }
   }
 

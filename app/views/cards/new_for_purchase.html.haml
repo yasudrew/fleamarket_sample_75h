@@ -4,9 +4,9 @@
       .container_contents_main_addcard
         支払い方法
         %hr
-        .container_contents_main_addcard_inside
-          = link_to "クレジットカードを登録する", "#", class: "container_contents_main_addcard_inside_bottun"
-
+        .container_contents_main_addcard__inside
+          = form_tag create_for_purchase_card_path(@item_id) do
+            %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "クレジットカードを登録する", "data-submit-text" => "クレジットカードを登録する" ,"data-key" => "#{ Rails.application.credentials[:payjp][:public_key]}"}
     .container_contents_side
       .container_contents_side_title
         設定
@@ -18,7 +18,7 @@
           = link_to "住所変更"
           .container_contents_side_contents_address_right
         %li.container_contents_side_contents_card
-          = link_to "支払い方法", card_page_path
+          = link_to "支払い方法", new_card_path
           .container_contents_side_contents_card_right
         %li.container_contents_side_contents_mailpass
           = link_to "メール / パスワード"

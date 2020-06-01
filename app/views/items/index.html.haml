@@ -99,32 +99,16 @@
           = link_to '#' do
             .title
               商品一覧
-        .product-lists
-          .product-list
-            = link_to 'items/1'  do
-              .product-list__img
-                = image_tag'a007.png'
-              .product-list__content
-                .name
-                  product1
-                .price
-                  1000円
-          .product-list
-            = link_to '#' do
-              .product-list__img
-                = image_tag'a007.png'
-              .product-list__content
-                .name
-                  product2
-                .price
-                  1000円
-          .product-list
-            = link_to '#' do
-              .product-list__img
-                = image_tag'a007.png'
-              .product-list__content
-                .name
-                  product3
-                .price
-                  1000円
-
+        %ul.product-lists
+          - @items.each do |item|
+            %li.product-list 
+              -if item.buyer_id == nil
+                = link_to item_path(item.id)  do
+                  .product-list__img
+                    = image_tag item.images.first.image.url
+                  .product-list__content
+                    .name
+                      = item.name
+                    .price
+                      = item.price
+                      円

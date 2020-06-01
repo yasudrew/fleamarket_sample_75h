@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.includes(:images)
   end
 
   def new
@@ -12,7 +13,19 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.new
+    @item = Item.includes(:images).find(params[:id])
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    
+    if item.destroy
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:alert] = '商品の削除に失敗しました。お手数ですが、もう一度やり直してください。'
+      render :show
+      return
+    end
   end
 
   def create
@@ -20,14 +33,41 @@ class ItemsController < ApplicationController
     profit = item_params[:price].to_i - fee
     @item = Item.new(item_params.merge(fee: fee, profit: profit))
     if @item.save
+
       redirect_to root_path
    else
       redirect_to new_item_path
-      #flash.now[:alert] = ‘登録に失敗しました。お手数ですが、もう一度やり直してください。’
    end
   end
 
   def purchase_confirmation
+    @item = Item.find(params[:id])
+    card = current_user.cards.first
+    if card.blank?
+      redirect_to new_for_purchase_card_path(@item.id)
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
+      return
+    else
+      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @customer_card = customer.cards.retrieve(card.card_id)
+
+      card_brand = @customer_card.brand      
+      case card_brand
+      when "Visa"
+        @card_src = "visa.png"
+      when "JCB"
+        @card_src = "jcb.png"
+      when "MasterCard"
+        @card_src = "master-card.png"
+      when "American Express"
+        @card_src = "american_express.png"
+      when "Diners Club"
+        @card_src = "dinersclub.png"
+      when "Discover"
+        @card_src = "discover.png"
+      end
+    end
     render layout: 'sub_application'
   end
   private

@@ -9,18 +9,18 @@
       .container_contents_side_title
         設定
       %ul.container_contents_side_contents
-        %li.container_contents_side_contents_profile
+        %li
           = link_to "プロフィール","#"
           .container_contents_side_contents_profile_right
-        %li.container_contents_side_contents_address
-          = link_to "住所変更","#"
+        %li
+          = link_to "本人確認情報", new_profile_path
           .container_contents_side_contents_address_right
-        %li.container_contents_side_contents_card
-          = link_to "支払い方法", "/card_page"
+        %li
+          = link_to "支払い方法", new_card_path
           .container_contents_side_contents_card_right
-        %li.container_contents_side_contents_mailpass
+        %li
           = link_to "メール / パスワード","#"
           .container_contents_side_contents_mailpass_right
-        %li.container_contents_side_contents_logout
-          = link_to "ログアウト", "/logout"
+        %li
+          = link_to "ログアウト", logout_path, class: "container_contents_side_contents_logout"
           .container_contents_side_contents_logout_right

@@ -1,0 +1,111 @@
+* {
+  box-sizing                            : border-box;
+  background-repeat                     : no-repeat;
+  margin                                : 0;
+  padding                               : 0;
+
+  a {
+    text-decoration                     : none;
+    color                               : black;
+  }
+}
+
+  .container {
+    background-color                    : #f5f5f5;
+    &_contents {
+      width                             : 100%;
+      max-width                         : 1040px;
+      height                            : 1050px;
+      margin                            : 0 auto 0;
+      padding                           : 0 0 40px;
+      position                          : relative;
+      font-family                       : 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+
+      &_main {
+        background-color                : #f5f5f5;
+        float                           : right;
+        width                           : 700px;
+        margin-top                      : 40px;
+
+        &_addcard {
+          font-weight: bold;
+          font-size: 19px;
+          background-color              : white;
+          width                         : 700px;
+          height                        : 200px;
+          padding                       : 20px;
+          text-align                    : center;
+          position                      : relative;
+
+          hr {
+            border                      : 0;
+            border-top                  : 1px solid gray;
+          }
+
+          &__inside {
+            margin-top              : 50px;
+            margin-right            : auto;
+            margin-left             : auto;
+            padding                 : 20px;
+            text-align              : center;
+            font-weight             : bold;
+            width                   : 250px;
+            font-size               : 15px;
+            font-weight             : bold;
+            text-decoration         : none;
+            display                 : block;
+            text-align              : center;
+            padding                 : 8px 0 10px;
+            color                   : #ffffff;
+            background-color        : #3CCACE;
+
+            #payjp_checkout_box {
+              text-align: center;
+            
+              input[type=button] {
+                background-image: initial !important;
+                background-color: #3ccace !important;
+                border: 1px solid #3ccace !important;
+                font-size: 15px !important;
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+
+      &_side {
+        background-color                : #ffffff;
+        float                           : left;
+        width                           : 280px;
+        margin-top                      : 40px;
+
+        &_title {
+          display                       : block;
+          min-height                    : 48px;
+          padding                       : 16px;
+          background                    : #fff;
+          font-size                     : 19px;
+          color                         : #333;
+          font-weight                   : bold;
+        }
+
+        &_contents {
+          a {
+            position                    : relative;
+            display                     : block;
+            min-height                  : 48px;
+            padding                     : 16px;
+            background                  : #fff;
+            font-size                   : 14px;
+            color                       : #333; 
+            border-top                  : 1px solid #bbb;
+
+            &:hover {
+              background-color            : #f5f5f5;
+            }
+          }
+        }
+      }
+    }
+  }
