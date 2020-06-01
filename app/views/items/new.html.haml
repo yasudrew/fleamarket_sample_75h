@@ -109,7 +109,7 @@
         .exhibition__forth__main__burden-form
           .exhibition__forth__main__burden-form__main
             = f.fields_for :shipping do |shipping|
-              = shipping.select :method, らくらくメール便: 1,ゆうメール: 2,レターパック: 3,普通郵便: 4,クロネコヤマト: 5,ゆうパック: 6,ゆうパケット: 7
+              = shipping.select :shipping_way, らくらくメール便: 1,ゆうメール: 2,レターパック: 3,普通郵便: 4,クロネコヤマト: 5,ゆうパック: 6,ゆうパケット: 7
         .exhibition__forth__main__choice
           選択してください
         .exhibition__forth__main__type
