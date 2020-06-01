@@ -5,17 +5,19 @@ FactoryBot.define do
     association :brand
     association :user
     association :shipping
+    id                {"1"}
     name              {"abe"}
     description       {"akfahfahfdhfko;ahf"}
     status            {"1"}
     price             {"1000"}
     fee               {"100"}
     profit            {"900"}
-    buyer_id          {""}
+    buyer_id          {"1"}
     user_id            {"1"}
+    category_id        {"1"}
 
-    after(:create) do |item|
-      create_list(:images, 3, item: item)
+  
+    
   end
 
 end
