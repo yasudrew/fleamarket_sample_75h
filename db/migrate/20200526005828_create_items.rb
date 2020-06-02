@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :profit, null: false
       t.integer :buyer_id
       t.references :user, type: :bigint, foreign_key: true
-
+      t.references :category
       t.timestamps
     end
   end

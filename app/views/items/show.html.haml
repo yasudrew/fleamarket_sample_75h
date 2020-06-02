@@ -46,11 +46,11 @@
               %tr
                 %th カテゴリ
                 %td
-                  = link_to 'メンズ', "#"
+                  = link_to @parent.name
                   %br
-                  = link_to 'ジャケット/アウター', "#"
+                  = link_to @children.name
                   %br
-                  = link_to 'ノーカラージャケット', "#"
+                  = link_to @category.name
               %tr
                 %th ブランド
                 %td

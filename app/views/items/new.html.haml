@@ -49,22 +49,7 @@
         .exhibition__third__main__must
           必須
         .exhibition__third__main__choice
-          .exhibition__third__main__choice__message
-            = f.fields_for :category do |category|
-              = category.select :name, 'レディース': 1,'メンズ': 2,'ベビー・キッズ': 3,'インテリア・住まい・小物': 4, '本・音楽・ゲーム':5, 'おもちゃ・ホビー・グッズ':6,'コスメ・香水・美容':7,'家電・スマホ・カメラ':8,'スポーツ・レジャー':9,'ハンドメイド':10,'チケット':11,'自動車・オートバイ':12,'その他':13
-              -#あとでJS組む
-        -# .exhibition__third__main__choice
-        -#   .exhibition__third__main__choice__message
-        -#     カテゴリー２
-        -#   .exhibition__third__main__choice__icon
-        -#     = icon('fas', 'chevron-down')
-        -# .exhibition__third__main__choice
-        -#   .exhibition__third__main__choice__message
-        -#     カテゴリー３
-        -#   .exhibition__third__main__choice__icon
-        -#     = icon('fas', 'chevron-down')
-        -# .exhibition__third__main__must-choice
-        -#   カテゴリー選択してください
+          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
         -# .exhibition__third__main__size
         -#   サイズ
         -# .exhibition__third__main__must

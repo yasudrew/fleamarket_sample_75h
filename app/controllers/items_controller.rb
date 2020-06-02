@@ -10,10 +10,24 @@ class ItemsController < ApplicationController
     @item.images.build
     @item.build_category
     render layout: 'sub_application'
+
+    @category_parent_array = ["---"]
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  def get_category_children
+    @category_children = Category.find(params[:parent_id]).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
   end
 
   def show
     @item = Item.includes(:images).find(params[:id])
+    @category = @item.category
+    @children = @category.parent
+    @parent = @children.parent
   end
 
   def destroy
@@ -33,11 +47,12 @@ class ItemsController < ApplicationController
     profit = item_params[:price].to_i - fee
     @item = Item.new(item_params.merge(fee: fee, profit: profit))
     if @item.save
-
       redirect_to root_path
-   else
+      flash[:notice] = '出品ありがとうございます。下部の商品一覧よりご確認ください。'
+    else
       redirect_to new_item_path
-   end
+      flash[:alert] = '商品の出品に失敗しました。お手数ですが、もう一度やり直してください。'
+    end
   end
 
   def purchase_confirmation
@@ -73,7 +88,7 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name,:description,:status,:price,:buyer_id,
-    category_attributes: [:id,:name], brand_attributes: [:id ,:name], user_id: [:nickname, :email, :password],shipping_attributes:[:id,:burden, :shipping_way, :area, :day],
+    :category_id, brand_attributes: [:id ,:name],shipping_attributes:[:id,:burden, :shipping_way, :area, :day],
     images_attributes:[:id,:image])
     .merge(user_id: current_user.id)
   end
