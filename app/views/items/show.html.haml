@@ -17,7 +17,11 @@
           .show-main__contents__item-box__price__detail
             %span (税込)
             %span
-              = @item.shipping.burden
+              - if @item.shipping.burden_before_type_cast == 1
+                送料込み
+              - else
+                着払い
+
         
         - if user_signed_in?
           - unless current_user.id == @item.user_id
@@ -65,6 +69,10 @@
                 %th 配送料の負担
                 %td
                   = @item.shipping.burden
+              %tr
+                %th 配送料の負担
+                %td
+                  = @item.shipping.shipping_way
               %tr
                 %th 発送元の地域
                 %td
