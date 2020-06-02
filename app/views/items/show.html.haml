@@ -18,11 +18,22 @@
             %span (税込)
             %span
               = @item.shipping.burden
+        
         - if user_signed_in?
           - unless current_user.id == @item.user_id
-            = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
+            .show-main__contents__item-box__buy-btn
+              - if @item.buyer_id.present?
+                .show-main__contents__item-box__buy-btn__sold
+                  売り切れました
+              - else
+                = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn__available'
         - else
-          = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn'
+          .show-main__contents__item-box__buy-btn
+            - if @item.buyer_id.present?
+              .show-main__contents__item-box__buy-btn__sold
+                売り切れました
+            - else
+              = link_to '購入画面に進む',purchase_confirmation_item_path(@item.id) , class: 'show-main__contents__item-box__buy-btn__available'
         .show-main__contents__item-box__description
           = simple_format @item.description
         .show-main__contents__item-box__table
@@ -82,9 +93,13 @@
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %button{type: "submit"}
-            %i.fa.fa-comment
-              コメントする
+          - if @item.buyer_id.present?
+            .comment-when-sold
+              売り切れのためコメントできません
+          -else
+            %button{type: "submit"}
+              %i.fa.fa-comment
+                コメントする
       %ul.show-main__contents__links
         %li
           = link_to '< 前の商品', item_path(@item.id - 1), class: "left"

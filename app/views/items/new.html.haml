@@ -6,17 +6,18 @@
       .exhibition__first__must
         必須
       .exhibition__first__sheet
-        最大10枚までアップロードできます
-      .exhibition__first__image
-        %label{class: "exhibition__first__image__picture"} 
-          = f.fields_for :images do |i|
-            = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file" 
-          .exhibition__first__image__picture
-            = icon('fas fa-2x', 'camera')
-        .exhibition__first__image__designation
-          ドラッグアンドドロップ
-        .exhibition__first__image__upload
-          またはクリックしてファイルをアップロード
+        最大5枚までアップロードできます
+      .exhibition__first__box
+        .item-num0#exhibition__first__image
+          %label{class: "exhibition__first__image__picture"} 
+            = f.fields_for :images do |i|
+              = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
+            #exhibition__first__image__picture
+              = icon('fas fa-2x', 'camera')
+          .exhibition__first__image__designation
+            ドラッグアンドドロップ
+          .exhibition__first__image__upload
+            またはクリックしてファイルをアップロード
       .exhibition__first__image__not-picture
         画像がありません
     .exhibition__second
@@ -49,15 +50,15 @@
           必須
         .exhibition__third__main__choice
           = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
-        .exhibition__third__main__size
-          サイズ
-        .exhibition__third__main__must
-          必須
-        .exhibition__third__main__size-form
-          .exhibition__third__main__size-form__main
-            サイズ選択
-          .exhibition__third__main__size-form__icon
-            = icon('fas', 'chevron-down')
+        -# .exhibition__third__main__size
+        -#   サイズ
+        -# .exhibition__third__main__must
+        -#   必須
+        -# .exhibition__third__main__size-form
+        -#   .exhibition__third__main__size-form__main
+        -#     サイズ選択
+        -#   .exhibition__third__main__size-form__icon
+        -#     = icon('fas', 'chevron-down')
         .exhibition__third__main__any
           = f.fields_for :brand do |brand|
             = brand.label "ブランド"
@@ -71,7 +72,7 @@
             必須
         .exhibition__third__main__type-choice
           .exhibition__third__main__type-choice__form
-            = f.select :status,出品中:1,出品停止:2,取引中:3,取引完了:4
+            = f.select :status,新品未使用:1,未使用に近い:2,目立った傷や汚れなし:3,やや傷や汚れあり:4,傷や汚れあり:5,全体的に状態が悪い:6
     .exhibition__forth
       .exhibition__forth__main
         .exhibition__forth__main__info
@@ -93,7 +94,7 @@
         .exhibition__forth__main__burden-form
           .exhibition__forth__main__burden-form__main
             = f.fields_for :shipping do |shipping|
-              = shipping.select :method, らくらくメール便: 1,ゆうメール: 2,レターパック: 3,普通郵便: 4,クロネコヤマト: 5,ゆうパック: 6,ゆうパケット: 7
+              = shipping.select :shipping_way, らくらくメール便: 1,ゆうメール: 2,レターパック: 3,普通郵便: 4,クロネコヤマト: 5,ゆうパック: 6,ゆうパケット: 7
         .exhibition__forth__main__choice
           選択してください
         .exhibition__forth__main__type
@@ -128,14 +129,15 @@
               必須
           .exhibition__fifth__main__form
             = f.number_field :price, placeholder: '例）300'
-        .exhibition__fifth__main__fee
-          販売手数料(10%)
-        .exhibition__fifth__main__fee2
-          = f.number_field :fee
-        .exhibition__fifth__main__fee
-          販売手数料(10%)
-        .exhibition__fifth__main__fee2
-          = f.number_field :profit
+        -#　あとでJS組む
+        -# .exhibition__fifth__main__fee
+        -#   販売手数料(10%)
+        -#   .exhibition__fifth__main__fee1
+        -#     = f.number_field :fee
+        -# .exhibition__fifth__main__profit
+        -#   販売利益
+        -#   .exhibition__fifth__main__profit1
+        -#     = f.number_field :profit
         .exhibition__fifth__main__btn
           = f.submit '出品する'
         .exhibition__fifth__main__back
