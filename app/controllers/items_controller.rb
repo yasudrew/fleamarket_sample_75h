@@ -55,6 +55,25 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @hogehoge = Category.where(ancestry: nil)
+    @images = @item.images
+    @shipping = @item.shipping
+    @category = @item.category
+    @children = @category.parent
+    @parent = @children.parent
+    render layout: 'sub_application'
+  end
+
+  def update
+    item = Item.find(params[:id])
+    fee = item_params[:price].to_i * 0.1
+    profit = item_params[:price].to_i - fee
+    item.update(item_params.merge(fee: fee, profit: profit))
+    redirect_to item_path(item.id)
+  end
+
   def purchase_confirmation
     @item = Item.find(params[:id])
     card = current_user.cards.first

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, except: [:index, :update] do
+  resources :items, except: [:index] do
     member do
       get :purchase_confirmation
     end
