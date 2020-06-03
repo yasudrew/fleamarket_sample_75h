@@ -6,8 +6,6 @@ $(function () {
   var target_name = $(target_image).data('image')
 
   $.each(gon.existing_images, function(index,picture){
-    // console.log(picture.id)
-    //削除を押された要素と一致した時、index番号に基づいてdataBoxに格納された要素を削除する
     if(picture.image.url==target_name){
       $.ajax({
       type: 'GET',

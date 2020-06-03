@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only:[:edit, :update]
+
   def index
     @items = Item.includes(:images)
   end
@@ -56,7 +58,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @categories = Category.where(ancestry: nil)
     @images = @item.images
     @shipping = @item.shipping
@@ -76,13 +77,12 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
     fee = item_params[:price].to_i * 0.1
     profit = item_params[:price].to_i - fee
-    if item.update(item_params.merge(fee: fee, profit: profit))
-      redirect_to item_path(item.id)\
+    if @item.update(item_params.merge(fee: fee, profit: profit))
+      redirect_to item_path(@item.id)
     else
-      redirect_to edit_item_path(item.id)
+      redirect_to edit_item_path(@item.id)
       flash[:alert] = '商品の変更に失敗しました。お手数ですが、もう一度やり直してください。'
     end
   end
@@ -123,6 +123,10 @@ class ItemsController < ApplicationController
     :category_id, brand_attributes: [:id ,:name],shipping_attributes:[:id,:burden, :shipping_way, :area, :day],
     images_attributes:[:id,:image])
     .merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
 
