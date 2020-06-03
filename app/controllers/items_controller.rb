@@ -79,8 +79,12 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     fee = item_params[:price].to_i * 0.1
     profit = item_params[:price].to_i - fee
-    item.update(item_params.merge(fee: fee, profit: profit))
-    redirect_to item_path(item.id)
+    if item.update(item_params.merge(fee: fee, profit: profit))
+      redirect_to item_path(item.id)\
+    else
+      redirect_to edit_item_path(item.id)
+      flash[:alert] = '商品の変更に失敗しました。お手数ですが、もう一度やり直してください。'
+    end
   end
 
   def purchase_confirmation

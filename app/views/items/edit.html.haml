@@ -21,7 +21,7 @@
         - if index > 5
           #exhibition__first__image{class: "item-num-5"}
             %label{class: "exhibition__first__image__picture"} 
-              = f.fields_for :image, @images do |i|
+              = f.fields_for :image do |i|
                 = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
               #exhibition__first__image__picture
                 = icon('fas fa-2x', 'camera')
@@ -187,8 +187,6 @@
         -#     = f.number_field :profit
         .exhibition__fifth__main__btn
           = f.submit '変更する'
-        .exhibition__fifth__main__back
-          = link_to 'もどる',item_path(@item.id)
         .exhibition__fifth__main__text
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律に
           %br
