@@ -31,6 +31,8 @@ Rails.application.routes.draw do
       get :purchase_confirmation
     end
     collection do
+      post :create_favorite
+      post :destroy_favorite
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end

@@ -117,6 +117,23 @@ class ItemsController < ApplicationController
     end
     render layout: 'sub_application'
   end
+
+  def create_favorite
+    favorite = Favorite.new(item_id: params[:id], user_id: current_user.id)
+    if favorite.save
+    else
+      redirect_to item_path(params[:id])
+    end
+  end
+
+  def destroy_favorite
+    favorite = Favorite.where(item_id: params[:id], user_id: current_user.id).first
+    if favorite.destroy
+    else
+      redirect_to item_path(params[:id])
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:name,:description,:status,:price,:buyer_id,
