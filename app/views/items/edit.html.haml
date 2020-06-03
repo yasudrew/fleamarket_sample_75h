@@ -1,0 +1,193 @@
+.exhibition
+  = form_for @item,url: {action: 'update'} do |f|
+    .exhibition__first
+      .exhibition__first__syuppin
+        出品画像
+      .exhibition__first__must
+        必須
+      .exhibition__first__sheet
+        最大5枚までアップロードできます
+      .exhibition__first__box
+        - index = 0
+        - @images.each do |image|
+          .item-image{"data-image" => "#{image.image.url}"}
+            .item-image__content
+              .item-image__content--icon
+                %img{:height => "80", :src => "#{image.image.url}", :width => "114"}
+                
+                - index += 1
+            .item-image__operetion
+              .item-image__operetion--delete-existing-image 削除
+        - if index > 5
+          #exhibition__first__image{class: "item-num-5"}
+            %label{class: "exhibition__first__image__picture"} 
+              = f.fields_for :image do |i|
+                = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
+              #exhibition__first__image__picture
+                = icon('fas fa-2x', 'camera')
+            .exhibition__first__image__designation
+              ドラッグアンドドロップ
+            .exhibition__first__image__upload
+              またはクリックしてファイルをアップロード
+        - else
+          #exhibition__first__image{class: "item-num-#{index}"}
+            %label{class: "exhibition__first__image__picture"} 
+              = f.fields_for :image, @images do |i|
+                = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
+              #exhibition__first__image__picture
+                = icon('fas fa-2x', 'camera')
+            .exhibition__first__image__designation
+              ドラッグアンドドロップ
+            .exhibition__first__image__upload
+              またはクリックしてファイルをアップロード
+      .exhibition__first__image__not-picture
+        画像がありません
+    .exhibition__second
+      .exhibition__second__main
+        .exhibition__second__main__name
+          商品名
+        .exhibition__second__main__must
+          必須
+        .exhibition__second__main__form
+          = f.text_field :name, class: 'exhibition__second__main__form__comment', placeholder: 'type a message'
+        .exhibition__second__main__alert2
+          入力してください
+        .exhibition__second__main__exhibition
+          商品の説明
+        .exhibition__second__main__must
+          必須
+        .exhibition__second__main__input
+          = f.text_area :description, class: 'exhibition__second__main__input__form', placeholder: 'type a message'
+        .exhibition__second__main__count
+          0/1000
+        .exhibition__second__main__alert
+          入力してください
+    .exhibition__third
+      .exhibition__third__main
+        .exhibition__third__main__details
+          商品の詳細
+        .exhibition__third__main__category
+          カテゴリー
+        .exhibition__third__main__must
+          必須
+        .exhibition__third__main__choice
+          = f.select :category_id, options_for_select(@categories.map{|c|[c.name, c.id]},@parent.id), {}, {id: 'parent_category'}
+          #children_wrapper.exhibitionPage__main__contents__detail__category__choose__added
+            .exhibitionPage__main__contents__detail__category__choose1
+              %select#child_category.exhibitionPage__main__contents__detail__category__choose--select{:name => "item[category_id]"}
+                %option{"data-category" => "---", :value => "---"} ---
+                - @parent.children.each do |child|
+                  -if child == @children
+                    %option{selected: "#{child.name}", "data-category" => "#{child.id}", :value => "#{child.id}"}
+                      = child.name
+                  - else
+                    %option{"data-category" => "#{child.id}", :value => "#{child.id}"}
+                      = child.name
+
+          #grandchildren_wrapper.exhibitionPage__main__contents__detail__category__choose__added
+            .exhibitionPage__main__contents__detail__category__choose2
+              %select#grandchild_category.exhibitionPage__main__contents__detail__category__choose__box--select{:name => "item[category_id]"}
+                %option{"data-category" => "---", :value => "---"} ---
+                - @children.children.each do |grandchild|
+                  -if grandchild == @category
+                    %option{selected: "#{grandchild.name}", "data-category" => "#{grandchild.id}", :value => "#{grandchild.id}"}
+                      = grandchild.name
+                  - else
+                    %option{"data-category" => "#{grandchild.id}", :value => "#{grandchild.id}"}
+                      = grandchild.name
+
+
+        -# .exhibition__third__main__size
+        -#   サイズ
+        -# .exhibition__third__main__must
+        -#   必須
+        -# .exhibition__third__main__size-form
+        -#   .exhibition__third__main__size-form__main
+        -#     サイズ選択
+        -#   .exhibition__third__main__size-form__icon
+        -#     = icon('fas', 'chevron-down')
+        .exhibition__third__main__any
+          = f.fields_for :brand do |brand|
+            = brand.label "ブランド"
+            %span.form-require-gray （任意）
+            %div
+              = brand.text_field :name, placeholder: "例）シャネル", value: "", class: "exhibition__third__main__any-form"
+        .exhibition__third__main__type
+          .exhibition__third__main__title
+            商品の状態
+          .exhibition__third__main__must
+            必須
+        .exhibition__third__main__type-choice
+          .exhibition__third__main__type-choice__form
+            = f.select :status,Item.statuses.keys.to_a
+    .exhibition__forth
+      .exhibition__forth__main
+        .exhibition__forth__main__info
+          配送について
+        .exhibition__forth__main__burden
+          = f.label '配送料の負担'
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping, @shipping do |shipping|
+              = shipping.select :burden, Shipping.burdens.keys.to_a
+        .exhibition__forth__main__choice
+          選択してください
+        .exhibition__forth__main__type
+          配送の方法
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :shipping_way, Shipping.shipping_ways.keys.to_a
+        .exhibition__forth__main__choice
+          選択してください
+        .exhibition__forth__main__type
+          発送元の地域
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :area, Shipping.areas.keys.to_a
+        .exhibition__forth__main__choice
+          選択してください
+        .exhibition__forth__main__type
+          配送までの日数
+        .exhibition__forth__main__must
+          必須
+        .exhibition__forth__main__burden-form
+          .exhibition__forth__main__burden-form__main
+            = f.fields_for :shipping do |shipping|
+              = shipping.select :day, Shipping.days.keys.to_a
+        .exhibition__forth__main__choice
+          選択してください
+    .exhibition__fifth
+      .exhibition__fifth__main
+        .exhibition__fifth__main__pricerange
+          販売価格(¥300〜9,999,999)
+        .exhibition__fifth__main__price
+          .exhibition__fifth__main__price-box
+            .exhibition__fifth__main__title
+              販売価格
+            .exhibition__fifth__main__must
+              必須
+          .exhibition__fifth__main__form
+            = f.number_field :price, placeholder: '例）300'
+        -#　あとでJS組む
+        -# .exhibition__fifth__main__fee
+        -#   販売手数料(10%)
+        -#   .exhibition__fifth__main__fee1
+        -#     = f.number_field :fee
+        -# .exhibition__fifth__main__profit
+        -#   販売利益
+        -#   .exhibition__fifth__main__profit1
+        -#     = f.number_field :profit
+        .exhibition__fifth__main__btn
+          = f.submit '変更する'
+        .exhibition__fifth__main__text
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律に
+          %br
+          より処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
