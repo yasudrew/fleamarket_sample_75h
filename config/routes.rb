@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#logout_page'
 
-  resources :users, only: [:new, :show]
+  resources :users, only: [:new, :show] do
+    collection do
+      get :my_favorites
+    end
+  end
   
   resources :cards, only: [:new, :create, :show] do
     collection do
