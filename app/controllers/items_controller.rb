@@ -57,13 +57,22 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @hogehoge = Category.where(ancestry: nil)
+    @categories = Category.where(ancestry: nil)
     @images = @item.images
     @shipping = @item.shipping
     @category = @item.category
     @children = @category.parent
     @parent = @children.parent
+    gon.existing_images = Image.where(item_id: params[:id])
     render layout: 'sub_application'
+  end
+
+  def destroy_existing_image
+    image = Image.find(params[:id])
+    if image.destroy
+    else
+      flash.now[:alert] = '画像の削除に失敗しました。お手数ですが、リロードしてもう一度やり直してください。'
+    end
   end
 
   def update

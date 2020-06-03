@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   end
 
   resources :items, except: [:index] do
+    collection do
+      get :destroy_existing_image
+    end
     member do
       get :purchase_confirmation
     end

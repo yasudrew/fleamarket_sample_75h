@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   # has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :shipping
   accepts_nested_attributes_for :brand
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, allow_destroy: true
 
 
   validates :name,length:{maximum:20}
