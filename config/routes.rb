@@ -27,14 +27,18 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :items, except: [:index] do
     collection do
       get :destroy_existing_image
     end
+    
     member do
       get :purchase_confirmation
-    end
+    end 
+
     collection do
+      get 'search'
       post :create_favorite
       post :destroy_favorite
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
