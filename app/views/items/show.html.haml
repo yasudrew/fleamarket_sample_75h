@@ -82,10 +82,17 @@
                 %td
                   = @item.shipping.day
         .show-main__contents__item-box__optional-area
-          .show-main__contents__item-box__optional-area__like-btn
-            %i.fa.fa-star
-            お気に入り 0
-          .show-main__contents__item-box__optional-area__report-btn
+          - if @item.users.include?(current_user)
+            .show-main__contents__item-box__optional-area__like-btn-fill{data: {num: {favorites: @item.users.length}}}
+              %i.fa.fa-star
+              お気に入り
+              = @item.users.length
+          - else
+            .show-main__contents__item-box__optional-area__like-btn-empty{data: {num: {favorites: @item.users.length}}}
+              %i.fa.fa-star
+              お気に入り
+              = @item.users.length
+          .show-main__contents__item-box__optional-area__report-btn{data: {item: {id: @item.id}}}
             = link_to  "#" do
               %i.fa.fa-flag
                 不適切な商品の通報
