@@ -127,7 +127,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy_favorite
-    favorite = Favorite.where(item_id: params[:id], user_id: current_user.id).first
+    favorite = Favorite.find_by(item_id: params[:id], user_id: current_user.id)
     if favorite.destroy
     else
       redirect_to item_path(params[:id])
