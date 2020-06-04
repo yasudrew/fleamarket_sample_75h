@@ -29,4 +29,9 @@ class Item < ApplicationRecord
     validates :images
 
   end
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('text LIKE(?)', "%#{search}%")
+  end
 end

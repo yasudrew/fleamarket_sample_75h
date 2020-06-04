@@ -31,6 +31,10 @@ class ItemsController < ApplicationController
     @parent = @children.parent
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
   def destroy
     item = Item.find(params[:id])
     

@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   resources :items, except: [:index, :update] do
     member do
       get :purchase_confirmation
+    end 
+    member do
+      get 'search'
     end
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
