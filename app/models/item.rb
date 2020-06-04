@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy 
   has_many :favorites
   has_many :users, through: :favorites
+
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :shipping
   accepts_nested_attributes_for :brand
@@ -28,6 +29,13 @@ class Item < ApplicationRecord
     # validates :category_id 未解決問題　保存できなくなる
     # validates :shipping_id　未解決問題　保存できなくなる
     validates :images
+
+  end
+
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
   end
 
   enum status: {

@@ -60,6 +60,13 @@ class ItemsController < ApplicationController
     end
   end
 
+
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
+
+      
   def edit
     @categories = Category.where(ancestry: nil)
     @images = @item.images
@@ -149,4 +156,3 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-
