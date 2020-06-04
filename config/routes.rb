@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#logout_page'
 
-  resources :users, only: [:new, :show]
+  resources :users, only: [:new, :show] do
+    collection do
+      get :my_favorites
+    end
+  end
   
   resources :cards, only: [:new, :create, :show] do
     collection do
@@ -35,6 +39,8 @@ Rails.application.routes.draw do
 
     collection do
       get 'search'
+      post :create_favorite
+      post :destroy_favorite
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
