@@ -90,3 +90,5 @@ gem 'mini_magick'
 
 gem 'ancestry'
 gem 'fog-aws'
+
+gem 'pry-byebug'

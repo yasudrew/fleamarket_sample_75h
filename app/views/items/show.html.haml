@@ -95,19 +95,36 @@
           %p or
           .show-main__contents__edit-destroy__destroy-btn この商品を削除する
       .show-main__contents__comment-box
-        = form_with url: '#', class: 'show-main__contents__comment-box__new-comment' do |f|
-          = f.text_area :text
-          %p.show-main__contents__comment-box__new-comment__caution
-            相手のことを考え丁寧なコメントを心がけましょう。
-            %br
-            不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          - if @item.buyer_id.present?
-            .comment-when-sold
-              売り切れのためコメントできません
-          -else
-            %button{type: "submit"}
-              %i.fa.fa-comment
-                コメントする
+        .show-main__contents__comment-box__new-comment
+          = form_with(model: [@item, @comment], local: true) do |f|
+            = f.text_area :text
+            %p.show-main__contents__comment-box__new-comment__caution
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            - if @item.buyer_id.present?
+              .comment-when-sold
+                売り切れのためコメントできません
+            -else
+              %button{type: 'submit'}
+                %i.fa.fa-comment
+                  コメントする
+        .show-main__contents__comment-box__index
+          .show-main__contents__comment-box__index__title
+            ＜質問・コメント一覧＞
+          %ul.show-main__contents__comment-box__index__comments
+            - if @comments.present?
+              - @comments.each do |comment|
+                %li.show-main__contents__comment-box__index__comments__comment
+                  .comment__username
+                    = link_to comment.user.name, "/users/#{comment.user_id}"
+                    %span
+                      ：
+                  .comment__content
+                    = comment.text
+            - else 
+              .error-messege
+                コメントがありません。
       %ul.show-main__contents__links
         %li
           = link_to '< 前の商品', item_path(@item.id - 1), class: "left"

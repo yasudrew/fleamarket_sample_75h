@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @items = Item.includes(:images)
   end
@@ -24,10 +25,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.includes(:images).find(params[:id])
+    @item = Item.find(params[:id])
     @category = @item.category
     @children = @category.parent
     @parent = @children.parent
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def destroy
@@ -86,11 +89,11 @@ class ItemsController < ApplicationController
     render layout: 'sub_application'
   end
   private
-  def item_params
-    params.require(:item).permit(:name,:description,:status,:price,:buyer_id,
-    :category_id, brand_attributes: [:id ,:name],shipping_attributes:[:id,:burden, :shipping_way, :area, :day],
-    images_attributes:[:id,:image])
-    .merge(user_id: current_user.id)
-  end
+    def item_params
+      params.require(:item).permit(:name,:description,:status,:price,:buyer_id,
+      :category_id, brand_attributes: [:id ,:name],shipping_attributes:[:id,:burden, :shipping_way, :area, :day],
+      images_attributes:[:id,:image])
+      .merge(user_id: current_user.id)
+   end
 end
 
