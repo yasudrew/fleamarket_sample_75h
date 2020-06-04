@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items, except: [:index, :update] do
+  resources :items, except: [:index] do
     member do
       get :purchase_confirmation
     end 
@@ -32,9 +32,9 @@ Rails.application.routes.draw do
       get 'search'
     end
     collection do
+      get 'search'
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
-      get 'search'
     end
   end
 

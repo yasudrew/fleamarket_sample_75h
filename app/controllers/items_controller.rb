@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only:[:edit, :update]
 
   def index
     @items = Item.includes(:images)
@@ -29,10 +30,6 @@ class ItemsController < ApplicationController
     @category = @item.category
     @children = @category.parent
     @parent = @children.parent
-  end
-
-  def search
-    @items = Item.search(params[:keyword])
   end
 
   def destroy
