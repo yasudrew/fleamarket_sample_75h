@@ -93,3 +93,4 @@ gem 'ancestry'
 gem 'gon'
 
 gem 'fog-aws'
+

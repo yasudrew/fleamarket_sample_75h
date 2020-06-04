@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only:[:edit, :update]
 
   def index
@@ -26,10 +27,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.includes(:images).find(params[:id])
+    @item = Item.find(params[:id])
     @category = @item.category
     @children = @category.parent
     @parent = @children.parent
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def destroy
