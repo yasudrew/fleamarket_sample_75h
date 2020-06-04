@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show] do
     collection do
       get :my_favorites
+      get :my_items
+      get :my_purchased_items
     end
   end
   

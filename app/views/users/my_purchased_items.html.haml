@@ -1,12 +1,27 @@
 .container
   .container_contents
-    .container_contents_main
-      .container_contents_main_addcard
-        支払い方法
-        %hr
-        .container_contents_main_addcard__inside
-          = form_tag cards_path do
-            %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "クレジットカードを登録する", "data-submit-text" => "クレジットカードを登録する" ,"data-key" => "#{ Rails.application.credentials[:payjp][:public_key]}"}
+    #items.container_contents_main
+      .container_contents_main__top
+        購入した商品
+      %ul
+        - @items.each do |item|
+          %li
+            = link_to item_path(item.id) do
+              = image_tag item.images.first.image.url, height: '48', width: '48'
+              .container_contents_main__item__information
+                %div
+                  = item.name
+                .fav-and-com
+                  %span.fav
+                    %i.fa.fa-star
+                    = item.users.length
+                  %span.com
+                    %i.fa.fa-comment
+                    -# = item.comments.length
+
+                  
+                  
+
 
     .container_contents_side
       .container_contents_side_title
@@ -26,7 +41,6 @@
           = link_to "購入した商品", my_purchased_items_users_path
         %li
           = link_to "支払い方法", new_card_path
-          .container_contents_side_contents_card_right
         %li
           = link_to "メール / パスワード","#"
           .container_contents_side_contents_mailpass_right
