@@ -63,6 +63,10 @@ class ItemsController < ApplicationController
       @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
     else
       @items = Item.all
+    end
+  end
+
+
       
   def edit
     @categories = Category.where(ancestry: nil)
@@ -136,4 +140,3 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-

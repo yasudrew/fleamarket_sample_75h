@@ -32,9 +32,7 @@ Rails.application.routes.draw do
     member do
       get :purchase_confirmation
     end 
-    member do
-      get 'search'
-    end
+
     collection do
       get 'search'
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
