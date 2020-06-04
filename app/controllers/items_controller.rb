@@ -59,11 +59,7 @@ class ItemsController < ApplicationController
 
 
   def search
-    if params[:keyword]
-      @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
-    else
-      @items = Item.all
-    end
+    @items = Item.search(params[:keyword])
   end
 
 
