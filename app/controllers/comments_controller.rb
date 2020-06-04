@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
   def create
-    item_id = params[:item_id]
-    @comment = Comment.create(comment_params)
-    redirect_to item_path(item_id)
+    @comment = Comment.new(comment_params)
+    if @comment.save
+      redirect_to item_path(params[:item_id])    
+    else
+      redirect_to item_path(params[:item_id]) 
+      flash[:alert]= 'コメントに失敗しました。お手数ですが、もう一度やり直してください。'
+    end
   end
 
   private
