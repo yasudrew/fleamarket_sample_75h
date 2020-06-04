@@ -6,4 +6,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_many :cards
+  has_many :favorites
+  has_many :items, dependent: :destroy
+  has_many :favorite_items, through: :favorites, source: :item
 end

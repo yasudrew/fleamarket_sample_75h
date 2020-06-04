@@ -11,6 +11,8 @@
 - has_one : profile dependent: : destroy
 - has_one : card dependent: : destroy
 - has_many : items dependent: : destroy
+- has_many : favorites
+- has_many : favorite_items through: :favorites source: :item
 - has_many : comments
 
 
@@ -78,13 +80,15 @@
 - belongs_to: shipping
 - has_many: images dependent: :destroy
 - has_many: comments dependent: :destroy
+- has_many: favorites
+- has_many: users through: :favorites
 
 
 ## shippingsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |burden|integer|null:false|
-|type|integer|null:false|
+|shipping_way|integer|null:false|
 |area|integer|null:false|
 |day|integer|null:false|
 
@@ -119,6 +123,17 @@
 
 ## アソシエーション
 - has_many: items
+
+## favoritesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|bigint|foregin_key: true|
+|user_id|bigint|foreign_key: true|
+
+## アソシエーション
+- belongs_to: item
+- belongs_to: user 
+
 
 
 
