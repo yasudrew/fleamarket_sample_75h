@@ -2,7 +2,7 @@
   .container_contents
     #items.container_contents_main
       .container_contents_main__top
-        お気に入り一覧
+        購入した商品
       %ul
         - @items.each do |item|
           %li
@@ -11,8 +11,16 @@
               .container_contents_main__item__information
                 %div
                   = item.name
-                %div
-                  = "¥#{item.price}"
+                .fav-and-com
+                  %span.fav
+                    %i.fa.fa-star
+                    = item.users.length
+                  %span.com
+                    %i.fa.fa-comment
+                    -# = item.comments.length
+
+                  
+                  
 
 
     = render partial: "users/side-bar"
