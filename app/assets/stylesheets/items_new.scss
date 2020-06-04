@@ -68,7 +68,9 @@
         .item-num-4{
           width: 106px;
         }
- 
+      }
+      #exhibition__first__image.item-num-5{
+        display: none;
       }
         
       .exhibition__first__image__picture{
@@ -162,7 +164,7 @@
   }
   &__third{
     width                         :700px;
-    height                        :400px;
+    height                        :550px;
     margin                        :0 auto;
     background-color              : white;
     margin-top                    : 2px;
@@ -328,7 +330,7 @@
   &__forth{
     width                         :700px;
     height                        :750px;
-    margin                        :0 auto;
+    margin                        : auto;
     background-color              : white;
     margin-top                    : 2px;
     &__main{

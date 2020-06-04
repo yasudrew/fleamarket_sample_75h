@@ -1,5 +1,5 @@
 .exhibition
-  = form_for @item,url: {action: 'create'} do |f|
+  = form_for @item,url: {action: 'update'} do |f|
     .exhibition__first
       .exhibition__first__syuppin
         出品画像
@@ -8,16 +8,38 @@
       .exhibition__first__sheet
         最大5枚までアップロードできます
       .exhibition__first__box
-        .item-num0#exhibition__first__image
-          %label{class: "exhibition__first__image__picture"} 
-            = f.fields_for :images do |i|
-              = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
-            #exhibition__first__image__picture
-              = icon('fas fa-2x', 'camera')
-          .exhibition__first__image__designation
-            ドラッグアンドドロップ
-          .exhibition__first__image__upload
-            またはクリックしてファイルをアップロード
+        - index = 0
+        - @images.each do |image|
+          .item-image{"data-image" => "#{image.image.url}"}
+            .item-image__content
+              .item-image__content--icon
+                %img{:height => "80", :src => "#{image.image.url}", :width => "114"}
+                
+                - index += 1
+            .item-image__operetion
+              .item-image__operetion--delete-existing-image 削除
+        - if index > 5
+          #exhibition__first__image{class: "item-num-5"}
+            %label{class: "exhibition__first__image__picture"} 
+              = f.fields_for :image do |i|
+                = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
+              #exhibition__first__image__picture
+                = icon('fas fa-2x', 'camera')
+            .exhibition__first__image__designation
+              ドラッグアンドドロップ
+            .exhibition__first__image__upload
+              またはクリックしてファイルをアップロード
+        - else
+          #exhibition__first__image{class: "item-num-#{index}"}
+            %label{class: "exhibition__first__image__picture"} 
+              = f.fields_for :image, @images do |i|
+                = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file",style: "display:none"
+              #exhibition__first__image__picture
+                = icon('fas fa-2x', 'camera')
+            .exhibition__first__image__designation
+              ドラッグアンドドロップ
+            .exhibition__first__image__upload
+              またはクリックしてファイルをアップロード
       .exhibition__first__image__not-picture
         画像がありません
     .exhibition__second
@@ -49,7 +71,32 @@
         .exhibition__third__main__must
           必須
         .exhibition__third__main__choice
-          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+          = f.select :category_id, options_for_select(@categories.map{|c|[c.name, c.id]},@parent.id), {}, {id: 'parent_category'}
+          #children_wrapper.exhibitionPage__main__contents__detail__category__choose__added
+            .exhibitionPage__main__contents__detail__category__choose1
+              %select#child_category.exhibitionPage__main__contents__detail__category__choose--select{:name => "item[category_id]"}
+                %option{"data-category" => "---", :value => "---"} ---
+                - @parent.children.each do |child|
+                  -if child == @children
+                    %option{selected: "#{child.name}", "data-category" => "#{child.id}", :value => "#{child.id}"}
+                      = child.name
+                  - else
+                    %option{"data-category" => "#{child.id}", :value => "#{child.id}"}
+                      = child.name
+
+          #grandchildren_wrapper.exhibitionPage__main__contents__detail__category__choose__added
+            .exhibitionPage__main__contents__detail__category__choose2
+              %select#grandchild_category.exhibitionPage__main__contents__detail__category__choose__box--select{:name => "item[category_id]"}
+                %option{"data-category" => "---", :value => "---"} ---
+                - @children.children.each do |grandchild|
+                  -if grandchild == @category
+                    %option{selected: "#{grandchild.name}", "data-category" => "#{grandchild.id}", :value => "#{grandchild.id}"}
+                      = grandchild.name
+                  - else
+                    %option{"data-category" => "#{grandchild.id}", :value => "#{grandchild.id}"}
+                      = grandchild.name
+
+
         -# .exhibition__third__main__size
         -#   サイズ
         -# .exhibition__third__main__must
@@ -83,7 +130,7 @@
           必須
         .exhibition__forth__main__burden-form
           .exhibition__forth__main__burden-form__main
-            = f.fields_for :shipping do |shipping|
+            = f.fields_for :shipping, @shipping do |shipping|
               = shipping.select :burden, Shipping.burdens.keys.to_a
         .exhibition__forth__main__choice
           選択してください
@@ -139,9 +186,7 @@
         -#   .exhibition__fifth__main__profit1
         -#     = f.number_field :profit
         .exhibition__fifth__main__btn
-          = f.submit '出品する'
-        .exhibition__fifth__main__back
-          = link_to 'もどる',root_path
+          = f.submit '変更する'
         .exhibition__fifth__main__text
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律に
           %br

@@ -60,11 +60,40 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def search
     if params[:keyword]
       @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
     else
       @items = Item.all
+      
+  def edit
+    @categories = Category.where(ancestry: nil)
+    @images = @item.images
+    @shipping = @item.shipping
+    @category = @item.category
+    @children = @category.parent
+    @parent = @children.parent
+    gon.existing_images = Image.where(item_id: params[:id])
+    render layout: 'sub_application'
+  end
+
+  def destroy_existing_image
+    image = Image.find(params[:id])
+    if image.destroy
+    else
+      flash.now[:alert] = '画像の削除に失敗しました。お手数ですが、リロードしてもう一度やり直してください。'
+    end
+  end
+
+  def update
+    fee = item_params[:price].to_i * 0.1
+    profit = item_params[:price].to_i - fee
+    if @item.update(item_params.merge(fee: fee, profit: profit))
+      redirect_to item_path(@item.id)
+    else
+      redirect_to edit_item_path(@item.id)
+      flash[:alert] = '商品の変更に失敗しました。お手数ですが、もう一度やり直してください。'
     end
   end
 
@@ -105,4 +134,9 @@ class ItemsController < ApplicationController
     images_attributes:[:id,:image])
     .merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
+
