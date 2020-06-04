@@ -4,7 +4,7 @@
       %h1.icon
         = link_to image_tag('logo.png', width: "140"), root_path
       .searchBox
-        = form_for('#', method: :get, class: 'search-form') do
+        = form_with(url:search_items_path,local: true, method: :get, class: 'search-form') do |form|
           %input.search-form__input{name: "keyword", placeholder: "キーワードから探す", type: "text", value: ""}
           %button.btn-search{ type: "submit"}
             .search-form__icon

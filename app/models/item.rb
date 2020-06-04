@@ -27,5 +27,6 @@ class Item < ApplicationRecord
     # validates :category_id 未解決問題　保存できなくなる
     # validates :shipping_id　未解決問題　保存できなくなる
     validates :images
+
   end
 end

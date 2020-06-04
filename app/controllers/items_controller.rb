@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @items = Item.includes(:images)
   end
@@ -52,6 +53,14 @@ class ItemsController < ApplicationController
     else
       redirect_to new_item_path
       flash[:alert] = '商品の出品に失敗しました。お手数ですが、もう一度やり直してください。'
+    end
+  end
+
+  def search
+    if params[:keyword]
+      @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
+    else
+      @items = Item.all
     end
   end
 
