@@ -16,7 +16,7 @@ describe Card do
     it "customer_idがない場合は登録できないこと" do
       card = build(:card, customer_id:"")
       card.valid?
-     expect(card.errors[:customer_id]).to include("を入力してください")
+      expect(card.errors[:customer_id]).to include("を入力してください")
     end
 
     it "user_idがない場合は登録できないこと" do
