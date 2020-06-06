@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SnsCredentialTest < ActiveSupport::TestCase
+class Sns_CredentialTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
