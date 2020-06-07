@@ -22,9 +22,19 @@ crumb :my_items do
   parent :my_page
 end
 
+crumb :my_item do |item|
+  link '出品商品画面', item_path(item.id)
+  parent :my_items
+end
+
 crumb :my_purchased_items do
   link '購入した商品', my_purchased_items_users_path
   parent :my_page
+end
+
+crumb :my_purchased_item do |item|
+  link '購入商品画面', item_path(item.id)
+  parent :my_purchased_items
 end
 
 crumb :new_card do
