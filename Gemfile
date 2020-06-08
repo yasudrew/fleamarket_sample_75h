@@ -94,3 +94,4 @@ gem 'gon'
 
 gem 'fog-aws'
 
+gem "gretel"
