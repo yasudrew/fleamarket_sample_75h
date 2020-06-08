@@ -130,9 +130,7 @@
               - @comments.each do |comment|
                 %li.show-main__contents__comment-box__index__comments__comment
                   .comment__username
-                    = link_to comment.user.name, "/users/#{comment.user_id}"
-                    %span
-                      ：
+                    = comment.user.name
                   .comment__content
                     = comment.text
             - else 
