@@ -9,7 +9,46 @@
     background-color                  : #fff;
     border                            : 1px solid #ddd;
     border-radius                     : 5px;
-    
+
+    &__top {
+      text-align                      : center;
+      
+      &__btn {
+        align-items                   : center;
+        &__fb {
+          color                       : #3CCACE;
+          margin-top                  : 25px;
+          margin-left                 : 177px;
+          margin-right                : 50px;
+          padding                     : 10px 0;
+          letter-spacing              : 1px;
+          font-size                   : 30px;
+          font-weight                 : 200;
+          display                     : flex;
+        }
+        &__g {
+          color                       : #3CCACE;
+          margin-top                  : 25px;
+          margin-left                 : 50px;
+          margin-right                : 177px;
+          padding                     : 10px 0;
+          letter-spacing              : 1px;
+          font-size                   : 30px;
+          font-weight                 : 200;
+          display                     : flex;
+        }
+      }
+      &_text {
+        font-size                     : 20px;
+        margin-top                    : 25px;
+        padding                       : 10px 0;
+        letter-spacing                : 1px;
+        font-size                     : 14px;
+        font-weight                   : 200;
+        display                       : flex;
+        
+      }
+    }
     .account-page__inner--user-form {
       margin                          : 0 auto;
       width                           : 50%;
@@ -34,7 +73,7 @@
     width                             : 300px;
   
     &__inside {
-      margin-left                      : 27px;
+      margin-left                      : 11px;
     }
   }
 

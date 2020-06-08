@@ -1,12 +1,20 @@
 #account-page.account-page
   .account-page__inner
+    .account-page__inner__top
+      .account-page__inner__top__btn
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: "account-page__inner__top__btn__fb" do
+          %i.fab.fa-facebook-f
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "account-page__inner__top__btn__g" do
+          %i.fab.fa-google
+      .account-page__inner__top__text
+        ↑ FaceBook/Googleでログインする ↑
     .account-page__inner--user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .user_registration
           = link_to "新規登録", new_user_registration_path, class: 'user_registration__move'
         .registration_text
           .registration_text__inside
-            登録していない方はこちら
+            ↑ 登録していない方はこちら ↑
         .field
           .field-label
             = f.label :メールアドレス

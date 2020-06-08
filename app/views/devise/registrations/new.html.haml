@@ -1,5 +1,13 @@
 #account-page.account-page
   .account-page__inner
+    .account-page__inner__top
+      .account-page__inner__top__btn
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: "account-page__inner__top__btn__fb" do
+          %i.fab.fa-facebook-f
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "account-page__inner__top__btn__g" do
+          %i.fab.fa-google
+      .account-page__inner__top__text
+        ↑ FaceBook/Googleで登録する ↑
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
@@ -19,23 +27,26 @@
           .field-input
             = f.email_field :email, autofocus: true, autocomplete: "email"
         .field
-          .field-label
-            = f.label :パスワード
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} 文字以上)
-            %br/
-            .must
-              必須
-          .field-input
-            = f.password_field :password, autocomplete: "password"
-        .field
-          .field-label
-            = f.label :パスワード（確認用）
-            .must
-              必須
-            %br/
-          .field-input
-            = f.password_field :password_confirmation, autocomplete: "password_confirmation"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            .field-label
+              = f.label :パスワード
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} 文字以上)
+              %br/
+              .must
+                必須
+            .field-input
+              = f.password_field :password, autocomplete: "password"
+            .field
+              .field-label
+                = f.label :パスワード（確認用）
+                .must
+                  必須
+                %br/
+              .field-input
+                = f.password_field :password_confirmation, autocomplete: "password_confirmation"
           .actions
             = f.submit "登録する"
