@@ -1,3 +1,9 @@
+- if @item.buyer_id.present? && @item.user_id == current_user.id
+  - breadcrumb :my_item, @item
+  = render partial: "layouts/breadcrumbs"
+- elsif @item.buyer_id.present? && @item.buyer_id == current_user.id
+  - breadcrumb :my_purchased_item, @item
+  = render partial: "layouts/breadcrumbs"
 .show-wrapper
   .show-main
     .show-main__contents
