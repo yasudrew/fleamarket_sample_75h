@@ -4,9 +4,11 @@ class Item < ApplicationRecord
   belongs_to :brand
   belongs_to :shipping
   has_many :images, dependent: :destroy
+  has_many :comments, dependent: :destroy 
+  has_many :favorites, dependent: :destroy
+  has_many :users, through: :favorites
 
   accepts_nested_attributes_for :category
-  # has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :shipping
   accepts_nested_attributes_for :brand
   accepts_nested_attributes_for :images
@@ -27,5 +29,16 @@ class Item < ApplicationRecord
     # validates :category_id 未解決問題　保存できなくなる
     # validates :shipping_id　未解決問題　保存できなくなる
     validates :images
+
   end
+
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
+
+  enum status: {
+    新品未使用:1,未使用に近い:2,目立った傷や汚れなし:3,やや傷や汚れあり:4,傷や汚れあり:5,全体的に状態が悪い:6
+  }
 end

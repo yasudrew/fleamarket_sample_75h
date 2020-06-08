@@ -8,6 +8,8 @@
 @import "devise/sessions/new";
 @import "sessions/logout_page";
 @import "users/show";
+@import "users/my_favorites";
+@import "users/my_items";
 @import "cards/new";
 @import "cards/show";
 @import 'purchase_confirmation';
@@ -17,3 +19,4 @@
 @import 'items_new';
 @import 'devise/registrations/new';
 @import 'devise/sessions/new';
+@import 'breadcrumbs';

@@ -1,3 +1,9 @@
+- if @item.buyer_id.present? && @item.user_id == current_user.id
+  - breadcrumb :my_item, @item
+  = render partial: "layouts/breadcrumbs"
+- elsif @item.buyer_id.present? && @item.buyer_id == current_user.id
+  - breadcrumb :my_purchased_item, @item
+  = render partial: "layouts/breadcrumbs"
 .show-wrapper
   .show-main
     .show-main__contents
@@ -17,7 +23,11 @@
           .show-main__contents__item-box__price__detail
             %span (税込)
             %span
-              = @item.shipping.burden
+              - if @item.shipping.burden_before_type_cast == 1
+                送料込み
+              - else
+                着払い
+
         
         - if user_signed_in?
           - unless current_user.id == @item.user_id
@@ -66,6 +76,10 @@
                 %td
                   = @item.shipping.burden
               %tr
+                %th 配送料の負担
+                %td
+                  = @item.shipping.shipping_way
+              %tr
                 %th 発送元の地域
                 %td
                   = @item.shipping.area
@@ -74,10 +88,17 @@
                 %td
                   = @item.shipping.day
         .show-main__contents__item-box__optional-area
-          .show-main__contents__item-box__optional-area__like-btn
-            %i.fa.fa-star
-            お気に入り 0
-          .show-main__contents__item-box__optional-area__report-btn
+          - if @item.users.include?(current_user)
+            .show-main__contents__item-box__optional-area__like-btn-fill{data: {num: {favorites: @item.users.length}}}
+              %i.fa.fa-star
+              お気に入り
+              = @item.users.length
+          - else
+            .show-main__contents__item-box__optional-area__like-btn-empty{data: {num: {favorites: @item.users.length}}}
+              %i.fa.fa-star
+              お気に入り
+              = @item.users.length
+          .show-main__contents__item-box__optional-area__report-btn{data: {item: {id: @item.id}}}
             = link_to  "#" do
               %i.fa.fa-flag
                 不適切な商品の通報
@@ -87,19 +108,36 @@
           %p or
           .show-main__contents__edit-destroy__destroy-btn この商品を削除する
       .show-main__contents__comment-box
-        = form_with url: '#', class: 'show-main__contents__comment-box__new-comment' do |f|
-          = f.text_area :text
-          %p.show-main__contents__comment-box__new-comment__caution
-            相手のことを考え丁寧なコメントを心がけましょう。
-            %br
-            不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          - if @item.buyer_id.present?
-            .comment-when-sold
-              売り切れのためコメントできません
-          -else
-            %button{type: "submit"}
-              %i.fa.fa-comment
-                コメントする
+        .show-main__contents__comment-box__new-comment
+          = form_with(model: [@item, @comment], local: true) do |f|
+            = f.text_area :text
+            %p.show-main__contents__comment-box__new-comment__caution
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            - if @item.buyer_id.present?
+              .comment-when-sold
+                売り切れのためコメントできません
+            -else
+              %button{type: 'submit'}
+                %i.fa.fa-comment
+                  コメントする
+        .show-main__contents__comment-box__index
+          .show-main__contents__comment-box__index__title
+            ＜質問・コメント一覧＞
+          %ul.show-main__contents__comment-box__index__comments
+            - if @comments.present?
+              - @comments.each do |comment|
+                %li.show-main__contents__comment-box__index__comments__comment
+                  .comment__username
+                    = link_to comment.user.name, "/users/#{comment.user_id}"
+                    %span
+                      ：
+                  .comment__content
+                    = comment.text
+            - else 
+              .error-messege
+                コメントがありません。
       %ul.show-main__contents__links
         %li
           = link_to '< 前の商品', item_path(@item.id - 1), class: "left"

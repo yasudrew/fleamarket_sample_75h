@@ -8,7 +8,13 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#logout_page'
 
-  resources :users, only: [:new, :show]
+  resources :users, only: [:new, :show] do
+    collection do
+      get :my_favorites
+      get :my_items
+      get :my_purchased_items
+    end
+  end
   
   resources :cards, only: [:new, :create, :show] do
     collection do
@@ -28,14 +34,24 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, except: [:index, :update] do
+
+  resources :items, except: [:index] do
+    collection do
+      get :destroy_existing_image
+    end
+    
     member do
       get :purchase_confirmation
-    end
+    end 
+
     collection do
+      get 'search'
+      post :create_favorite
+      post :destroy_favorite
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources :comments,  only: :create
   end
 
   root 'items#index'

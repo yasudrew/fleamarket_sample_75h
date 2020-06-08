@@ -1,0 +1,16 @@
+.fav-and-com {
+  display: flex;
+  
+  span {
+    margin-right: 10px;
+    
+    .fa.fa-star {
+      font-weight: normal;
+    }
+
+    .fa.fa-comment {
+      font-weight: normal;
+    }
+  }
+  
+}

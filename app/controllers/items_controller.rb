@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  before_action :set_item, only:[:edit, :update]
+
   def index
     @items = Item.includes(:images)
   end
@@ -24,10 +27,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.includes(:images).find(params[:id])
+    @item = Item.find(params[:id])
     @category = @item.category
     @children = @category.parent
     @parent = @children.parent
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def destroy
@@ -52,6 +57,43 @@ class ItemsController < ApplicationController
     else
       redirect_to new_item_path
       flash[:alert] = '商品の出品に失敗しました。お手数ですが、もう一度やり直してください。'
+    end
+  end
+
+
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
+
+      
+  def edit
+    @categories = Category.where(ancestry: nil)
+    @images = @item.images
+    @shipping = @item.shipping
+    @category = @item.category
+    @children = @category.parent
+    @parent = @children.parent
+    gon.existing_images = Image.where(item_id: params[:id])
+    render layout: 'sub_application'
+  end
+
+  def destroy_existing_image
+    image = Image.find(params[:id])
+    if image.destroy
+    else
+      flash.now[:alert] = '画像の削除に失敗しました。お手数ですが、リロードしてもう一度やり直してください。'
+    end
+  end
+
+  def update
+    fee = item_params[:price].to_i * 0.1
+    profit = item_params[:price].to_i - fee
+    if @item.update(item_params.merge(fee: fee, profit: profit))
+      redirect_to item_path(@item.id)
+    else
+      redirect_to edit_item_path(@item.id)
+      flash[:alert] = '商品の変更に失敗しました。お手数ですが、もう一度やり直してください。'
     end
   end
 
@@ -85,11 +127,32 @@ class ItemsController < ApplicationController
     end
     render layout: 'sub_application'
   end
+
+  def create_favorite
+    favorite = Favorite.new(item_id: params[:id], user_id: current_user.id)
+    if favorite.save
+    else
+      redirect_to item_path(params[:id])
+    end
+  end
+
+  def destroy_favorite
+    favorite = Favorite.find_by(item_id: params[:id], user_id: current_user.id)
+    if favorite.destroy
+    else
+      redirect_to item_path(params[:id])
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:name,:description,:status,:price,:buyer_id,
     :category_id, brand_attributes: [:id ,:name],shipping_attributes:[:id,:burden, :shipping_way, :area, :day],
     images_attributes:[:id,:image])
     .merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

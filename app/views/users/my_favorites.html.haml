@@ -1,0 +1,20 @@
+- breadcrumb :my_favorites
+= render partial: "layouts/breadcrumbs"
+.container
+  .container_contents
+    #items.container_contents_main
+      .container_contents_main__top
+        お気に入り一覧
+      %ul
+        - @items.each do |item|
+          %li
+            = link_to item_path(item.id) do
+              = image_tag item.images.first.image.url, height: '48', width: '48'
+              .container_contents_main__item__information
+                %div
+                  = item.name
+                %div
+                  = "¥#{item.price}"
+
+
+    = render partial: "users/side-bar"
