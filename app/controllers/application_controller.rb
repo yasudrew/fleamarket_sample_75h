@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :authenticate_user!, except: [:index, :show]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_q
 
   protected
 
@@ -10,6 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_q
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+  end
+
   def production?
     Rails.env.production?
   end

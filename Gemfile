@@ -101,3 +101,5 @@ gem 'gon'
 gem 'fog-aws'
 
 gem "gretel"
+
+gem 'ransack'

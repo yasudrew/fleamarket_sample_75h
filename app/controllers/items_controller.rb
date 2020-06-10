@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:edit, :update]
 
   def index
-    @items = Item.includes(:images)
   end
 
   def new
@@ -63,6 +62,9 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:keyword])
+  end
+
+  def search_by_ransack
   end
 
 
