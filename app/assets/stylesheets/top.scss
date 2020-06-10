@@ -27,16 +27,16 @@ header{
       .searchBox{
         margin-left: auto;
         width: 100%;
-        form{
+        .search-form{
           width: 100%;
           display: flex;
           margin-bottom: 5px;
-          input{
+          &__input{
             width: calc(100% - 26px);
             height: 36px;
             padding: 0 0 0 5px;
           }
-          button{
+          .btn-search{
             width: 36px;
             border: 0;
             cursor: pointer;

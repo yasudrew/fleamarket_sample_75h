@@ -1,0 +1,25 @@
+.search_by_ransack
+  .container
+    .container_contents
+      #items.container_contents_main
+        .container_contents_main__top
+          検索結果
+        .product-head
+          = link_to '#' do
+            .title
+        %ul.product-lists
+          - @items.each do |item|
+            %li.product-list 
+              -if item.buyer_id == nil
+                = link_to item_path(item.id)  do
+                  .product-list__img
+                    = image_tag item.images.first.image.url, width: '155', height: '155'
+                  .product-list__content
+                    .name
+                      = item.name
+                    .price
+                      = item.price
+                      円
+
+
+      = render partial: "users/side-bar"
