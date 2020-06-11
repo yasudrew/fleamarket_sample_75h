@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     end 
 
     collection do
+      get :search_by_ransack
       get 'search'
       post :create_favorite
       post :destroy_favorite
