@@ -10,7 +10,7 @@
           -#   .search-form__icon
           -#     = image_tag 'icon-search 1.png',width: '20'
         = search_form_for @q, url: search_by_ransack_items_path,html: {class: 'search-form'} do |f|
-          = f.search_field :name_cont, placeholder: "キーワードから探す", class: 'search-form__input'
+          = f.search_field :name_or_description_cont, placeholder: "キーワードから探す", class: 'search-form__input'
           %button.btn-search{ type: "submit"}
             .search-form__icon
               = image_tag 'icon-search 1.png',width: '20'
