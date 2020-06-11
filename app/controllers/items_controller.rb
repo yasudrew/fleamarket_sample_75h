@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
     fee = item_params[:price].to_i * 0.1
     profit = item_params[:price].to_i - fee
     @item = Item.new(item_params.merge(fee: fee, profit: profit))
-    if @item.save
+    if @item.save!
       redirect_to root_path
       flash[:notice] = '出品ありがとうございます。下部の商品一覧よりご確認ください。'
     else
@@ -122,9 +122,14 @@ class ItemsController < ApplicationController
     else
       @item = Item.find(params[:id])
       card = current_user.cards.first
+      @profile = current_user.profile
       if card.blank?
         redirect_to new_for_purchase_card_path(@item.id)
         flash[:alert] = '購入にはクレジットカード登録が必要です'
+        return
+      elsif @profile.blank?
+        redirect_to new_profile_path
+        flash[:alert] = '購入にはプロフィールの登録が必要です'
         return
       else
         Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]

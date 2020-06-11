@@ -1,12 +1,17 @@
 class Shipping < ApplicationRecord
   has_many :items
-
+  
+  with_options presence: true do
+    validates :burden
+    validates :area
+    validates :day
+  end
   enum burden: {
     送料込み（出品者負担）:1,着払い（購入者負担）:2
   }
   
   enum shipping_way:{
-    らくらくメール便:1,ゆうメール:2,
+    '--':0,らくらくメール便:1,ゆうメール:2,
     レターパック:3,普通郵便:4,クロネコヤマト:5,
     ゆうパック:6,ゆうパケット:7
   }

@@ -17,7 +17,7 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
-
+  has_one :profile, dependent: :destroy
   has_many :cards
   has_many :sns_credentials
   has_many :comments

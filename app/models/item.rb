@@ -26,8 +26,8 @@ class Item < ApplicationRecord
     validates :fee
     validates :profit
     validates :user_id
-    # validates :category_id 未解決問題　保存できなくなる
-    # validates :shipping_id　未解決問題　保存できなくなる
+    validates :category_id 
+    # validates :shipping_id
     validates :images
 
   end

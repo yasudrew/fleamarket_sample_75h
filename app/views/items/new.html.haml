@@ -89,14 +89,13 @@
           選択してください
         .exhibition__forth__main__type
           配送の方法
-        .exhibition__forth__main__must
-          必須
+        .exhibition__forth__main__up
+          （任意）
         .exhibition__forth__main__burden-form
           .exhibition__forth__main__burden-form__main
             = f.fields_for :shipping do |shipping|
               = shipping.select :shipping_way, Shipping.shipping_ways.keys.to_a
         .exhibition__forth__main__choice
-          選択してください
         .exhibition__forth__main__type
           発送元の地域
         .exhibition__forth__main__must

@@ -3,7 +3,7 @@
     設定
   %ul.container_contents_side_contents
     %li
-      = link_to "プロフィール","#"
+      = link_to "プロフィール", user_path(current_user.id)
       .container_contents_side_contents_profile_right
     %li
       = link_to "本人確認情報", new_profile_path

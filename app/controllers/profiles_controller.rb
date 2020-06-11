@@ -1,7 +1,12 @@
 class ProfilesController < ApplicationController
 
   def new
-    @profile = Profile.new
+    if current_user.profile.present?
+      redirect_to user_path(current_user.id) 
+      flash[:alert]= '本人確認情報はすでに登録されています'
+    else
+      @profile = Profile.new
+    end
   end
 
   def step1
@@ -33,6 +38,7 @@ class ProfilesController < ApplicationController
     )
     if @profile.save
       redirect_to user_path(current_user.id)
+      flash[:notice]='本人確認情報の登録が完了しました'
     else
       render 'profiles/step1'
     end

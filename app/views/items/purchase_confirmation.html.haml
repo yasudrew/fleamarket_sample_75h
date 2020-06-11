@@ -44,10 +44,15 @@
             = link_to '変更する', "#"
           %address.confirmation-container__main__contents__item__inner__user-info__text
             %p
-              〒123-4567
+              - post_first = @profile.post_code.to_s.slice(0,3)
+              - post_last = @profile.post_code.to_s.slice(3,6)
+              = '〒'+ post_first + " - " + post_last
               %br
-              東京都○○○×××
+              = @profile.prefecture
+              = @profile.city
+              = @profile.address
               %br
-              鈴木一郎
+              = @profile.family_name
+              = @profile.first_name
         %section
           = link_to '購入する', purchase_card_path(@item.id), method: :post, class: 'buy-button'

@@ -363,6 +363,17 @@
         display                   : inline-block;
         text-align                : center;
       }
+      &__up{
+        font-size                 :14px;
+        font-weight               :600;
+        width                     :62px;
+        height                    :16px;
+        border-radius             : 2px;
+        line-height               : 1.4em;
+        color                     :black;
+        display                   : inline-block;
+        text-align                : center;
+      }
       &__burden-form{
 
         display: flex;
