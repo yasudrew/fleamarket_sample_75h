@@ -95,24 +95,30 @@ class CardsController < ApplicationController
   end
 
   def purchase
-    card = current_user.cards.first
-    if card.blank?
-      redirect_to action: :new
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
+    if current_user.id == Item.find(params[:id]).user_id
+      redirect_to root_path 
+    elsif Item.find(params[:id]).buyer_id.present?
+      redirect_to root_path
     else
-      @item = Item.find(params[:id])
-      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
-      Payjp::Charge.create(
-      amount: @item.price,
-      customer: card.customer_id,
-      currency: 'jpy'
-      )
-      if @item.update(buyer_id: current_user.id)
-        redirect_to controller: :items, action: :show
-        flash[:notice] = 'お買い上げいただき誠にありがとうございます。'
+      card = current_user.cards.first
+      if card.blank?
+        redirect_to action: :new
+        flash[:alert] = '購入にはクレジットカード登録が必要です'
       else
-        redirect_to controller: :items, action: :show
-        flash[:alert] = '購入に失敗しました。お手数ですが、もう一度やり直してください。'
+        @item = Item.find(params[:id])
+        Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+        Payjp::Charge.create(
+        amount: @item.price,
+        customer: card.customer_id,
+        currency: 'jpy'
+        )
+        if @item.update(buyer_id: current_user.id)
+          redirect_to controller: :items, action: :show
+          flash[:notice] = 'お買い上げいただき誠にありがとうございます。'
+        else
+          redirect_to controller: :items, action: :show
+          flash[:alert] = '購入に失敗しました。お手数ですが、もう一度やり直してください。'
+        end
       end
     end
   end

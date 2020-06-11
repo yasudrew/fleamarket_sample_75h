@@ -35,14 +35,20 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    
-    if item.destroy
-      redirect_to user_path(current_user.id)
+    if current_user.id != Item.find(params[:id]).user_id
+      redirect_to item_path(params[:id])
+    elsif Item.find(params[:id]).buyer_id.present?
+      redirect_to item_path(params[:id])
     else
-      flash.now[:alert] = '商品の削除に失敗しました。お手数ですが、もう一度やり直してください。'
-      render :show
-      return
+      item = Item.find(params[:id])
+      
+      if item.destroy
+        redirect_to user_path(current_user.id)
+      else
+        flash.now[:alert] = '商品の削除に失敗しました。お手数ですが、もう一度やり直してください。'
+        render :show
+        return
+      end
     end
   end
 
@@ -67,14 +73,20 @@ class ItemsController < ApplicationController
 
       
   def edit
-    @categories = Category.where(ancestry: nil)
-    @images = @item.images
-    @shipping = @item.shipping
-    @category = @item.category
-    @children = @category.parent
-    @parent = @children.parent
-    gon.existing_images = Image.where(item_id: params[:id])
-    render layout: 'sub_application'
+    if current_user.id != Item.find(params[:id]).user_id
+      redirect_to item_path(params[:id])
+    elsif Item.find(params[:id]).buyer_id.present?
+      redirect_to item_path(params[:id])
+    else
+      @categories = Category.where(ancestry: nil)
+      @images = @item.images
+      @shipping = @item.shipping
+      @category = @item.category
+      @children = @category.parent
+      @parent = @children.parent
+      gon.existing_images = Image.where(item_id: params[:id])
+      render layout: 'sub_application'
+    end
   end
 
   def destroy_existing_image
@@ -86,45 +98,57 @@ class ItemsController < ApplicationController
   end
 
   def update
-    fee = item_params[:price].to_i * 0.1
-    profit = item_params[:price].to_i - fee
-    if @item.update(item_params.merge(fee: fee, profit: profit))
-      redirect_to item_path(@item.id)
+    if current_user.id != Item.find(params[:id]).user_id
+      redirect_to item_path(params[:id])
+    elsif Item.find(params[:id]).buyer_id.present?
+      redirect_to item_path(params[:id])
     else
-      redirect_to edit_item_path(@item.id)
-      flash[:alert] = '商品の変更に失敗しました。お手数ですが、もう一度やり直してください。'
+      fee = item_params[:price].to_i * 0.1
+      profit = item_params[:price].to_i - fee
+      if @item.update(item_params.merge(fee: fee, profit: profit))
+        redirect_to item_path(@item.id)
+      else
+        redirect_to edit_item_path(@item.id)
+        flash[:alert] = '商品の変更に失敗しました。お手数ですが、もう一度やり直してください。'
+      end
     end
   end
 
-  def purchase_confirmation
-    @item = Item.find(params[:id])
-    card = current_user.cards.first
-    if card.blank?
-      redirect_to new_for_purchase_card_path(@item.id)
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
-      return
+  def purchase_confirmation 
+    if current_user.id == Item.find(params[:id]).user_id
+      redirect_to item_path(params[:id])
+    elsif Item.find(params[:id]).buyer_id.present?
+      redirect_to item_path(params[:id])
     else
-      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @customer_card = customer.cards.retrieve(card.card_id)
+      @item = Item.find(params[:id])
+      card = current_user.cards.first
+      if card.blank?
+        redirect_to new_for_purchase_card_path(@item.id)
+        flash[:alert] = '購入にはクレジットカード登録が必要です'
+        return
+      else
+        Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @customer_card = customer.cards.retrieve(card.card_id)
 
-      card_brand = @customer_card.brand      
-      case card_brand
-      when "Visa"
-        @card_src = "visa.png"
-      when "JCB"
-        @card_src = "jcb.png"
-      when "MasterCard"
-        @card_src = "master-card.png"
-      when "American Express"
-        @card_src = "american_express.png"
-      when "Diners Club"
-        @card_src = "dinersclub.png"
-      when "Discover"
-        @card_src = "discover.png"
+        card_brand = @customer_card.brand      
+        case card_brand
+        when "Visa"
+          @card_src = "visa.png"
+        when "JCB"
+          @card_src = "jcb.png"
+        when "MasterCard"
+          @card_src = "master-card.png"
+        when "American Express"
+          @card_src = "american_express.png"
+        when "Diners Club"
+          @card_src = "dinersclub.png"
+        when "Discover"
+          @card_src = "discover.png"
+        end
       end
+      render layout: 'sub_application'
     end
-    render layout: 'sub_application'
   end
 
   def create_favorite
