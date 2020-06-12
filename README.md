@@ -9,6 +9,7 @@
 
 ## アソシエーション
 - has_one : profile dependent: : destroy
+- has_one : buyer_shipping_data dependent: : destroy
 - has_one : card dependent: : destroy
 - has_many : items dependent: : destroy
 - has_many : favorites
@@ -35,6 +36,23 @@
 |family_name_kana|string|null:false|
 |first_name_kana|string|null:false|
 |birth_day|date|null:false|
+|post_code|string|null:false|
+|prefecture|string|null:false|
+|city|string|null:false|
+|address|string|null:false|
+|building_name|string||
+|user_id|integer|null:false, foreign_key: true|
+
+## アソシエーション
+- belongs_to: user
+
+## buyer_shipping_dataテーブル
+|Column|Type|Options|
+|------|----|-------|
+|family_name|string|null:false|
+|first_name|string|null:false|
+|family_name_kana|string|null:false|
+|first_name_kana|string|null:false|
 |post_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
