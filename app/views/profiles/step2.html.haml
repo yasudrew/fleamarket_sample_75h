@@ -1,7 +1,7 @@
 .profile-address-page
   .profile-address-page__inner
     .profile-address-page__inner__user-form
-      = form_for @buyer_shipping_data, url: shipping_datas_path, method: :post do |f|
+      = form_for @profile, url: profiles_path, method: :post do |f|
 
         .field
           .field-label
