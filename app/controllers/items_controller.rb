@@ -122,14 +122,14 @@ class ItemsController < ApplicationController
     else
       @item = Item.find(params[:id])
       card = current_user.cards.first
-      @profile = current_user.profile
+      @shipping_data = current_user.buyer_shipping_data
       if card.blank?
         redirect_to new_for_purchase_card_path(@item.id)
         flash[:alert] = '購入にはクレジットカード登録が必要です'
         return
-      elsif @profile.blank?
-        redirect_to new_profile_path
-        flash[:alert] = '購入にはプロフィールの登録が必要です'
+      elsif @shipping_data.blank?
+        redirect_to new_shipping_data_path
+        flash[:alert] = '購入には送付先情報の登録が必要です'
         return
       else
         Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]

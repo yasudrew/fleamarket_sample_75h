@@ -18,6 +18,7 @@ class User < ApplicationRecord
     { user: user, sns: sns }
   end
   has_one :profile, dependent: :destroy
+  has_one :buyer_shipping_data, dependent: :destroy
   has_many :cards
   has_many :sns_credentials
   has_many :comments

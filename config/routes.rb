@@ -34,6 +34,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :shipping_datas, only: [:new, :create] do
+    collection do
+      get 'step1'
+      get 'step2'
+    end
+  end
+
 
   resources :items, except: [:index] do
     collection do

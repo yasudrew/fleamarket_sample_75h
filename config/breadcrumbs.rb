@@ -12,6 +12,11 @@ crumb :new_profile do
   parent :my_page
 end
 
+crumb :new_buyer_shipping_data do
+  link '送付先情報', new_shipping_data_path
+  parent :my_page
+end
+
 crumb :my_favorites do
   link 'お気に入り', my_favorites_users_path
   parent :my_page

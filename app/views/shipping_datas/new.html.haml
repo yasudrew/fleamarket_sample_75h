@@ -1,0 +1,9 @@
+- breadcrumb :new_buyer_shipping_data
+= render partial: "layouts/breadcrumbs"
+.container
+  .container_contents
+    .container_contents_main
+      .container_contents_main_address
+        .container_contents_main_address_inside
+          = link_to "送付先情報を登録する", step1_shipping_datas_path, method: :get, class: "container_contents_main_address_inside_bottun"
+    = render partial: "users/side-bar"
